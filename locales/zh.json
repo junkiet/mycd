@@ -1,9 +1,8 @@
 {
   "navbar": {
     "exploreTraders": "探索交易员",
-    "markets": "市场",
+    "feed": "交易员动态",
     "leaderboard": "排行榜",
-    "login": "登录",
     "getStarted": "开始使用"
   },
   "hero": {
@@ -11,10 +10,10 @@
     "title2": "您的全部交易",
     "title3": "表现一站式管理。",
     "description": "追踪您的投资组合，分析交易表现，关注成功的交易员 — 一切尽在一个平台。",
-    "cta": "立即连接 API"
+    "cta": "成为会员"
   },
   "home": {
-    "coreHeading": "MyCoinDeck 将您所有的交易数据整合到一个强大的仪表盘中。"
+    "coreHeading": "所有交易，尽在一个强大的仪表盘。"
   },
   "features": {
     "analytics": {
@@ -65,8 +64,13 @@
     "trader": "交易员",
     "pnl": "盈亏",
     "winRate": "胜率",
-    "volume": "交易量 (M)",
+    "volume": "交易量",
+    "portfolio": "投资组合",
     "topPerformer": "最佳表现",
+    "today": "今日",
+    "monthly": "本月",
+    "allTime": "全部",
+    "noData": "暂无排行数据",
     "viewFull": "查看完整排行榜 →"
   },
   "testimonials": {
@@ -133,14 +137,18 @@
     "strong": "强劲",
     "topTraders": "顶级交易员",
     "thisWeek": "本周",
+    "last30Days": "近30天",
     "pnl": "盈亏",
     "follow": "关注",
     "followers": "粉丝",
+    "portfolios": "个组合",
+    "traders": "位交易员",
     "fearGreedIndex": "恐惧与贪婪指数",
     "marketSentiment": "市场情绪",
     "trendingCoins": "热门币种",
     "latestCryptoNews": "最新加密新闻",
-    "totalAcrossAll": "所有交易所总计",
+    "totalAcrossAll": "所有交易所总交易量",
+    "allTime": "全部时间",
     "today": "今日",
     "spotFutures": "现货 + 合约",
     "perpetuals": "永续合约",

@@ -27,7 +27,7 @@ export function FeatureSection({ title, description, highlights, visual, reverse
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <motion.h2
-              className="mb-4 mx-auto max-w-4xl bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-4xl font-bold leading-tight text-transparent md:text-5xl"
+              className="mb-4 mx-auto max-w-4xl bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-3xl font-bold leading-tight text-transparent sm:text-4xl md:text-5xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}

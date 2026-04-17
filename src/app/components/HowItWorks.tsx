@@ -31,7 +31,7 @@ export function HowItWorks() {
       <div className="container mx-auto px-6">
         <div className="mb-16 text-center">
           <motion.h2
-            className="mb-4 bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+            className="mb-4 bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

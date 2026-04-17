@@ -1,9 +1,8 @@
 {
   "navbar": {
     "exploreTraders": "Explore Traders",
-    "markets": "Markets",
+    "feed": "Traders' Feeds",
     "leaderboard": "Leaderboard",
-    "login": "Login",
     "getStarted": "Get Started"
   },
   "hero": {
@@ -11,10 +10,10 @@
     "title2": "Your Entire Trading",
     "title3": "Performance Unified.",
     "description": "Track your portfolio, analyze your trading performance, and follow successful traders — all in one place.",
-    "cta": "Connect API now"
+    "cta": "Become a Member"
   },
   "home": {
-    "coreHeading": "MyCoinDeck unifies all your trading data into one powerful dashboard."
+    "coreHeading": "All your trades, one powerful dashboard."
   },
   "features": {
     "analytics": {
@@ -65,8 +64,13 @@
     "trader": "Trader",
     "pnl": "PnL",
     "winRate": "Win Rate",
-    "volume": "Volume (M)",
+    "volume": "Volume",
+    "portfolio": "Portfolio",
     "topPerformer": "Top Performer",
+    "today": "Today",
+    "monthly": "Monthly",
+    "allTime": "All Time",
+    "noData": "No ranking data available",
     "viewFull": "View Full Leaderboard →"
   },
   "testimonials": {
@@ -133,14 +137,18 @@
     "strong": "Strong",
     "topTraders": "Top Traders",
     "thisWeek": "This Week",
+    "last30Days": "Last 30 Days",
     "pnl": "PnL",
     "follow": "Follow",
     "followers": "followers",
+    "portfolios": "portfolios",
+    "traders": "traders",
     "fearGreedIndex": "Fear & Greed Index",
     "marketSentiment": "Market Sentiment",
     "trendingCoins": "Trending Coins",
     "latestCryptoNews": "Latest Crypto News",
-    "totalAcrossAll": "Total Across All Exchanges",
+    "totalAcrossAll": "Total Trading Volume Across All Exchanges",
+    "allTime": "all time",
     "today": "today",
     "spotFutures": "Spot + Futures",
     "perpetuals": "Perpetuals",

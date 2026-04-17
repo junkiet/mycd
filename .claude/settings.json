@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Read(//Users/jkeykong/work/trading-vue3/api/go/handlers/pnl/**)",
+      "Read(//Users/jkeykong/work/trading-vue3/api/go/**)",
+      "Read(//Users/jkeykong/work/trading-vue3/api/go/handlers/admin/**)",
+      "Read(//Users/jkeykong/work/trading-vue3/api/**)"
     ]
   }
 }

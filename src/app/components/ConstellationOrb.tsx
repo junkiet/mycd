@@ -5,14 +5,14 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth < 768;
-const POINT_COUNT = IS_MOBILE ? 60 : 140;
-const SPHERE_RADIUS = 5;
+const POINT_COUNT = IS_MOBILE ? 40 : 100;
+const SPHERE_RADIUS = IS_MOBILE ? 4.5 : 5;
 const LINE_COLOR = 0x7B3F9E;
 const NODE_COLOR = 0xAB51C5;
 const SPECIAL_COLOR = 0xAB51C5;
-const SPECIAL_COUNT = IS_MOBILE ? 20 : 100;
-const CONNECTION_DISTANCE = IS_MOBILE ? 3.0 : 3.5;
-const ORBIT_RADIUS = 8;
+const CONNECTION_DISTANCE = IS_MOBILE ? 2.6 : 2.8;
+const ORBIT_RADIUS = IS_MOBILE ? 7 : 8;
+const TRADER_LIMIT = IS_MOBILE ? 10 : 50;
 
 const EXCHANGE_DATA = [
   { name: 'Binance', avatar: '/exchanges/binance.svg' },
@@ -31,6 +31,10 @@ interface UserProfile {
   pnl: string;
   volume: string;
   followers: string;
+  portfolioLabel?: string;
+  urlname?: string;
+  uid?: number;
+  portfolioId?: number;
   rank?: number; // 1-3 = top trader (gold glow)
 }
 
@@ -127,6 +131,13 @@ const TOOLTIP_DATA: TooltipData[] = [
   { type: 'user', name: '@LiqWick', avatar: `/avatars/${AVATAR_FILES[15]}.png`, winRate: '23.5%', pnl: '-$22K', volume: '$600K', followers: '25' },
 ];
 
+function formatK(n: number): string {
+  const abs = Math.abs(n);
+  if (abs >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+  if (abs >= 1000) return (n / 1000).toFixed(1) + 'K';
+  return n.toFixed(0);
+}
+
 function fibonacciSphere(count: number, radius: number) {
   const points: THREE.Vector3[] = [];
   const goldenAngle = Math.PI * (3 - Math.sqrt(5));
@@ -154,32 +165,60 @@ interface TooltipState {
   data: TooltipData | null;
 }
 
+interface LiveTrader {
+  id: number;
+  nickname: string;
+  urlname: string;
+  portfolioId: number;
+  portfolioLabel?: string;
+  avatar: string;
+  winRate: number;
+  pnl: number;
+  totalPnl: number;
+  followers: number;
+  roi30d: number | null;
+}
+
 export function ConstellationOrb() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [tooltip, setTooltip] = useState<TooltipState>({ visible: false, x: 0, y: 0, data: null });
-  const [expandedUser, setExpandedUser] = useState<UserProfile | null>(null);
+  const [liveTraders, setLiveTraders] = useState<UserProfile[] | null>(null);
 
-  // Auto-dismiss expanded card after 4s, or on any click/tap anywhere
+  // Fetch real traders data sorted by joinDate (newest first)
   useEffect(() => {
-    if (!expandedUser) return;
-    const close = () => setExpandedUser(null);
-    const timer = setTimeout(close, 4000);
-    // Delay attaching close listeners so the opening touch/click doesn't immediately close it
-    const delayTimer = setTimeout(() => {
-      document.addEventListener('click', close);
-      document.addEventListener('touchstart', close);
-    }, 300);
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(delayTimer);
-      document.removeEventListener('click', close);
-      document.removeEventListener('touchstart', close);
-    };
-  }, [expandedUser]);
+    fetch(`/api/top-traders?limit=${TRADER_LIMIT}`)
+      .then(r => r.json())
+      .then(json => {
+        if (json.code === 200 && Array.isArray(json.data)) {
+          const traders: UserProfile[] = json.data.map((t: LiveTrader, idx: number) => ({
+            type: 'user' as const,
+            name: '@' + (t.nickname || t.urlname || `user${t.id}`),
+            avatar: t.avatar,
+            winRate: (t.winRate ?? 0).toFixed(1) + '%',
+            pnl: (t.pnl ?? 0) >= 0 ? '+$' + formatK(t.pnl) : '-$' + formatK(Math.abs(t.pnl)),
+            volume: '$' + formatK(t.totalPnl ?? 0),
+            followers: formatK(t.followers ?? 0),
+            portfolioLabel: t.portfolioLabel,
+            urlname: t.urlname,
+            uid: t.id,
+            portfolioId: t.portfolioId,
+            rank: idx < 10 ? idx + 1 : undefined,
+          }));
+          setLiveTraders(traders);
+        } else {
+          setLiveTraders(TOOLTIP_DATA.filter(d => d.type === 'user') as UserProfile[]);
+        }
+      })
+      .catch(() => setLiveTraders(TOOLTIP_DATA.filter(d => d.type === 'user') as UserProfile[]));
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    if (!liveTraders) return;
+
+    const activeTraders = liveTraders.length > 0 ? liveTraders : (TOOLTIP_DATA.filter(d => d.type === 'user') as UserProfile[]);
+    const specialCount = activeTraders.length;
 
     const width = container.clientWidth;
     const height = container.clientHeight;
@@ -187,7 +226,7 @@ export function ConstellationOrb() {
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
-    camera.position.set(0, 0, 18);
+    camera.position.set(0, 0, IS_MOBILE ? 21 : 18);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
@@ -205,21 +244,25 @@ export function ConstellationOrb() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.rotateSpeed = 0.3;
+    // Disable manual rotation on mobile so page can scroll through the orb
+    if (IS_MOBILE) {
+      controls.enableRotate = false;
+    }
 
     // Generate points on a fibonacci sphere
     const points = fibonacciSphere(POINT_COUNT, SPHERE_RADIUS);
 
     // Pick special nodes
     const specialIndices = new Set<number>();
-    while (specialIndices.size < SPECIAL_COUNT) {
+    while (specialIndices.size < specialCount) {
       specialIndices.add(Math.floor(Math.random() * POINT_COUNT));
     }
 
-    // Map special indices to tooltip data
+    // Map special indices to tooltip data (live traders)
     const specialIndexArray = Array.from(specialIndices);
     const dataMap = new Map<number, TooltipData>();
     specialIndexArray.forEach((idx, i) => {
-      dataMap.set(idx, TOOLTIP_DATA[i % TOOLTIP_DATA.length]);
+      dataMap.set(idx, activeTraders[i % activeTraders.length]);
     });
 
     // Load exchange logo textures at high resolution via Image → Canvas
@@ -331,7 +374,7 @@ export function ConstellationOrb() {
 
       // User profile nodes: use avatar sprite with glow + dark bg
       if (isSpecial && data && data.type === 'user') {
-        const isTopTrader = data.rank && data.rank <= 10;
+        const isTopTrader = data.rank === 1;
         const isProfit = data.pnl.startsWith('+');
         // Gold for top traders, green for profit, red for loss
         const glowR = isTopTrader ? 255 : isProfit ? 34 : 220;
@@ -385,7 +428,8 @@ export function ConstellationOrb() {
         const glowSpriteMat = new THREE.SpriteMaterial({ map: glowTex, transparent: true, depthTest: false });
         const glowSprite = new THREE.Sprite(glowSpriteMat);
         glowSprite.position.copy(point);
-        const glowSize = isTopTrader ? 1.2 : 0.5;
+        const rank = data.rank ?? 99;
+        const glowSize = rank === 1 ? 1.4 : rank === 2 ? 1.0 : rank === 3 ? 0.8 : 0.5;
         glowSprite.scale.set(glowSize, glowSize, glowSize);
         glowSprite.renderOrder = 0;
         glowSprite.userData = { isGlow: true, isTopTrader: !!isTopTrader, baseGlowScale: glowSize };
@@ -414,8 +458,8 @@ export function ConstellationOrb() {
         avatarSprite.position.copy(point);
         avatarSprite.scale.set(0.28, 0.28, 0.28);
         avatarSprite.renderOrder = 2;
-        const avatarSize = isTopTrader ? 0.38 : 0.18;
-        const bgSize = isTopTrader ? 0.48 : 0.24;
+        const avatarSize = rank === 1 ? 0.44 : rank === 2 ? 0.30 : rank === 3 ? 0.24 : 0.18;
+        const bgSize = rank === 1 ? 0.54 : rank === 2 ? 0.38 : rank === 3 ? 0.30 : 0.24;
         avatarSprite.scale.set(avatarSize, avatarSize, avatarSize);
         bgSprite.scale.set(bgSize, bgSize, bgSize);
         avatarSprite.userData = { index: i, isSpecial: true, targetScale: 1, bgSprite, glowSprite, baseScale: avatarSize, baseBgScale: bgSize, baseGlowScale: glowSize, crownSprite: null as THREE.Sprite | null };
@@ -482,7 +526,9 @@ export function ConstellationOrb() {
           avatarMat.map = tex;
           avatarMat.needsUpdate = true;
         };
-        img.src = data.avatar;
+        img.src = data.avatar.startsWith('http')
+          ? `/api/avatar?url=${encodeURIComponent(data.avatar)}`
+          : data.avatar;
 
         // Hit mesh for raycasting
         const hitGeo = new THREE.SphereGeometry(0.4, 8, 8);
@@ -545,7 +591,7 @@ export function ConstellationOrb() {
     const lineMat = new THREE.LineBasicMaterial({
       vertexColors: true,
       transparent: true,
-      opacity: 0.65,
+      opacity: IS_MOBILE ? 0.85 : 0.65,
     });
     const lines = new THREE.LineSegments(lineGeo, lineMat);
     group.add(lines);
@@ -640,7 +686,18 @@ export function ConstellationOrb() {
       return false;
     };
 
+    // Change cursor on hover (no tooltip, just visual feedback)
     const onMouseMove = (e: MouseEvent) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(hitMeshes);
+      renderer.domElement.style.cursor = intersects.length > 0 ? 'pointer' : 'grab';
+    };
+
+    // Click to show sticky popover
+    const onClick = (e: MouseEvent) => {
       if (!handleHit(e.clientX, e.clientY)) {
         clearHover();
       }
@@ -648,74 +705,14 @@ export function ConstellationOrb() {
 
     const onTouchStart = (e: TouchEvent) => {
       const touch = e.touches[0];
-      const rect = renderer.domElement.getBoundingClientRect();
-      mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
-      raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(hitMeshes);
-      if (intersects.length > 0) {
-        const hitTarget = intersects[0].object as THREE.Mesh;
-        const idx = hitTarget.userData.index;
-        const data = dataMap.get(idx);
-        if (data && data.type === 'user') {
-          // Mobile: skip small tooltip, go straight to expanded card
-          const matchedNode = specialMeshes.find(m => m.userData.index === idx);
-          if (matchedNode) {
-            const worldPos = new THREE.Vector3();
-            matchedNode.getWorldPosition(worldPos);
-            worldPos.project(camera);
-            const screenX = (worldPos.x * 0.5 + 0.5) * rect.width;
-            const screenY = (-worldPos.y * 0.5 + 0.5) * rect.height;
-            setTooltip({ visible: false, x: screenX, y: screenY, data: null });
-          }
-          setExpandedUser(data);
-          e.stopPropagation();
-          return;
-        }
-      }
-      // For exchange nodes, use normal handleHit
       if (handleHit(touch.clientX, touch.clientY)) {
         e.stopPropagation();
       }
     };
 
-    const onTouchEnd = () => {
-      // Don't auto-clear if expanded user card is showing
-    };
-
-    const onClick = (e: MouseEvent) => {
-      const rect = renderer.domElement.getBoundingClientRect();
-      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-      raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(hitMeshes);
-      if (intersects.length > 0) {
-        const hitTarget = intersects[0].object as THREE.Mesh;
-        const idx = hitTarget.userData.index;
-        const data = dataMap.get(idx);
-        if (data && data.type === 'user') {
-          // Project node 3D position to screen
-          const matchedNode = specialMeshes.find(m => m.userData.index === idx);
-          if (matchedNode) {
-            const worldPos = new THREE.Vector3();
-            matchedNode.getWorldPosition(worldPos);
-            worldPos.project(camera);
-            const screenX = (worldPos.x * 0.5 + 0.5) * rect.width;
-            const screenY = (-worldPos.y * 0.5 + 0.5) * rect.height;
-            setTooltip(prev => ({ ...prev, x: screenX, y: screenY }));
-          }
-          setExpandedUser(data);
-          return;
-        }
-      }
-      // Click on empty space — no-op
-    };
-
     renderer.domElement.addEventListener('mousemove', onMouseMove);
-    renderer.domElement.addEventListener('mouseleave', clearHover);
-    renderer.domElement.addEventListener('touchstart', onTouchStart, { passive: true });
-    renderer.domElement.addEventListener('touchend', onTouchEnd);
     renderer.domElement.addEventListener('click', onClick);
+    renderer.domElement.addEventListener('touchstart', onTouchStart, { passive: true });
 
     // Animation
     let animId: number;
@@ -769,6 +766,8 @@ export function ConstellationOrb() {
 
       // Animate outer exchange ring (spins opposite to orb)
       const exchangeAngles: number[] = [];
+      const camWorldPos = new THREE.Vector3();
+      camera.getWorldPosition(camWorldPos);
       EXCHANGE_DATA.forEach((_ex, ei) => {
         const angle = -time * 0.25 + (ei / EXCHANGE_DATA.length) * Math.PI * 2;
         exchangeAngles.push(angle);
@@ -776,6 +775,20 @@ export function ConstellationOrb() {
         const z = Math.sin(angle) * ORBIT_RADIUS;
         orbitBgSprites[ei].position.set(x, 0, z);
         orbitLogoSprites[ei].position.set(x, 0, z);
+
+        // Scale icons based on camera-facing (front = full size, back = small but visible)
+        const worldPos = new THREE.Vector3(x, 0, z);
+        orbitGroup.localToWorld(worldPos);
+        const toCam = camWorldPos.clone().sub(worldPos).normalize();
+        const fromCenter = worldPos.clone().normalize();
+        const facing = fromCenter.dot(toCam);
+        // facing > 0: in front, facing < 0: behind. Map [-1, 1] → [0.3, 1]
+        const sizeFactor = 0.3 + (facing + 1) * 0.35;
+        orbitBgSprites[ei].scale.setScalar(1.3 * sizeFactor);
+        orbitLogoSprites[ei].scale.setScalar(0.85 * sizeFactor);
+        // Reset opacity to full since we're using size now
+        (orbitBgSprites[ei].material as THREE.SpriteMaterial).opacity = 1;
+        (orbitLogoSprites[ei].material as THREE.SpriteMaterial).opacity = 1;
       });
 
       // Update ring trail glow — brighten near exchange icons
@@ -836,121 +849,74 @@ export function ConstellationOrb() {
     return () => {
       window.removeEventListener('resize', onResize);
       renderer.domElement.removeEventListener('mousemove', onMouseMove);
-      renderer.domElement.removeEventListener('mouseleave', clearHover);
-      renderer.domElement.removeEventListener('touchstart', onTouchStart);
-      renderer.domElement.removeEventListener('touchend', onTouchEnd);
       renderer.domElement.removeEventListener('click', onClick);
+      renderer.domElement.removeEventListener('touchstart', onTouchStart);
       if (tooltipTimeout) clearTimeout(tooltipTimeout);
       cancelAnimationFrame(animId);
       renderer.dispose();
       container.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [liveTraders]);
 
 
   return (
     <>
     <div
       ref={containerRef}
-      className="relative mx-auto mb-24 sm:mb-0 w-full max-w-[500px] aspect-square sm:max-w-[700px] lg:max-w-none lg:h-[700px] overflow-visible"
+      className="relative mx-auto mb-24 sm:mb-0 w-full max-w-[380px] aspect-square sm:max-w-none sm:aspect-auto sm:h-[900px] overflow-visible"
       style={{ cursor: 'grab' }}
     >
 
-      {/* Legend — horizontal on mobile (bottom), vertical on desktop (top-left) */}
-      <div className="pointer-events-none absolute -bottom-20 left-1/2 z-10 flex -translate-x-1/2 scale-[0.75] origin-bottom flex-col items-center gap-2 rounded-xl border border-white/[0.08] bg-[#1a1a1a]/70 px-3 py-2 backdrop-blur-sm sm:bottom-auto sm:left-4 sm:top-4 sm:translate-x-0 sm:scale-[0.75] sm:origin-top-left sm:items-start sm:gap-2.5 sm:px-4 sm:py-3">
-        <div className="border-b border-white/[0.06] pb-1.5 sm:pb-2 w-full">
-          <span className="text-[9px] font-semibold uppercase tracking-widest text-white/40 sm:text-[9px] text-left block">Live Traders<br />around the globe<br />(1 hour)</span>
-        </div>
-        <div className="flex items-center gap-3 sm:flex-col sm:gap-2.5 sm:items-start">
-          <div className="flex items-center gap-1.5 sm:gap-2.5">
-            <span className="relative flex h-2 w-2 sm:h-3 sm:w-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FFD700] opacity-40" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#FFD700] shadow-[0_0_8px_rgba(255,215,0,0.6)] sm:h-3 sm:w-3" />
-            </span>
-            <span className="text-[9px] font-medium text-white/70 sm:text-[11px] sm:text-white/80">Top 10 Traders</span>
-          </div>
-          <div className="flex items-center gap-1.5 sm:gap-2.5">
-            <span className="inline-flex h-2 w-2 rounded-full bg-[#22c55e] shadow-[0_0_6px_rgba(34,197,94,0.4)] sm:h-3 sm:w-3" />
-            <span className="text-[9px] font-medium text-white/70 sm:text-[11px] sm:text-white/80">Gainer</span>
-          </div>
-          <div className="flex items-center gap-1.5 sm:gap-2.5">
-            <span className="inline-flex h-2 w-2 rounded-full bg-[#dc1414] shadow-[0_0_6px_rgba(220,20,20,0.4)] sm:h-3 sm:w-3" />
-            <span className="text-[9px] font-medium text-white/70 sm:text-[11px] sm:text-white/80">Loser</span>
-          </div>
-        </div>
-      </div>
 
-      {/* Small Tooltip (hover) */}
-      {tooltip.visible && tooltip.data && !expandedUser && (
-        <div
-          className="pointer-events-none absolute z-10 flex w-max items-center gap-2.5 whitespace-nowrap rounded-lg border border-white/10 bg-[#1a1a1a]/95 px-3 py-2 backdrop-blur-sm"
-          style={{
-            left: tooltip.x,
-            top: tooltip.y - 52,
-            transform: 'translateX(-50%)',
-          }}
-        >
-          {tooltip.data.type === 'user' ? (
+      {/* Click Popover (sticky) */}
+      {tooltip.visible && tooltip.data && (
+        tooltip.data.type === 'user' ? (
+          <a
+            href={`https://app.mycoindeck.com/en/explore/${tooltip.data.urlname || tooltip.data.uid}?pid=${tooltip.data.portfolioId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute z-10 flex w-max items-center gap-2.5 whitespace-nowrap rounded-lg border border-white/10 bg-[#1a1a1a]/95 px-3 py-2 backdrop-blur-sm transition-all hover:border-[#AB51C5]/50 hover:bg-[#1a1a1a]"
+            style={{
+              left: tooltip.x,
+              top: tooltip.y - 52,
+              transform: 'translateX(-50%)',
+            }}
+          >
             <>
               <div className="relative shrink-0">
                 <img src={tooltip.data.avatar} alt={tooltip.data.name} className="h-7 w-7 rounded-full object-cover" />
-                {tooltip.data.rank && tooltip.data.rank <= 10 && (
+                {tooltip.data.rank === 1 && (
                   <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-b from-[#FFD700] to-[#B8860B] text-[8px] font-bold text-black">
                     {tooltip.data.rank}
                   </span>
                 )}
               </div>
-              <div className="text-xs font-semibold text-white">{tooltip.data.name}</div>
-              <div className={`text-xs font-semibold ${tooltip.data.rank && tooltip.data.rank <= 10 ? 'text-[#FFD700]' : tooltip.data.pnl.startsWith('+') ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>{tooltip.data.pnl}</div>
+              <div className="flex min-w-0 flex-1 items-center gap-2.5">
+                <div className="flex min-w-0 flex-col items-start">
+                  <div className="text-xs font-semibold leading-tight text-white truncate">{tooltip.data.name}</div>
+                  {tooltip.data.portfolioLabel && (
+                    <div className="text-[10px] leading-tight text-white/50 truncate">{tooltip.data.portfolioLabel}</div>
+                  )}
+                </div>
+                <div className={`text-xs font-semibold ${tooltip.data.pnl.startsWith('+') ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>{tooltip.data.pnl}</div>
+              </div>
             </>
-          ) : (
-            <>
-              <img src={tooltip.data.avatar} alt={tooltip.data.name} className="h-5 w-5 shrink-0 object-contain" />
-              <div className="text-xs font-semibold text-white">{tooltip.data.name}</div>
-            </>
-          )}
-        </div>
+          </a>
+        ) : (
+          <div
+            className="pointer-events-none absolute z-10 flex w-max items-center gap-2.5 whitespace-nowrap rounded-lg border border-white/10 bg-[#1a1a1a]/95 px-3 py-2 backdrop-blur-sm"
+            style={{
+              left: tooltip.x,
+              top: tooltip.y - 52,
+              transform: 'translateX(-50%)',
+            }}
+          >
+            <img src={tooltip.data.avatar} alt={tooltip.data.name} className="h-5 w-5 shrink-0 object-contain" />
+            <div className="text-xs font-semibold text-white">{tooltip.data.name}</div>
+          </div>
+        )
       )}
 
-      {/* Expanded User Profile Card */}
-      {expandedUser && (
-        <div
-          className="absolute z-20 cursor-pointer rounded-xl border border-white/10 bg-[#1a1a1a]/95 backdrop-blur-sm"
-          style={{
-            left: tooltip.x,
-            top: tooltip.y - 10,
-            transform: 'translate(-50%, -100%)',
-          }}
-          onClick={() => setExpandedUser(null)}
-        >
-          <button className="absolute right-2 top-2 text-white/30 transition-colors hover:text-white">
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M1 1l8 8M9 1L1 9" /></svg>
-          </button>
-          <div className="flex items-center gap-3 p-3 pb-2 pr-7">
-            <div className="relative shrink-0">
-              <img
-                src={expandedUser.avatar}
-                alt={expandedUser.name}
-                className="h-10 w-10 rounded-full object-cover"
-              />
-              {expandedUser.rank && expandedUser.rank <= 10 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-b from-[#FFD700] to-[#B8860B] text-[9px] font-bold text-black">
-                  {expandedUser.rank}
-                </span>
-              )}
-            </div>
-            <div className="min-w-0 pr-2">
-              <div className="whitespace-nowrap text-xs font-bold text-white">{expandedUser.name}</div>
-              <div className={`whitespace-nowrap text-xs font-semibold ${expandedUser.rank && expandedUser.rank <= 10 ? 'text-[#FFD700]' : expandedUser.pnl.startsWith('+') ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>{expandedUser.pnl}</div>
-            </div>
-          </div>
-          <div className="px-3 pb-3">
-            <span className="block w-full rounded-lg bg-white/10 py-1.5 text-center text-[10px] font-medium text-white/70">
-              View Profile &rsaquo;
-            </span>
-          </div>
-        </div>
-      )}
     </div>
     </>
   );

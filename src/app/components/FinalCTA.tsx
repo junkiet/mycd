@@ -17,7 +17,7 @@ export function FinalCTA() {
       <div className="container relative mx-auto px-6">
         <div className="mx-auto max-w-4xl text-center">
           <motion.h2
-            className="mb-6 bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-5xl font-bold leading-tight tracking-tight text-transparent md:text-6xl"
+            className="mb-6 bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-3xl font-bold leading-tight tracking-tight text-transparent sm:text-5xl md:text-6xl"
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -44,13 +44,17 @@ export function FinalCTA() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button size="lg" className="bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/50">
-              {t('getStarted')}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-border bg-secondary hover:bg-accent">
-              {t('explore')}
-            </Button>
+            <a href="https://app.mycoindeck.com">
+              <Button size="lg" className="bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/50">
+                {t('getStarted')}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
+            <a href="https://app.mycoindeck.com/en/explore">
+              <Button size="lg" variant="outline" className="border-border bg-secondary hover:bg-accent">
+                {t('explore')}
+              </Button>
+            </a>
           </motion.div>
 
           {/* Trust Signals */}

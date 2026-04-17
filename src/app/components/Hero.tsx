@@ -63,7 +63,7 @@ export function Hero() {
               }}
             />
 
-            <h1 className="relative mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl">
+            <h1 className="relative mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-7xl">
               <motion.span
                 className="inline-block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 30 }}
@@ -100,10 +100,12 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
           >
-            <Button size="lg" className="bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/50">
-              {t('cta')}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <a href="https://app.mycoindeck.com">
+              <Button size="lg" className="bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/50">
+                {t('cta')}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>

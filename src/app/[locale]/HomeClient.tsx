@@ -11,12 +11,10 @@ import {
   TraderProfileMockup,
   AnalyticsMockup,
   SocialFeedMockup,
-  PositionsMockup,
   MarketMockup,
 } from '@/app/components/FeatureMockups';
 import { HowItWorks } from '@/app/components/HowItWorks';
 import { Leaderboard } from '@/app/components/Leaderboard';
-import { Testimonials } from '@/app/components/Testimonials';
 import { FinalCTA } from '@/app/components/FinalCTA';
 import { Footer } from '@/app/components/Footer';
 import { GalaxyBg } from '@/app/components/GalaxyBg';
@@ -66,7 +64,7 @@ export default function HomeClient() {
         ` }}>
           <GalaxyBg />
           <div className="container relative mx-auto px-6 text-center">
-            <h2 className="mb-4 mx-auto max-w-4xl bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-4xl font-bold leading-tight text-transparent md:text-5xl">
+            <h2 className="mb-4 mx-auto max-w-4xl bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-3xl font-bold leading-tight text-transparent sm:text-4xl md:text-5xl">
               {t('home.coreHeading')}
             </h2>
             <ConstellationOrb />
@@ -107,21 +105,12 @@ export default function HomeClient() {
           reversed
         />
 
-        {/* Feature 5: Instant Worldwide News */}
-        <FeatureSection
-          title={t('features.news.title')}
-          description={t('features.news.description')}
-          highlights={[t('features.news.highlights.0'), t('features.news.highlights.1')]}
-          visual={<PositionsMockup />}
-        />
-
-        {/* Feature 6: Market Intelligence */}
+        {/* Feature 5: Market Intelligence */}
         <FeatureSection
           title={t('features.market.title')}
           description={t('features.market.description')}
           highlights={[t('features.market.highlights.0'), t('features.market.highlights.1'), t('features.market.highlights.2'), t('features.market.highlights.3')]}
           visual={<MarketMockup />}
-          reversed
         />
 
         {/* How It Works */}
@@ -129,9 +118,6 @@ export default function HomeClient() {
 
         {/* Leaderboard */}
         <Leaderboard />
-
-        {/* Testimonials */}
-        <Testimonials />
 
         {/* Final CTA */}
         <FinalCTA />

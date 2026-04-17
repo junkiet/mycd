@@ -26,10 +26,9 @@ export function Navbar() {
   const langRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
-    { href: '#explore', label: t('exploreTraders'), icon: Compass },
-    { href: '#markets', label: t('markets'), icon: LineChart },
+    { href: 'https://app.mycoindeck.com/en/explore', label: t('exploreTraders'), icon: Compass },
+    { href: 'https://app.mycoindeck.com/en/feeds', label: t('feed'), icon: LineChart },
     { href: '#leaderboard', label: t('leaderboard'), icon: Trophy },
-    { href: 'https://app.mycoindeck.com', label: t('login'), icon: LogIn },
   ];
 
   const switchLocale = (newLocale: string) => {
@@ -128,8 +127,8 @@ export function Navbar() {
             </div>
 
             <a
-              href="#get-started"
-              className="rounded-full border border-white/20 px-4 py-1.5 text-sm text-white transition-colors hover:bg-white/10"
+              href="https://app.mycoindeck.com"
+              className="rounded-full bg-[#AB51C5] px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/30"
             >
               {t('getStarted')}
             </a>
@@ -215,7 +214,7 @@ export function Navbar() {
                 {/* Get Started button */}
                 <div className="px-3 pt-2 pb-2">
                   <Dialog.Close asChild>
-                    <a href="#get-started" className="block">
+                    <a href="https://app.mycoindeck.com" className="block">
                       <Button className="w-full bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/30">
                         {t('getStarted')}
                         <ArrowRight className="ml-2 h-4 w-4" />
