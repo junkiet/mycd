@@ -5,12 +5,12 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth < 768;
-const POINT_COUNT = IS_MOBILE ? 40 : 100;
+const POINT_COUNT = IS_MOBILE ? 70 : 100;
 const SPHERE_RADIUS = IS_MOBILE ? 4.5 : 5;
 const LINE_COLOR = 0x7B3F9E;
 const NODE_COLOR = 0xAB51C5;
 const SPECIAL_COLOR = 0xAB51C5;
-const CONNECTION_DISTANCE = IS_MOBILE ? 2.6 : 2.8;
+const CONNECTION_DISTANCE = IS_MOBILE ? 3.0 : 2.8;
 const ORBIT_RADIUS = IS_MOBILE ? 7 : 8;
 const TRADER_LIMIT = IS_MOBILE ? 10 : 50;
 
@@ -20,8 +20,6 @@ const EXCHANGE_DATA = [
   { name: 'Bybit', avatar: '/exchanges/bybit.svg' },
   { name: 'Bitget', avatar: '/exchanges/bitget.svg' },
 ];
-
-const AVATAR_FILES = [33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52];
 
 interface UserProfile {
   type: 'user';
@@ -45,91 +43,6 @@ interface ExchangeInfo {
 }
 
 type TooltipData = UserProfile | ExchangeInfo;
-
-const TOOLTIP_DATA: TooltipData[] = [
-  // Top 10 Leaderboard Traders (gold glow + crown)
-  { type: 'user', name: '@CryptoWhale', avatar: `/avatars/${AVATAR_FILES[0]}.png`, winRate: '78.5%', pnl: '+$245K', volume: '$12.5M', followers: '12.4K', rank: 1 },
-  { type: 'user', name: '@DiamondHands', avatar: `/avatars/${AVATAR_FILES[1]}.png`, winRate: '74.2%', pnl: '+$198K', volume: '$9.8M', followers: '8.2K', rank: 2 },
-  { type: 'user', name: '@MoonTrader', avatar: `/avatars/${AVATAR_FILES[2]}.png`, winRate: '71.8%', pnl: '+$187K', volume: '$8.4M', followers: '5.7K', rank: 3 },
-  { type: 'user', name: '@BullMarket', avatar: `/avatars/${AVATAR_FILES[3]}.png`, winRate: '69.3%', pnl: '+$145K', volume: '$7.2M', followers: '4.1K', rank: 4 },
-  { type: 'user', name: '@TraderPro', avatar: `/avatars/${AVATAR_FILES[4]}.png`, winRate: '68.7%', pnl: '+$134K', volume: '$6.8M', followers: '3.8K', rank: 5 },
-  { type: 'user', name: '@CoinMaster', avatar: `/avatars/${AVATAR_FILES[5]}.png`, winRate: '67.4%', pnl: '+$125K', volume: '$6.1M', followers: '3.2K', rank: 6 },
-  { type: 'user', name: '@SatoshiFan', avatar: `/avatars/${AVATAR_FILES[7]}.png`, winRate: '65.2%', pnl: '+$109K', volume: '$5.5M', followers: '2.5K', rank: 7 },
-  { type: 'user', name: '@DeFiKing', avatar: `/avatars/${AVATAR_FILES[9]}.png`, winRate: '63.5%', pnl: '+$87K', volume: '$4.2M', followers: '1.8K', rank: 8 },
-  { type: 'user', name: '@WhaleAlert', avatar: `/avatars/${AVATAR_FILES[11]}.png`, winRate: '61.3%', pnl: '+$65K', volume: '$3.5M', followers: '1.2K', rank: 9 },
-  { type: 'user', name: '@LongKing', avatar: `/avatars/${AVATAR_FILES[12]}.png`, winRate: '60.1%', pnl: '+$58K', volume: '$3.1M', followers: '980', rank: 10 },
-  // Other profitable traders (green glow)
-  { type: 'user', name: '@ScalpQueen', avatar: `/avatars/${AVATAR_FILES[13]}.png`, winRate: '59.4%', pnl: '+$47K', volume: '$2.8M', followers: '870' },
-  { type: 'user', name: '@GemHunter', avatar: `/avatars/${AVATAR_FILES[16]}.png`, winRate: '58.1%', pnl: '+$41K', volume: '$2.5M', followers: '760' },
-  { type: 'user', name: '@SwingKing', avatar: `/avatars/${AVATAR_FILES[17]}.png`, winRate: '57.3%', pnl: '+$36K', volume: '$2.2M', followers: '690' },
-  { type: 'user', name: '@AltSeason', avatar: `/avatars/${AVATAR_FILES[18]}.png`, winRate: '56.8%', pnl: '+$32K', volume: '$1.9M', followers: '580' },
-  { type: 'user', name: '@BTCMaxi', avatar: `/avatars/${AVATAR_FILES[19]}.png`, winRate: '55.4%', pnl: '+$28K', volume: '$1.7M', followers: '510' },
-  { type: 'user', name: '@NightOwl', avatar: `/avatars/${AVATAR_FILES[0]}.png`, winRate: '54.9%', pnl: '+$25K', volume: '$1.5M', followers: '480' },
-  { type: 'user', name: '@SnipeBot', avatar: `/avatars/${AVATAR_FILES[1]}.png`, winRate: '54.2%', pnl: '+$23K', volume: '$1.4M', followers: '440' },
-  { type: 'user', name: '@LeverKing', avatar: `/avatars/${AVATAR_FILES[2]}.png`, winRate: '53.6%', pnl: '+$21K', volume: '$1.3M', followers: '410' },
-  { type: 'user', name: '@TrendRider', avatar: `/avatars/${AVATAR_FILES[3]}.png`, winRate: '53.1%', pnl: '+$19K', volume: '$1.2M', followers: '380' },
-  { type: 'user', name: '@FibMaster', avatar: `/avatars/${AVATAR_FILES[4]}.png`, winRate: '52.5%', pnl: '+$17K', volume: '$1.1M', followers: '350' },
-  { type: 'user', name: '@OnChainPro', avatar: `/avatars/${AVATAR_FILES[5]}.png`, winRate: '52.0%', pnl: '+$15K', volume: '$980K', followers: '320' },
-  { type: 'user', name: '@DipBuyer', avatar: `/avatars/${AVATAR_FILES[7]}.png`, winRate: '51.4%', pnl: '+$14K', volume: '$920K', followers: '290' },
-  { type: 'user', name: '@MomentumX', avatar: `/avatars/${AVATAR_FILES[9]}.png`, winRate: '51.0%', pnl: '+$12K', volume: '$870K', followers: '260' },
-  { type: 'user', name: '@GridBot', avatar: `/avatars/${AVATAR_FILES[11]}.png`, winRate: '50.5%', pnl: '+$11K', volume: '$810K', followers: '240' },
-  { type: 'user', name: '@ArbiKing', avatar: `/avatars/${AVATAR_FILES[12]}.png`, winRate: '50.1%', pnl: '+$9K', volume: '$750K', followers: '220' },
-  { type: 'user', name: '@VolumeHunter', avatar: `/avatars/${AVATAR_FILES[13]}.png`, winRate: '49.8%', pnl: '+$8K', volume: '$700K', followers: '200' },
-  { type: 'user', name: '@RsiTrader', avatar: `/avatars/${AVATAR_FILES[16]}.png`, winRate: '49.3%', pnl: '+$7K', volume: '$650K', followers: '185' },
-  { type: 'user', name: '@MacdPro', avatar: `/avatars/${AVATAR_FILES[17]}.png`, winRate: '48.9%', pnl: '+$6K', volume: '$600K', followers: '170' },
-  { type: 'user', name: '@BollingerX', avatar: `/avatars/${AVATAR_FILES[18]}.png`, winRate: '48.5%', pnl: '+$5K', volume: '$550K', followers: '155' },
-  { type: 'user', name: '@IchimokuFan', avatar: `/avatars/${AVATAR_FILES[19]}.png`, winRate: '48.1%', pnl: '+$4K', volume: '$500K', followers: '140' },
-  { type: 'user', name: '@EmaKing', avatar: `/avatars/${AVATAR_FILES[0]}.png`, winRate: '47.8%', pnl: '+$3.5K', volume: '$460K', followers: '125' },
-  { type: 'user', name: '@OrderFlow', avatar: `/avatars/${AVATAR_FILES[1]}.png`, winRate: '47.4%', pnl: '+$3K', volume: '$420K', followers: '115' },
-  { type: 'user', name: '@DeltaTrader', avatar: `/avatars/${AVATAR_FILES[2]}.png`, winRate: '47.0%', pnl: '+$2.5K', volume: '$380K', followers: '105' },
-  { type: 'user', name: '@HeatmapGod', avatar: `/avatars/${AVATAR_FILES[3]}.png`, winRate: '46.7%', pnl: '+$2K', volume: '$350K', followers: '95' },
-  { type: 'user', name: '@WickCatcher', avatar: `/avatars/${AVATAR_FILES[4]}.png`, winRate: '46.3%', pnl: '+$1.8K', volume: '$320K', followers: '88' },
-  { type: 'user', name: '@BreakoutBro', avatar: `/avatars/${AVATAR_FILES[5]}.png`, winRate: '46.0%', pnl: '+$1.5K', volume: '$290K', followers: '80' },
-  { type: 'user', name: '@SupportLine', avatar: `/avatars/${AVATAR_FILES[7]}.png`, winRate: '45.7%', pnl: '+$1.2K', volume: '$260K', followers: '72' },
-  { type: 'user', name: '@ResistBreak', avatar: `/avatars/${AVATAR_FILES[9]}.png`, winRate: '45.3%', pnl: '+$1K', volume: '$240K', followers: '65' },
-  { type: 'user', name: '@FundingRate', avatar: `/avatars/${AVATAR_FILES[11]}.png`, winRate: '45.0%', pnl: '+$800', volume: '$210K', followers: '58' },
-  { type: 'user', name: '@OpenInterest', avatar: `/avatars/${AVATAR_FILES[12]}.png`, winRate: '44.7%', pnl: '+$600', volume: '$190K', followers: '52' },
-  { type: 'user', name: '@LiqMap', avatar: `/avatars/${AVATAR_FILES[13]}.png`, winRate: '44.3%', pnl: '+$500', volume: '$170K', followers: '48' },
-  { type: 'user', name: '@CVDTrader', avatar: `/avatars/${AVATAR_FILES[16]}.png`, winRate: '44.0%', pnl: '+$450', volume: '$155K', followers: '44' },
-  { type: 'user', name: '@VWAPKing', avatar: `/avatars/${AVATAR_FILES[17]}.png`, winRate: '43.7%', pnl: '+$400', volume: '$140K', followers: '40' },
-  { type: 'user', name: '@TapeReader', avatar: `/avatars/${AVATAR_FILES[18]}.png`, winRate: '43.3%', pnl: '+$350', volume: '$125K', followers: '36' },
-  { type: 'user', name: '@FootprintX', avatar: `/avatars/${AVATAR_FILES[19]}.png`, winRate: '43.0%', pnl: '+$300', volume: '$110K', followers: '33' },
-  { type: 'user', name: '@CumDelta', avatar: `/avatars/${AVATAR_FILES[0]}.png`, winRate: '42.7%', pnl: '+$280', volume: '$100K', followers: '30' },
-  { type: 'user', name: '@POCTrader', avatar: `/avatars/${AVATAR_FILES[1]}.png`, winRate: '42.3%', pnl: '+$250', volume: '$90K', followers: '28' },
-  { type: 'user', name: '@VAHunter', avatar: `/avatars/${AVATAR_FILES[2]}.png`, winRate: '42.0%', pnl: '+$220', volume: '$82K', followers: '25' },
-  { type: 'user', name: '@TPOCharter', avatar: `/avatars/${AVATAR_FILES[3]}.png`, winRate: '41.7%', pnl: '+$200', volume: '$75K', followers: '23' },
-  { type: 'user', name: '@MicroScalp', avatar: `/avatars/${AVATAR_FILES[4]}.png`, winRate: '41.3%', pnl: '+$180', volume: '$68K', followers: '21' },
-  { type: 'user', name: '@NanoTrade', avatar: `/avatars/${AVATAR_FILES[5]}.png`, winRate: '41.0%', pnl: '+$160', volume: '$62K', followers: '19' },
-  { type: 'user', name: '@PivotPro', avatar: `/avatars/${AVATAR_FILES[7]}.png`, winRate: '40.7%', pnl: '+$140', volume: '$56K', followers: '17' },
-  { type: 'user', name: '@GapFiller', avatar: `/avatars/${AVATAR_FILES[9]}.png`, winRate: '40.3%', pnl: '+$120', volume: '$50K', followers: '15' },
-  { type: 'user', name: '@RangePlay', avatar: `/avatars/${AVATAR_FILES[11]}.png`, winRate: '40.0%', pnl: '+$100', volume: '$45K', followers: '13' },
-  { type: 'user', name: '@SpreadKing', avatar: `/avatars/${AVATAR_FILES[12]}.png`, winRate: '39.7%', pnl: '+$90', volume: '$40K', followers: '12' },
-  { type: 'user', name: '@HedgeFund', avatar: `/avatars/${AVATAR_FILES[13]}.png`, winRate: '39.3%', pnl: '+$80', volume: '$36K', followers: '11' },
-  { type: 'user', name: '@PairTrade', avatar: `/avatars/${AVATAR_FILES[16]}.png`, winRate: '39.0%', pnl: '+$70', volume: '$32K', followers: '10' },
-  { type: 'user', name: '@StatArb', avatar: `/avatars/${AVATAR_FILES[17]}.png`, winRate: '38.7%', pnl: '+$60', volume: '$28K', followers: '9' },
-  { type: 'user', name: '@MeanRevert', avatar: `/avatars/${AVATAR_FILES[18]}.png`, winRate: '38.3%', pnl: '+$50', volume: '$25K', followers: '8' },
-  // Loss traders (red glow)
-  { type: 'user', name: '@CryptoKing', avatar: `/avatars/${AVATAR_FILES[6]}.png`, winRate: '42.1%', pnl: '-$34K', volume: '$5.9M', followers: '2.9K' },
-  { type: 'user', name: '@AlphaTrader', avatar: `/avatars/${AVATAR_FILES[8]}.png`, winRate: '38.5%', pnl: '-$52K', volume: '$4.8M', followers: '2.1K' },
-  { type: 'user', name: '@ChartMaster', avatar: `/avatars/${AVATAR_FILES[10]}.png`, winRate: '45.2%', pnl: '-$18K', volume: '$3.9M', followers: '1.5K' },
-  { type: 'user', name: '@YoloSwap', avatar: `/avatars/${AVATAR_FILES[14]}.png`, winRate: '35.8%', pnl: '-$67K', volume: '$2.4M', followers: '650' },
-  { type: 'user', name: '@PaperHands', avatar: `/avatars/${AVATAR_FILES[15]}.png`, winRate: '40.3%', pnl: '-$29K', volume: '$1.9M', followers: '420' },
-  { type: 'user', name: '@FomoKing', avatar: `/avatars/${AVATAR_FILES[6]}.png`, winRate: '39.1%', pnl: '-$42K', volume: '$3.2M', followers: '380' },
-  { type: 'user', name: '@LiqHunted', avatar: `/avatars/${AVATAR_FILES[8]}.png`, winRate: '37.4%', pnl: '-$61K', volume: '$2.8M', followers: '310' },
-  { type: 'user', name: '@RevengeTrader', avatar: `/avatars/${AVATAR_FILES[10]}.png`, winRate: '36.2%', pnl: '-$78K', volume: '$4.1M', followers: '250' },
-  { type: 'user', name: '@OverLever', avatar: `/avatars/${AVATAR_FILES[14]}.png`, winRate: '34.8%', pnl: '-$95K', volume: '$3.5M', followers: '190' },
-  { type: 'user', name: '@MarginCall', avatar: `/avatars/${AVATAR_FILES[15]}.png`, winRate: '33.5%', pnl: '-$112K', volume: '$2.9M', followers: '150' },
-  { type: 'user', name: '@TopSignal', avatar: `/avatars/${AVATAR_FILES[6]}.png`, winRate: '32.1%', pnl: '-$88K', volume: '$2.5M', followers: '130' },
-  { type: 'user', name: '@BottomSell', avatar: `/avatars/${AVATAR_FILES[8]}.png`, winRate: '31.4%', pnl: '-$73K', volume: '$2.2M', followers: '110' },
-  { type: 'user', name: '@StopLoss404', avatar: `/avatars/${AVATAR_FILES[10]}.png`, winRate: '30.8%', pnl: '-$64K', volume: '$1.8M', followers: '95' },
-  { type: 'user', name: '@HopiumMax', avatar: `/avatars/${AVATAR_FILES[14]}.png`, winRate: '29.5%', pnl: '-$56K', volume: '$1.5M', followers: '80' },
-  { type: 'user', name: '@CatchKnife', avatar: `/avatars/${AVATAR_FILES[15]}.png`, winRate: '28.2%', pnl: '-$48K', volume: '$1.3M', followers: '68' },
-  { type: 'user', name: '@BagHolder', avatar: `/avatars/${AVATAR_FILES[6]}.png`, winRate: '27.6%', pnl: '-$41K', volume: '$1.1M', followers: '55' },
-  { type: 'user', name: '@RugPulled', avatar: `/avatars/${AVATAR_FILES[8]}.png`, winRate: '26.3%', pnl: '-$35K', volume: '$950K', followers: '45' },
-  { type: 'user', name: '@MaxPain', avatar: `/avatars/${AVATAR_FILES[10]}.png`, winRate: '25.8%', pnl: '-$30K', volume: '$820K', followers: '38' },
-  { type: 'user', name: '@Rekt420', avatar: `/avatars/${AVATAR_FILES[14]}.png`, winRate: '24.1%', pnl: '-$25K', volume: '$700K', followers: '30' },
-  { type: 'user', name: '@LiqWick', avatar: `/avatars/${AVATAR_FILES[15]}.png`, winRate: '23.5%', pnl: '-$22K', volume: '$600K', followers: '25' },
-];
 
 function formatK(n: number): string {
   const abs = Math.abs(n);
@@ -206,10 +119,10 @@ export function ConstellationOrb() {
           }));
           setLiveTraders(traders);
         } else {
-          setLiveTraders(TOOLTIP_DATA.filter(d => d.type === 'user') as UserProfile[]);
+          setLiveTraders([]);
         }
       })
-      .catch(() => setLiveTraders(TOOLTIP_DATA.filter(d => d.type === 'user') as UserProfile[]));
+      .catch(() => setLiveTraders([]));
   }, []);
 
   useEffect(() => {
@@ -217,7 +130,7 @@ export function ConstellationOrb() {
     if (!container) return;
     if (!liveTraders) return;
 
-    const activeTraders = liveTraders.length > 0 ? liveTraders : (TOOLTIP_DATA.filter(d => d.type === 'user') as UserProfile[]);
+    const activeTraders = liveTraders;
     const specialCount = activeTraders.length;
 
     const width = container.clientWidth;
@@ -226,13 +139,12 @@ export function ConstellationOrb() {
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
-    camera.position.set(0, 0, IS_MOBILE ? 21 : 18);
+    camera.position.set(0, 0, IS_MOBILE ? 14 : 18);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
-    renderer.domElement.style.touchAction = 'pan-y';
     container.appendChild(renderer.domElement);
 
     // Controls
@@ -244,9 +156,56 @@ export function ConstellationOrb() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.rotateSpeed = 0.3;
-    // Disable manual rotation on mobile so page can scroll through the orb
+    // On mobile: strip OrbitControls' pointer listeners so touch goes straight to the browser.
+    // We then add our own handler that only rotates on horizontal drags — vertical drags fall
+    // through to the browser so the page can scroll. Auto-rotate still advances via
+    // controls.update() each frame, and tap-to-show-tooltip is handled separately below.
     if (IS_MOBILE) {
-      controls.enableRotate = false;
+      controls.dispose();
+    }
+    // 'pan-y' lets the browser natively handle vertical scrolling while we keep horizontal drags.
+    renderer.domElement.style.touchAction = IS_MOBILE ? 'pan-y' : 'none';
+
+    // Mobile-only: horizontal swipe rotates the orb.
+    let touchLastX = 0;
+    let touchLastY = 0;
+    let touchMode: 'none' | 'rotate' | 'scroll' = 'none';
+    const ROTATE_FACTOR = 0.006;
+    const rotateAxis = new THREE.Vector3(0, 1, 0);
+    const onTouchMoveRotate = (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      const x = e.touches[0].clientX;
+      const y = e.touches[0].clientY;
+      const dx = x - touchLastX;
+      const dy = y - touchLastY;
+      if (touchMode === 'none') {
+        const absX = Math.abs(dx);
+        const absY = Math.abs(dy);
+        if (absX < 6 && absY < 6) return;
+        touchMode = absX > absY ? 'rotate' : 'scroll';
+      }
+      if (touchMode === 'rotate') {
+        camera.position.applyAxisAngle(rotateAxis, -dx * ROTATE_FACTOR);
+        camera.lookAt(controls.target);
+        touchLastX = x;
+        touchLastY = y;
+        e.preventDefault();
+      }
+    };
+    const onTouchStartRotate = (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      touchLastX = e.touches[0].clientX;
+      touchLastY = e.touches[0].clientY;
+      touchMode = 'none';
+    };
+    const onTouchEndRotate = () => {
+      touchMode = 'none';
+    };
+    if (IS_MOBILE) {
+      renderer.domElement.addEventListener('touchstart', onTouchStartRotate, { passive: true });
+      renderer.domElement.addEventListener('touchmove', onTouchMoveRotate, { passive: false });
+      renderer.domElement.addEventListener('touchend', onTouchEndRotate);
+      renderer.domElement.addEventListener('touchcancel', onTouchEndRotate);
     }
 
     // Generate points on a fibonacci sphere
@@ -851,6 +810,12 @@ export function ConstellationOrb() {
       renderer.domElement.removeEventListener('mousemove', onMouseMove);
       renderer.domElement.removeEventListener('click', onClick);
       renderer.domElement.removeEventListener('touchstart', onTouchStart);
+      if (IS_MOBILE) {
+        renderer.domElement.removeEventListener('touchstart', onTouchStartRotate);
+        renderer.domElement.removeEventListener('touchmove', onTouchMoveRotate);
+        renderer.domElement.removeEventListener('touchend', onTouchEndRotate);
+        renderer.domElement.removeEventListener('touchcancel', onTouchEndRotate);
+      }
       if (tooltipTimeout) clearTimeout(tooltipTimeout);
       cancelAnimationFrame(animId);
       renderer.dispose();
@@ -863,7 +828,7 @@ export function ConstellationOrb() {
     <>
     <div
       ref={containerRef}
-      className="relative mx-auto mb-24 sm:mb-0 w-full max-w-[380px] aspect-square sm:max-w-none sm:aspect-auto sm:h-[900px] overflow-visible"
+      className="relative mx-auto h-[70vh] w-full max-w-none overflow-visible sm:mb-0 sm:h-[900px]"
       style={{ cursor: 'grab' }}
     >
 
@@ -885,8 +850,18 @@ export function ConstellationOrb() {
             <>
               <div className="relative shrink-0">
                 <img src={tooltip.data.avatar} alt={tooltip.data.name} className="h-7 w-7 rounded-full object-cover" />
-                {tooltip.data.rank === 1 && (
-                  <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-b from-[#FFD700] to-[#B8860B] text-[8px] font-bold text-black">
+                {tooltip.data.rank !== undefined && (
+                  <span
+                    className={`absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[8px] font-bold ${
+                      tooltip.data.rank === 1
+                        ? 'bg-gradient-to-b from-[#FFD700] to-[#B8860B] text-black'
+                        : tooltip.data.rank === 2
+                          ? 'bg-gradient-to-b from-gray-300 to-gray-500 text-black'
+                          : tooltip.data.rank === 3
+                            ? 'bg-gradient-to-b from-orange-500 to-orange-700 text-white'
+                            : 'bg-[#AB51C5] text-white'
+                    }`}
+                  >
                     {tooltip.data.rank}
                   </span>
                 )}

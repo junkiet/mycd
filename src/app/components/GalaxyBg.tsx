@@ -51,11 +51,14 @@ export function GalaxyBg() {
       shineInterval: number; // seconds between shines
       shineIntensity: number;
     }
+    const starCount = isMobile ? 80 : 220;
+    const brightCount = isMobile ? 4 : 8;
+    const pulsingCount = isMobile ? 8 : 20;
     const stars: Star[] = [];
-    for (let i = 0; i < 220; i++) {
+    for (let i = 0; i < starCount; i++) {
       let type: Star['type'] = 'normal';
-      if (i < 8) type = 'bright';
-      else if (i < 20) type = 'pulsing';
+      if (i < brightCount) type = 'bright';
+      else if (i < brightCount + pulsingCount) type = 'pulsing';
 
       stars.push({
         x: Math.random(),
@@ -81,7 +84,8 @@ export function GalaxyBg() {
       life: number; maxLife: number; delay: number; active: boolean;
     }
     const shootingStars: ShootingStar[] = [];
-    for (let i = 0; i < 4; i++) {
+    const shootingCount = isMobile ? 1 : 4;
+    for (let i = 0; i < shootingCount; i++) {
       shootingStars.push({
         x: 0, y: 0, angle: 0, speed: 0, length: 0,
         life: 0, maxLife: 0, delay: Math.random() * 15 + 5, active: false,
@@ -109,7 +113,8 @@ export function GalaxyBg() {
       { r: 80, g: 40, b: 160 },
       { r: 140, g: 70, b: 210 },
     ];
-    for (let i = 0; i < 10; i++) {
+    const cloudCount = isMobile ? 4 : 10;
+    for (let i = 0; i < cloudCount; i++) {
       const c = nebulaColors[i % nebulaColors.length];
       clouds.push({
         x: Math.random(),

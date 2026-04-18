@@ -50,11 +50,6 @@ export function FinalCTA() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </a>
-            <a href="https://app.mycoindeck.com/en/explore">
-              <Button size="lg" variant="outline" className="border-border bg-secondary hover:bg-accent">
-                {t('explore')}
-              </Button>
-            </a>
           </motion.div>
 
           {/* Trust Signals */}

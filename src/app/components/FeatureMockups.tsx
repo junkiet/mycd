@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useGoApiLang } from '@/hooks/useGoApiLang';
@@ -43,46 +43,6 @@ function useExchangeSummary() {
       .catch(() => {});
   }, []);
   return data;
-}
-
-const ease = [0, 0, 0.2, 1] as const;
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 } as const,
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, delay: i * 0.08, ease },
-  }),
-};
-
-function AnimatedBar({ height, color, delay }: { height: string; color: string; delay: number }) {
-  return (
-    <motion.div
-      className="w-full rounded-t-lg"
-      style={{ backgroundColor: color }}
-      initial={{ height: 0 }}
-      whileInView={{ height }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay, ease: 'easeOut' }}
-    />
-  );
-}
-
-function StatCard({ label, value, valueClass, i }: { label: string; value: string; valueClass?: string; i: number }) {
-  return (
-    <motion.div
-      className="rounded-xl border border-border/50 bg-secondary/50 p-4"
-      custom={i}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={cardVariants}
-    >
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div className={`mt-2 text-xl font-bold ${valueClass || ''}`}>{value}</div>
-    </motion.div>
-  );
 }
 
 function formatCurrency(n: number, digits = 2): string {
@@ -279,7 +239,7 @@ export function PortfolioMockup() {
   const roi30d = trader.roi30d ?? 0;
 
   return (
-    <div className="bg-black p-5">
+    <div className="bg-black p-3 sm:p-5">
       {/* Top: Balance + Chart */}
       <div className="mb-4 flex items-start justify-between gap-4">
         <div>
@@ -295,20 +255,21 @@ export function PortfolioMockup() {
       </div>
 
       {/* Stats Grid Row 1 */}
-      <div className="mb-4 grid grid-cols-3 gap-3">
+      <div className="mb-4 grid grid-cols-3 gap-2 sm:gap-3">
         <div>
-          <div className="text-lg font-semibold text-white">{winRate.toFixed(2)}%</div>
+          <div className="text-sm font-semibold text-white sm:text-lg">{winRate.toFixed(2)}%</div>
           <div className="text-[10px] text-muted-foreground">Overall Win Rate</div>
         </div>
         <div>
-          <div className={`text-lg font-semibold ${pnl30dPositive ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
+          <div className={`text-sm font-semibold sm:text-lg ${pnl30dPositive ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
             {pnl30dPositive ? '+' : '-'}${formatCurrency(Math.abs(pnl30d))}
-            <span className="ml-1 text-xs text-muted-foreground">({roi30d >= 0 ? '+' : ''}{roi30d.toFixed(2)}%)</span>
           </div>
-          <div className="text-[10px] text-muted-foreground">30D Income</div>
+          <div className="text-[10px] text-muted-foreground">
+            30D Income <span className={pnl30dPositive ? 'text-[#22c55e]' : 'text-[#ef4444]'}>({roi30d >= 0 ? '+' : ''}{roi30d.toFixed(2)}%)</span>
+          </div>
         </div>
         <div className="text-right">
-          <div className={`text-lg font-semibold ${totalPositive ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
+          <div className={`text-sm font-semibold sm:text-lg ${totalPositive ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
             {totalPositive ? '' : '-'}${formatCurrency(Math.abs(totalPnl))}
           </div>
           <div className="text-[10px] text-muted-foreground">Total Income</div>
@@ -316,17 +277,17 @@ export function PortfolioMockup() {
       </div>
 
       {/* Stats Grid Row 2 */}
-      <div className="mb-4 grid grid-cols-3 gap-3 border-t border-border/50 pt-3">
+      <div className="mb-4 grid grid-cols-3 gap-2 border-t border-border/50 pt-3 sm:gap-3">
         <div>
-          <div className="text-sm font-semibold text-white">${formatCurrency(startEquity)}</div>
+          <div className="text-xs font-semibold text-white sm:text-sm">${formatCurrency(startEquity)}</div>
           <div className="text-[10px] text-muted-foreground">Initial Asset</div>
         </div>
         <div>
-          <div className="text-sm font-semibold text-white">—</div>
+          <div className="text-xs font-semibold text-white sm:text-sm">—</div>
           <div className="text-[10px] text-muted-foreground">USD Net Transfer</div>
         </div>
         <div className="text-right">
-          <div className="text-sm font-semibold text-white">{joinDate ? formatDate(joinDate) : '—'}</div>
+          <div className="text-xs font-semibold text-white sm:text-sm">{joinDate ? formatDate(joinDate) : '—'}</div>
           <div className="text-[10px] text-muted-foreground">Joined Date</div>
         </div>
       </div>
@@ -498,57 +459,6 @@ function PositionPnLChart({ data }: { data: PositionPnLDay[] }) {
   );
 }
 
-function BigChart({ data, dates }: { data: number[]; dates: string[] }) {
-  if (!data || data.length < 2) return null;
-  const w = 300;
-  const h = 120;
-  const min = Math.min(0, ...data);
-  const max = Math.max(0, ...data);
-  const range = max - min || 1;
-  const pts = data.map((v, i) => {
-    const x = (i / (data.length - 1)) * w;
-    const y = h - ((v - min) / range) * h;
-    return `${x},${y}`;
-  }).join(' ');
-  const zeroY = h - ((0 - min) / range) * h;
-  const firstDate = dates[0];
-  const lastDate = dates[dates.length - 1];
-  const midDate = dates[Math.floor(dates.length / 2)];
-  const shortDate = (iso?: string) => {
-    if (!iso) return '';
-    const d = new Date(iso);
-    return `${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  };
-
-  return (
-    <div className="w-full">
-      <svg viewBox={`0 0 ${w} ${h}`} className="h-24 w-full" preserveAspectRatio="none">
-        <line x1="0" y1={zeroY} x2={w} y2={zeroY} stroke="#333" strokeWidth="0.5" strokeDasharray="2 2" />
-        <polyline points={pts} fill="none" stroke="#3b82f6" strokeWidth="1.5" />
-      </svg>
-      <div className="mt-1 flex justify-between text-[9px] text-muted-foreground">
-        <span>{shortDate(firstDate)}</span>
-        <span>{shortDate(midDate)}</span>
-        <span>{shortDate(lastDate)}</span>
-      </div>
-    </div>
-  );
-}
-
-function AnimatedProgressBar({ percent, delay }: { percent: number; delay: number }) {
-  return (
-    <div className="h-2 flex-1 overflow-hidden rounded-full bg-secondary">
-      <motion.div
-        className="h-full bg-gradient-to-r from-[#AB51C5] to-[#a45fbd]"
-        initial={{ width: 0 }}
-        whileInView={{ width: `${percent}%` }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay, ease: 'easeOut' }}
-      />
-    </div>
-  );
-}
-
 export function TraderProfileMockup() {
   const t = useTranslations('mockups');
   const summary = useExchangeSummary();
@@ -556,15 +466,9 @@ export function TraderProfileMockup() {
   const exchangeOrder = ['binance', 'bybit', 'okx', 'bitget'];
 
   return (
-    <div className="bg-black p-4 sm:p-6">
+    <div className="bg-black p-3 sm:p-6">
       {/* Connected status */}
-      <motion.div
-        className="mb-5 flex items-center justify-between"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="mb-5 flex items-center justify-between">
         <div className="text-sm font-medium">{t('connectedExchanges')}</div>
         <motion.div
           className="inline-flex items-center gap-1.5 rounded-full bg-[#22c55e]/20 px-3 py-1 text-xs text-[#22c55e]"
@@ -574,11 +478,11 @@ export function TraderProfileMockup() {
           <span className="h-1.5 w-1.5 rounded-full bg-[#22c55e]" />
           {t('allSynced')}
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Exchange cards */}
       <div className="mb-5 space-y-3">
-        {exchangeOrder.map((platform, i) => {
+        {exchangeOrder.map((platform) => {
           const meta = EXCHANGE_META[platform];
           const ex = summary?.exchanges.find(e => e.platform === platform);
           const tv = ex?.tradingVolume ?? 0;
@@ -586,23 +490,15 @@ export function TraderProfileMockup() {
           const count = ex?.count ?? 0;
 
           return (
-            <motion.div
+            <div
               key={platform}
               className="flex items-center justify-between rounded-xl border border-border/50 bg-secondary/50 p-4"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
             >
               <div className="flex items-center gap-3">
-                <motion.img
+                <img
                   src={meta.logo}
                   alt={meta.name}
                   className="h-8 w-8 shrink-0 object-contain"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 + i * 0.1 }}
                 />
                 <div>
                   <div className="text-sm font-medium">{meta.name}</div>
@@ -615,19 +511,13 @@ export function TraderProfileMockup() {
                   {pnl >= 0 ? '+' : '-'}{formatUsd(pnl)}
                 </div>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>
 
       {/* Combined totals */}
-      <motion.div
-        className="rounded-xl border border-[#AB51C5]/30 bg-[#AB51C5]/10 p-4"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
+      <div className="rounded-xl border border-[#AB51C5]/30 bg-[#AB51C5]/10 p-4">
         <div className="mb-2 text-sm font-medium">{t('totalAcrossAll')}</div>
         <div className="flex items-baseline justify-between">
           <span className="text-2xl font-bold">{formatUsd(summary?.totalTradingVolume ?? 0)}</span>
@@ -639,7 +529,7 @@ export function TraderProfileMockup() {
           </span>
           <span className="text-xs text-muted-foreground">{summary?.totalUsers ?? 0} {t('traders')}</span>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -698,54 +588,41 @@ export function AnalyticsMockup() {
   const feeds = useHotFeeds();
 
   return (
-    <div className="bg-black p-4 sm:p-6">
+    <div className="bg-black p-3 sm:p-6">
       {/* Feed header */}
-      <motion.div
-        className="mb-4 flex items-center justify-between"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="mb-4 flex items-center justify-between">
         <div className="text-sm font-medium">{tg('home.feeds', 'Social Feed')}</div>
         <a
           href={`https://app.mycoindeck.com/${locale}/feeds`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={tg('home.viewMoreFeeds', 'View more social feed posts')}
           className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
         >
           {tg('home.viewmore', 'more')}
           <ChevronRight className="h-3 w-3" />
         </a>
-      </motion.div>
+      </div>
 
       {/* Feed posts */}
       <div className="space-y-3">
-        {feeds.map((item, i) => {
+        {feeds.map((item) => {
           const displayContent = item.content || item.original?.content || '';
           const href = `https://app.mycoindeck.com/${locale}/feeds/${item.id}`;
 
           return (
-            <motion.a
+            <a
               href={href}
               target="_blank"
               rel="noopener noreferrer"
               key={item.id}
               className="block rounded-xl border border-border/50 bg-secondary/50 p-4 transition-colors hover:border-[#AB51C5]/50"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
             >
               <div className="mb-2 flex items-center gap-2">
-                <motion.img
+                <img
                   src={item.avatar}
                   alt={item.nickname}
                   className="h-8 w-8 shrink-0 rounded-full bg-[#333] object-cover"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 + i * 0.12 }}
                 />
                 <div className="min-w-0 flex-1">
                   <span className="text-sm font-medium truncate">@{item.nickname}</span>
@@ -763,7 +640,7 @@ export function AnalyticsMockup() {
                 <span>💬 {item.comments_count}</span>
                 <span>🔄 {item.reshares_count}</span>
               </div>
-            </motion.a>
+            </a>
           );
         })}
       </div>
@@ -796,7 +673,7 @@ interface TraderData {
 function useTopTraders() {
   const [data, setData] = useState<TraderData[]>([]);
   useEffect(() => {
-    fetch('/api/top-traders?limit=5')
+    fetch('/api/top-traders?limit=10')
       .then(r => r.json())
       .then(json => { if (json.code === 200 && json.data) setData(json.data); })
       .catch(() => {});
@@ -826,48 +703,35 @@ export function SocialFeedMockup() {
   const traders = useTopTraders();
 
   return (
-    <div className="bg-black p-4 sm:p-6">
+    <div className="bg-black p-3 sm:p-6">
       {/* Header */}
-      <motion.div
-        className="mb-4 flex items-center justify-between"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="mb-4 flex items-center justify-between">
         <div className="text-sm font-medium">{tg('home.topTraders', t('topTraders'))} <span className="text-xs text-muted-foreground">({t('last30Days')})</span></div>
         <a
           href={`https://app.mycoindeck.com/${locale}/explore`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={tg('home.viewMoreTraders', 'Explore all top traders')}
           className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
         >
           {tg('home.viewmore', 'more')}
           <ChevronRight className="h-3 w-3" />
         </a>
-      </motion.div>
+      </div>
 
       {/* Trader cards */}
-      <div className="mb-4 space-y-3">
+      <div className="mb-4 max-h-[400px] space-y-3 overflow-y-auto pr-1 sm:[&::-webkit-scrollbar]:w-1.5 sm:[&::-webkit-scrollbar-track]:bg-transparent sm:[&::-webkit-scrollbar-thumb]:rounded-full sm:[&::-webkit-scrollbar-thumb]:bg-white/10 sm:hover:[&::-webkit-scrollbar-thumb]:bg-white/20">
         {traders.map((trader, i) => (
-          <motion.div
+          <div
             key={`${trader.id}-${i}`}
             className="rounded-xl border border-border/50 bg-secondary/50 p-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.12 }}
           >
             <div className="mb-3 flex items-center gap-3">
               <a href={traderUrl(trader, locale)} className="shrink-0">
-                <motion.img
+                <img
                   src={trader.avatar}
                   alt={trader.nickname}
                   className="h-10 w-10 shrink-0 rounded-full bg-[#333] object-cover cursor-pointer hover:ring-2 hover:ring-[#AB51C5]/50 transition-all"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 + i * 0.12 }}
                 />
               </a>
               <a href={traderUrl(trader, locale)} className="flex-1 min-w-0 hover:opacity-80 transition-opacity">
@@ -897,126 +761,10 @@ export function SocialFeedMockup() {
                 </div>
               )}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 
-    </div>
-  );
-}
-
-export function PositionsMockup() {
-  const news = [
-    { title: 'Bitcoin ETF sees $1.2B record daily inflows', source: 'Bloomberg', time: '12m ago', bullish: true },
-    { title: 'Ethereum Layer 2 TVL hits new all-time high', source: 'The Block', time: '34m ago', bullish: true },
-    { title: 'SEC delays decision on Solana ETF application', source: 'CoinDesk', time: '1h ago', bullish: false },
-  ];
-
-  const gainers = [
-    { coin: 'BTC', price: '$68,234', change: '+5.4%', positive: true, logo: '/coins/btc.png' },
-    { coin: 'ETH', price: '$3,523', change: '+3.2%', positive: true, logo: '/coins/eth.png' },
-    { coin: 'SOL', price: '$142', change: '-1.8%', positive: false, logo: '/coins/sol.png' },
-  ];
-
-  return (
-    <div className="bg-black p-4 sm:p-6">
-      {/* Market pulse header */}
-      <motion.div
-        className="mb-4 grid grid-cols-2 gap-3"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="rounded-xl border border-border/50 bg-secondary/50 p-3">
-          <div className="text-[10px] uppercase text-muted-foreground">Fear & Greed</div>
-          <div className="mt-1 text-xl font-bold">72</div>
-          <div className="text-xs text-[#22c55e]">Greed</div>
-        </div>
-        <div className="rounded-xl border border-border/50 bg-secondary/50 p-3">
-          <div className="text-[10px] uppercase text-muted-foreground">Market Pulse</div>
-          <div className="mt-1 text-xl font-bold">Bullish</div>
-          <div className="flex items-center text-xs text-[#22c55e]">
-            <TrendingUp className="mr-0.5 h-3 w-3" />
-            Strong
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Latest news */}
-      <motion.div
-        className="mb-4 rounded-xl border border-border/50 bg-secondary/50 p-4"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
-        <div className="mb-3 flex items-center justify-between">
-          <div className="text-sm font-medium">Latest News</div>
-          <motion.span
-            className="flex items-center gap-1 text-xs text-[#22c55e]"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#22c55e]" />
-            Live
-          </motion.span>
-        </div>
-        <div className="space-y-3">
-          {news.map((item, i) => (
-            <motion.div
-              key={item.title}
-              className="border-b border-border/30 pb-3 last:border-0 last:pb-0"
-              initial={{ opacity: 0, x: -15 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + i * 0.1 }}
-            >
-              <div className="mb-1 text-sm">{item.title}</div>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <span>{item.source}</span>
-                <span>·</span>
-                <span>{item.time}</span>
-                <span className={`ml-auto rounded px-1.5 py-0.5 text-[10px] ${item.bullish ? 'bg-[#22c55e]/20 text-[#22c55e]' : 'bg-[#ef4444]/20 text-[#ef4444]'}`}>
-                  {item.bullish ? 'Bullish' : 'Bearish'}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Top movers */}
-      <motion.div
-        className="rounded-xl border border-border/50 bg-secondary/50 p-4"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-      >
-        <div className="mb-3 text-sm font-medium">Top Movers</div>
-        <div className="space-y-2">
-          {gainers.map((coin, i) => (
-            <motion.div
-              key={coin.coin}
-              className="flex items-center justify-between"
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 + i * 0.08 }}
-            >
-              <div className="flex items-center gap-2">
-                <img src={coin.logo} alt={coin.coin} className="h-7 w-7 shrink-0 rounded-full object-cover" />
-                <span className="text-sm font-medium">{coin.coin}</span>
-              </div>
-              <div className="text-right">
-                <div className="text-sm">{coin.price}</div>
-                <div className={`text-xs ${coin.positive ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>{coin.change}</div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
     </div>
   );
 }
@@ -1156,7 +904,7 @@ export function MarketMockup() {
       if (Array.isArray(json)) setCoins(json);
     }).catch(() => {});
 
-    fetch(`/api/crypto-news?limit=4&lang=${locale}`).then(r => r.json()).then(json => {
+    fetch(`/api/crypto-news?limit=10&lang=${locale}`).then(r => r.json()).then(json => {
       if (json.code === 200 && json.data) setNews(json.data);
     }).catch(() => {});
   }, [locale]);
@@ -1167,15 +915,9 @@ export function MarketMockup() {
   const needleY = 60 - 40 * Math.sin(fngAngle);
 
   return (
-    <div className="bg-black p-4 sm:p-6">
+    <div className="bg-black p-3 sm:p-6">
       {/* Market Pulse */}
-      <motion.div
-        className="mb-4"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="mb-4">
         <h3 className="mb-3 text-sm font-medium">{tg('home.marketPulse', 'Market Pulse')}</h3>
         <div className="grid grid-cols-2 gap-3">
           {/* Fear & Greed gauge */}
@@ -1229,22 +971,17 @@ export function MarketMockup() {
             )}
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Trending Coins */}
-      <motion.div
-        className="mb-4"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
+      <div className="mb-4">
         <div className="mb-3 flex items-center justify-between">
           <h3 className="text-sm font-medium">{tg('home.trendingCoins', 'Trending Coins')}</h3>
           <a
             href={`https://app.mycoindeck.com/${locale}/home/trending-coins`}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={tg('home.viewMoreTrendingCoins', 'View all trending coins')}
             className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
           >
             {tg('home.viewmore', 'more')}
@@ -1252,36 +989,31 @@ export function MarketMockup() {
           </a>
         </div>
         <TrendingCoinsScroller coins={coins} />
-      </motion.div>
+      </div>
 
       {/* Crypto News */}
-      <motion.div
-        className="rounded-xl border border-border/50 bg-secondary/50 p-4"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.15 }}
-      >
+      <div className="rounded-xl border border-border/50 bg-secondary/50 p-4">
         <div className="mb-3 flex items-center justify-between">
           <h3 className="text-sm font-medium">{tg('home.cryptoNews', 'Crypto News')}</h3>
           <a
             href={`https://app.mycoindeck.com/${locale}/home/news`}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={tg('home.viewMoreNews', 'View all crypto news')}
             className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
           >
             {tg('home.viewmore', 'more')}
             <ChevronRight className="h-3 w-3" />
           </a>
         </div>
-        <div className="divide-y divide-border/30">
-          {news.slice(0, 4).map((item) => (
+        <div className="max-h-[300px] overflow-y-auto divide-y divide-border/30 pr-1 sm:[&::-webkit-scrollbar]:w-1.5 sm:[&::-webkit-scrollbar-track]:bg-transparent sm:[&::-webkit-scrollbar-thumb]:rounded-full sm:[&::-webkit-scrollbar-thumb]:bg-white/10 sm:hover:[&::-webkit-scrollbar-thumb]:bg-white/20">
+          {news.slice(0, 10).map((item) => (
             <a
               key={item.id}
               href={`https://app.mycoindeck.com/${locale}/home/news/${item.id}-${slugify(item.title)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-3 py-3 first:pt-0 last:pb-0 transition-opacity hover:opacity-80"
+              className="flex gap-3 py-3 first:pt-0 transition-opacity hover:opacity-80"
             >
               {item.image_url && (
                 <img src={item.image_url} alt="" className="h-12 w-16 shrink-0 rounded-md bg-[#222] object-cover" />
@@ -1295,7 +1027,7 @@ export function MarketMockup() {
             </a>
           ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

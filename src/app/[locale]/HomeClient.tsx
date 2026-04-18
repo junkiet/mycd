@@ -33,7 +33,7 @@ function BackToTop() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#1a1a1a]/90 text-white/70 backdrop-blur-sm transition-all hover:bg-[#AB51C5] hover:text-white lg:hidden"
+      className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#1a1a1a]/90 text-white/70 backdrop-blur-sm transition-all hover:bg-[#AB51C5] hover:text-white"
       aria-label="Back to top"
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -55,7 +55,7 @@ export default function HomeClient() {
         <Hero />
 
         {/* Constellation Orb + Core Features Header */}
-        <section className="relative pt-24 pb-8 overflow-hidden" style={{ background: `
+        <section className="relative overflow-hidden pt-12 pb-4 sm:pt-24 sm:pb-8" style={{ background: `
           radial-gradient(ellipse 80% 50% at 50% 35%, rgba(80,25,120,0.2) 0%, rgba(50,15,80,0.08) 40%, transparent 70%),
           radial-gradient(ellipse 60% 40% at 30% 50%, rgba(100,40,160,0.06) 0%, transparent 60%),
           radial-gradient(ellipse 60% 40% at 70% 45%, rgba(60,20,140,0.05) 0%, transparent 60%),
@@ -67,6 +67,8 @@ export default function HomeClient() {
             <h2 className="mb-4 mx-auto max-w-4xl bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-3xl font-bold leading-tight text-transparent sm:text-4xl md:text-5xl">
               {t('home.coreHeading')}
             </h2>
+          </div>
+          <div className="relative">
             <ConstellationOrb />
           </div>
         </section>

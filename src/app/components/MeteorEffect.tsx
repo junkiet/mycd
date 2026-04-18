@@ -71,12 +71,17 @@ export function MeteorEffect({
     observer.observe(canvas);
     resize();
 
+    const isMobile = window.innerWidth < 768;
+    const activeCount = isMobile ? Math.max(1, Math.ceil(meteorCount / 2)) : meteorCount;
+    const spawnMin = isMobile ? 400 : 150;
+    const spawnRand = isMobile ? 900 : 600;
+
     // Spawn meteors at random intervals
     const spawnMeteor = () => {
-      if (meteorsRef.current.length < meteorCount) {
+      if (meteorsRef.current.length < activeCount) {
         meteorsRef.current.push(createMeteor(canvas.width, canvas.height));
       }
-      timerRef.current = window.setTimeout(spawnMeteor, 150 + Math.random() * 600);
+      timerRef.current = window.setTimeout(spawnMeteor, spawnMin + Math.random() * spawnRand);
     };
     spawnMeteor();
 

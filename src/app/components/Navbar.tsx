@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Compass, LineChart, Trophy, LogIn, ArrowRight } from 'lucide-react';
+import { Menu, X, Compass, LineChart, Trophy, ArrowRight, Globe, Check } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
@@ -11,7 +11,25 @@ import { Button } from './ui/button';
 const localeLabels: Record<string, string> = {
   en: 'English',
   zh: '中文',
+  ja: '日本語',
+  ko: '한국어',
+  es: 'Español',
+  fr: 'Français',
+  de: 'Deutsch',
+  ru: 'Русский',
+  pt: 'Português',
+  it: 'Italiano',
+  ar: 'العربية',
+  tr: 'Türkçe',
+  vi: 'Tiếng Việt',
+  th: 'ไทย',
+  id: 'Bahasa Indonesia',
+  hi: 'हिन्दी',
 };
+
+function localeLabel(loc: string) {
+  return localeLabels[loc] || loc.toUpperCase();
+}
 
 export function Navbar() {
   const t = useTranslations('navbar');
@@ -21,8 +39,6 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const lastScrollY = useRef(0);
   const langRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
@@ -35,15 +51,11 @@ export function Navbar() {
     const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
     router.push(`/${newLocale}${pathWithoutLocale}`);
     setLangOpen(false);
+    setOpen(false);
   };
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 20);
-      setHidden(y > 80 && y > lastScrollY.current);
-      lastScrollY.current = y;
-    };
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
@@ -61,9 +73,7 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-        hidden ? '-top-20' : 'top-0'
-      } ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         scrolled
           ? 'bg-black/80 backdrop-blur-xl border-b border-white/5'
           : 'bg-transparent'
@@ -89,23 +99,20 @@ export function Navbar() {
               </a>
             ))}
 
-            {/* Language Switcher Dropdown */}
+            {/* Desktop Language Dropdown */}
             <div className="relative" ref={langRef}>
               <button
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-sm text-white/60 transition-colors hover:border-white/30 hover:text-white"
               >
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
-                {localeLabels[locale] || locale.toUpperCase()}
+                <Globe className="h-4 w-4" />
+                {localeLabel(locale)}
                 <svg className={`h-3 w-3 transition-transform ${langOpen ? 'rotate-180' : ''}`} viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M3 5l3 3 3-3" />
                 </svg>
               </button>
               {langOpen && (
-                <div className="absolute right-0 top-full mt-2 min-w-[120px] overflow-hidden rounded-lg border border-white/10 bg-black/90 backdrop-blur-xl shadow-xl">
+                <div className="absolute right-0 top-full mt-2 min-w-[160px] max-h-[60vh] overflow-y-auto overflow-x-hidden rounded-lg border border-white/10 bg-black/90 py-1 backdrop-blur-xl shadow-xl">
                   {routing.locales.map((loc) => (
                     <button
                       key={loc}
@@ -114,12 +121,8 @@ export function Navbar() {
                         loc === locale ? 'text-[#AB51C5]' : 'text-white/70'
                       }`}
                     >
-                      {localeLabels[loc] || loc.toUpperCase()}
-                      {loc === locale && (
-                        <svg className="ml-auto h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor">
-                          <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z" />
-                        </svg>
-                      )}
+                      {localeLabel(loc)}
+                      {loc === locale && <Check className="ml-auto h-3.5 w-3.5" />}
                     </button>
                   ))}
                 </div>
@@ -139,7 +142,7 @@ export function Navbar() {
             <Dialog.Trigger asChild>
               <button
                 className="ml-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10 md:hidden"
-                aria-label="Open menu"
+                aria-label={t('menu')}
               >
                 <Menu className="h-5 w-5 text-white" />
               </button>
@@ -148,71 +151,71 @@ export function Navbar() {
             <Dialog.Portal>
               <Dialog.Overlay className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
               <Dialog.Content
-                className="fixed left-1 right-1 bottom-1 z-50 rounded-xl bg-[rgba(25,24,27,0.90)] p-2 text-[rgba(255,255,255,0.64)] text-sm backdrop-blur-[12px] overflow-y-auto max-h-[90vh] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-bottom-4 data-[state=open]:slide-in-from-bottom-4 duration-200"
+                className="fixed right-0 top-0 bottom-0 z-50 flex w-[85vw] max-w-sm flex-col border-l border-white/10 bg-[#0b0a0d] shadow-2xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right duration-200"
               >
-                <Dialog.Title className="sr-only">Menu</Dialog.Title>
-                <Dialog.Description className="sr-only">
-                  Navigation menu
-                </Dialog.Description>
+                <Dialog.Title className="sr-only">{t('menu')}</Dialog.Title>
+                <Dialog.Description className="sr-only">Navigation menu</Dialog.Description>
 
-                {/* Header row */}
-                <div className="flex items-center justify-between mb-1 px-1">
-                  <div className="flex items-center justify-center size-10">
-                    <img src="/favicon.png" alt="MyCoinDeck Logo" className="h-7 w-7 rounded-full" />
-                  </div>
-
-                  {/* Decorative dots */}
-                  <svg width="30" height="6" viewBox="0 0 30 6" fill="none" className="pointer-events-none">
-                    <circle cx="3" cy="3" r="3" fill="#AB51C5" fillOpacity="0.15" />
-                    <circle cx="15" cy="3" r="3" fill="#AB51C5" fillOpacity="0.15" />
-                    <circle cx="27" cy="3" r="3" fill="#AB51C5" fillOpacity="0.15" />
-                  </svg>
-
+                {/* Header */}
+                <div className="flex items-center justify-end border-b border-white/5 px-3 py-3">
                   <Dialog.Close asChild>
                     <button
-                      className="p-2 text-[#848895] hover:text-white transition-colors"
-                      aria-label="Close menu"
+                      className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                      aria-label="Close"
                     >
                       <X className="h-5 w-5" />
                     </button>
                   </Dialog.Close>
                 </div>
 
-                {/* Nav links */}
-                <nav className="px-3 divide-y divide-[rgba(238,228,255,0.06)]">
-                  {navLinks.map((link) => {
-                    const Icon = link.icon;
-                    return (
-                      <Dialog.Close asChild key={link.href}>
-                        <a
-                          href={link.href}
-                          className="w-full flex items-center gap-3 py-4 text-[16px] font-medium hover:bg-gradient-to-r hover:from-transparent hover:via-white/5 hover:to-transparent transition-colors"
-                        >
-                          <Icon className="size-5 shrink-0 text-white" />
-                          <span className="font-medium text-white grow">{link.label}</span>
-                        </a>
-                      </Dialog.Close>
-                    );
-                  })}
+                {/* Scrollable content */}
+                <div className="flex-1 overflow-y-auto overscroll-contain">
+                  {/* Nav links */}
+                  <div className="px-3 py-3">
+                    {navLinks.map((link) => {
+                      const Icon = link.icon;
+                      return (
+                        <Dialog.Close asChild key={link.href}>
+                          <a
+                            href={link.href}
+                            className="flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] font-medium text-white transition-colors hover:bg-white/5"
+                          >
+                            <Icon className="h-5 w-5 shrink-0 text-white/70" />
+                            <span className="flex-1">{link.label}</span>
+                          </a>
+                        </Dialog.Close>
+                      );
+                    })}
+                  </div>
 
-                  {/* Mobile Language Switcher */}
-                  {routing.locales.filter((loc) => loc !== locale).map((loc) => (
-                    <button
-                      key={loc}
-                      onClick={() => { setOpen(false); switchLocale(loc); }}
-                      className="w-full flex items-center gap-3 py-4 text-[16px] font-medium hover:bg-gradient-to-r hover:from-transparent hover:via-white/5 hover:to-transparent transition-colors"
-                    >
-                      <svg className="size-5 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                      </svg>
-                      <span className="font-medium text-white grow">{localeLabels[loc] || loc.toUpperCase()}</span>
-                    </button>
-                  ))}
-                </nav>
+                  {/* Language section */}
+                  <div className="border-t border-white/5 px-3 py-3">
+                    <div className="mb-1 flex items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white/40">
+                      <Globe className="h-3.5 w-3.5" />
+                      {t('language')}
+                    </div>
+                    <div className="flex flex-col">
+                      {routing.locales.map((loc) => {
+                        const isCurrent = loc === locale;
+                        return (
+                          <button
+                            key={loc}
+                            onClick={() => switchLocale(loc)}
+                            className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[15px] transition-colors hover:bg-white/5 ${
+                              isCurrent ? 'text-[#AB51C5]' : 'text-white/80'
+                            }`}
+                          >
+                            <span className="flex-1 text-left">{localeLabel(loc)}</span>
+                            {isCurrent && <Check className="h-4 w-4 shrink-0" />}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
 
-                {/* Get Started button */}
-                <div className="px-3 pt-2 pb-2">
+                {/* Sticky CTA footer */}
+                <div className="border-t border-white/5 px-4 py-4">
                   <Dialog.Close asChild>
                     <a href="https://app.mycoindeck.com" className="block">
                       <Button className="w-full bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/30">

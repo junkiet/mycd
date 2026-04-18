@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { TrendingUp, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import { ScrollReveal } from './ScrollReveal';
 
 function Dropdown({ value, options, onChange, align = 'left' }: {
   value: string;
@@ -112,34 +113,14 @@ export function Leaderboard() {
       <div className="absolute bottom-0 left-1/2 h-px w-full max-w-4xl -translate-x-1/2" style={{ background: 'linear-gradient(90deg, transparent, rgba(171,81,197,0.4) 30%, rgba(171,81,197,0.6) 50%, rgba(171,81,197,0.4) 70%, transparent)' }} />
       <div className="container mx-auto px-6">
         <div className="mb-16 text-center">
-          <motion.h2
-            className="mb-4 bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5 }}
-          >
+          <h2 className="mb-4 bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
             {t('title')}
-          </motion.h2>
-          <motion.p
-            className="text-xl text-muted-foreground"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            {t('subtitle')}
-          </motion.p>
+          </h2>
+          <p className="text-xl text-muted-foreground">{t('subtitle')}</p>
         </div>
 
         {/* Filter Tabs */}
-        <motion.div
-          className="mx-auto mb-6 flex max-w-5xl items-center justify-between"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-        >
+        <div className="mx-auto mb-6 flex max-w-5xl items-center justify-between">
           <Dropdown
             value={type}
             options={[
@@ -158,20 +139,13 @@ export function Leaderboard() {
             onChange={(v) => setOption(v as 'pnl' | 'tv')}
             align="right"
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card to-secondary/50"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-        >
+        <ScrollReveal className="-mx-6 overflow-hidden border-y border-border/50 bg-gradient-to-br from-card to-secondary/50 sm:mx-auto sm:max-w-5xl sm:rounded-2xl sm:border">
           {/* Desktop Table Header */}
-          <div className="hidden grid-cols-[60px_1fr_140px_140px] gap-4 border-b border-border/50 bg-secondary/50 px-6 py-4 text-sm text-muted-foreground md:grid">
+          <div className="hidden grid-cols-[60px_1fr_160px] gap-4 border-b border-border/50 bg-secondary/50 px-6 py-4 text-sm text-muted-foreground md:grid">
             <div>{t('rank')}</div>
             <div>{t('trader')}</div>
-            <div className="text-right">{t('portfolio')}</div>
             <div className="text-right">{option === 'pnl' ? t('pnl') : t('volume')}</div>
           </div>
 
@@ -184,7 +158,7 @@ export function Leaderboard() {
 
           {/* Table Body */}
           {!loading && (
-            <div className="divide-y divide-border/30">
+            <div className="max-h-[520px] divide-y divide-border/30 overflow-y-auto sm:[&::-webkit-scrollbar]:w-1.5 sm:[&::-webkit-scrollbar-track]:bg-transparent sm:[&::-webkit-scrollbar-thumb]:rounded-full sm:[&::-webkit-scrollbar-thumb]:bg-white/10 sm:hover:[&::-webkit-scrollbar-thumb]:bg-white/20">
               {traders.map((trader, i) => {
                 const rank = i + 1;
                 const isTopThree = rank <= 3;
@@ -192,33 +166,22 @@ export function Leaderboard() {
                 const traderUrl = `https://app.mycoindeck.com/en/explore/${trader.urlname || trader.uid}?pid=${trader.portfolioId}`;
 
                 return (
-                  <motion.a
+                  <a
                     href={traderUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     key={`${trader.portfolioId}`}
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: '-30px' }}
-                    transition={{ duration: 0.45, delay: 0.1 + i * 0.05 }}
-                    whileHover={{ backgroundColor: 'rgba(171, 81, 197, 0.08)' }}
-                    className={`block cursor-pointer px-4 py-4 transition-colors sm:px-6 ${
+                    className={`block cursor-pointer px-3 py-3.5 transition-colors hover:bg-[#AB51C5]/[0.08] sm:px-6 sm:py-4 ${
                       isTopThree ? 'bg-gradient-to-r from-[#AB51C5]/10 to-transparent' : ''
                     }`}
                   >
                     {/* Desktop row */}
-                    <div className="hidden grid-cols-[60px_1fr_140px_140px] gap-4 md:grid">
+                    <div className="hidden grid-cols-[60px_1fr_160px] gap-4 md:grid">
                       <div className="flex items-center">
                         {isTopThree ? (
-                          <motion.div
-                            className={`flex h-8 w-8 items-center justify-center rounded-full font-bold ${rankBadge(rank)}`}
-                            initial={{ scale: 0, rotate: -180 }}
-                            whileInView={{ scale: 1, rotate: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ type: 'spring', stiffness: 250, damping: 18, delay: 0.2 + i * 0.05 }}
-                          >
+                          <div className={`flex h-8 w-8 items-center justify-center rounded-full font-bold ${rankBadge(rank)}`}>
                             {rank}
-                          </motion.div>
+                          </div>
                         ) : (
                           <div className="text-muted-foreground">{rank}</div>
                         )}
@@ -230,19 +193,12 @@ export function Leaderboard() {
                           alt={trader.name}
                           className="h-10 w-10 shrink-0 rounded-full bg-[#333] object-cover"
                         />
-                        <div>
-                          <div className="font-medium">{trader.name}</div>
-                          {isTopThree && (
-                            <div className="flex items-center text-xs text-[#AB51C5]">
-                              <TrendingUp className="mr-1 h-3 w-3" />
-                              {t('topPerformer')}
-                            </div>
+                        <div className="min-w-0">
+                          <div className="truncate font-medium">{trader.name}</div>
+                          {trader.portfolioLabel && (
+                            <div className="truncate text-xs text-muted-foreground">{trader.portfolioLabel}</div>
                           )}
                         </div>
-                      </div>
-
-                      <div className="flex items-center justify-end text-sm text-muted-foreground">
-                        {trader.portfolioLabel}
                       </div>
 
                       {option === 'pnl' ? (
@@ -260,15 +216,9 @@ export function Leaderboard() {
                     <div className="flex flex-col gap-2.5 md:hidden">
                       <div className="flex items-center gap-2.5">
                         {isTopThree ? (
-                          <motion.div
-                            className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold ${rankBadge(rank)}`}
-                            initial={{ scale: 0, rotate: -180 }}
-                            whileInView={{ scale: 1, rotate: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ type: 'spring', stiffness: 250, damping: 18, delay: 0.2 + i * 0.05 }}
-                          >
+                          <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold ${rankBadge(rank)}`}>
                             {rank}
-                          </motion.div>
+                          </div>
                         ) : (
                           <div className="flex h-7 w-7 shrink-0 items-center justify-center text-sm text-muted-foreground">{rank}</div>
                         )}
@@ -292,7 +242,7 @@ export function Leaderboard() {
                         )}
                       </div>
                     </div>
-                  </motion.a>
+                  </a>
                 );
               })}
             </div>
@@ -304,22 +254,16 @@ export function Leaderboard() {
               {t('noData')}
             </div>
           )}
-        </motion.div>
+        </ScrollReveal>
 
-        <motion.div
-          className="mt-8 text-center"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.8 }}
-        >
+        <div className="mt-8 text-center">
           <a
             href="https://app.mycoindeck.com/en/home/ranking"
             className="text-[#AB51C5] transition-colors hover:text-[#c76de0] hover:underline"
           >
             {t('viewFull')}
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

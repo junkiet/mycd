@@ -3,7 +3,9 @@
     "exploreTraders": "Explore Traders",
     "feed": "Traders' Feeds",
     "leaderboard": "Leaderboard",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "language": "Language",
+    "menu": "Menu"
   },
   "hero": {
     "title1": "Track, Analyze, and Improve",
@@ -72,16 +74,6 @@
     "allTime": "All Time",
     "noData": "No ranking data available",
     "viewFull": "View Full Leaderboard →"
-  },
-  "testimonials": {
-    "title": "Trusted by Traders Worldwide",
-    "subtitle": "See what our community has to say",
-    "role1": "Professional Trader",
-    "role2": "Crypto Investor",
-    "role3": "Day Trader",
-    "quote1": "MyCoinDeck has completely transformed how I track my crypto portfolio. The analytics are incredibly detailed and the interface is beautiful.",
-    "quote2": "Following top traders and analyzing their strategies has helped me improve my win rate by 25%. This platform is a game-changer.",
-    "quote3": "The real-time position monitoring and advanced analytics have given me the edge I need. Best trading dashboard I've ever used."
   },
   "finalCTA": {
     "title": "Start Tracking Your Crypto Portfolio Today",
