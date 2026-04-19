@@ -5,7 +5,9 @@
       "Read(//Users/jkeykong/work/trading-vue3/api/go/handlers/pnl/**)",
       "Read(//Users/jkeykong/work/trading-vue3/api/go/**)",
       "Read(//Users/jkeykong/work/trading-vue3/api/go/handlers/admin/**)",
-      "Read(//Users/jkeykong/work/trading-vue3/api/**)"
+      "Read(//Users/jkeykong/work/trading-vue3/api/**)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"exit=$?\")"
     ]
   }
 }

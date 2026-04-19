@@ -64,6 +64,13 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <head>
         <link
+          rel="preload"
+          as="video"
+          href="/hero-v2.mp4"
+          type="video/mp4"
+          fetchPriority="high"
+        />
+        <link
           href="https://fonts.cdnfonts.com/css/good-timing"
           rel="stylesheet"
         />

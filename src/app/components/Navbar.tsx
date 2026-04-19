@@ -82,10 +82,15 @@ export function Navbar() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <div className="flex min-w-0 items-center gap-2">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex min-w-0 items-center gap-2 transition-opacity hover:opacity-80"
+            aria-label="Back to top"
+          >
             <img src="/favicon.png" alt="MyCoinDeck Logo" className="h-8 w-8 shrink-0 rounded-full sm:h-9 sm:w-9" />
             <span className="truncate text-lg font-bold uppercase tracking-tight sm:text-xl" style={{ fontFamily: "'Good Timing', sans-serif" }}>MyCoinDeck</span>
-          </div>
+          </button>
 
           {/* Desktop Nav Links */}
           <div className="hidden items-center gap-6 md:flex">

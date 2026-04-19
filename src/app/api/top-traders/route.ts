@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { normalizeAvatarUrl } from '../_utils/avatar';
 
 const GO_API_BASE = 'https://app.mycoindeck.com/goapi';
 
@@ -15,6 +16,11 @@ export async function GET(request: Request) {
     });
 
     const data = await res.json();
+    if (Array.isArray(data?.data)) {
+      for (const t of data.data) {
+        if (t && typeof t === 'object') t.avatar = normalizeAvatarUrl(t.avatar);
+      }
+    }
     return NextResponse.json(data);
   } catch {
     return NextResponse.json({ code: 500, data: [], msg: 'error' }, { status: 500 });

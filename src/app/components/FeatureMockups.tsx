@@ -292,6 +292,8 @@ export function PortfolioMockup() {
         </div>
       </div>
 
+      {/* Scrollable detail panels — height matches news list */}
+      <div className="max-h-[300px] space-y-3 overflow-y-auto pr-1 sm:[&::-webkit-scrollbar]:w-1.5 sm:[&::-webkit-scrollbar-track]:bg-transparent sm:[&::-webkit-scrollbar-thumb]:rounded-full sm:[&::-webkit-scrollbar-thumb]:bg-white/10 sm:hover:[&::-webkit-scrollbar-thumb]:bg-white/20">
       {/* Position PnL Analysis */}
       <div className="rounded-xl border border-border/50 bg-secondary/50 p-4">
         <div className="mb-3 flex items-center justify-between">
@@ -302,7 +304,7 @@ export function PortfolioMockup() {
             rel="noopener noreferrer"
             className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
           >
-            more
+            {tg('home.viewFullAnalysis', 'View full analysis')}
             <ChevronRight className="h-3 w-3" />
           </a>
         </div>
@@ -331,7 +333,7 @@ export function PortfolioMockup() {
 
       {/* Coin Allocation */}
       {coinSlices.length > 0 && (
-        <div className="mt-4 rounded-xl border border-border/50 bg-secondary/50 p-4">
+        <div className="rounded-xl border border-border/50 bg-secondary/50 p-4">
           <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-medium">{tg('portfolio.overviewBody.coinAllocation', 'Coin Allocation')}</div>
           </div>
@@ -357,7 +359,7 @@ export function PortfolioMockup() {
 
       {/* Wallet Allocation */}
       {walletCategories.length > 0 && (
-        <div className="mt-3 rounded-xl border border-border/50 bg-secondary/50 p-4">
+        <div className="rounded-xl border border-border/50 bg-secondary/50 p-4">
           <div className="mb-3 text-sm font-medium">{tg('portfolio.overviewBody.walletAllocation', 'Wallet Allocation')}</div>
           <div className="flex items-start gap-4">
             <DonutChart
@@ -388,6 +390,7 @@ export function PortfolioMockup() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }
@@ -596,10 +599,9 @@ export function AnalyticsMockup() {
           href={`https://app.mycoindeck.com/${locale}/feeds`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={tg('home.viewMoreFeeds', 'View more social feed posts')}
           className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
         >
-          {tg('home.viewmore', 'more')}
+          {tg('home.viewAllFeeds', 'View all feeds')}
           <ChevronRight className="h-3 w-3" />
         </a>
       </div>
@@ -711,10 +713,9 @@ export function SocialFeedMockup() {
           href={`https://app.mycoindeck.com/${locale}/explore`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={tg('home.viewMoreTraders', 'Explore all top traders')}
           className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
         >
-          {tg('home.viewmore', 'more')}
+          {tg('home.exploreAllTraders', 'Explore all traders')}
           <ChevronRight className="h-3 w-3" />
         </a>
       </div>
@@ -981,10 +982,9 @@ export function MarketMockup() {
             href={`https://app.mycoindeck.com/${locale}/home/trending-coins`}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={tg('home.viewMoreTrendingCoins', 'View all trending coins')}
             className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
           >
-            {tg('home.viewmore', 'more')}
+            {tg('home.viewAllTrendingCoins', 'View all trending coins')}
             <ChevronRight className="h-3 w-3" />
           </a>
         </div>
@@ -999,10 +999,9 @@ export function MarketMockup() {
             href={`https://app.mycoindeck.com/${locale}/home/news`}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={tg('home.viewMoreNews', 'View all crypto news')}
             className="flex items-center gap-0.5 text-xs text-muted-foreground transition-colors hover:text-white"
           >
-            {tg('home.viewmore', 'more')}
+            {tg('home.viewAllNews', 'View all crypto news')}
             <ChevronRight className="h-3 w-3" />
           </a>
         </div>

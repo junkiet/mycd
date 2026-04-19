@@ -36,15 +36,15 @@ export function HowItWorks() {
           <p className="text-xl text-muted-foreground">{t('subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-3">
           {steps.map((step, index) => (
-            <ScrollReveal key={index} delay={index * 80} className="relative">
+            <ScrollReveal key={index} delay={index * 80} className="relative h-full">
               {/* Connector Line */}
               {index < steps.length - 1 && (
                 <div className="absolute left-1/2 top-16 hidden h-0.5 w-full origin-left bg-gradient-to-r from-[#AB51C5]/50 to-transparent md:block" />
               )}
 
-              <div className="relative rounded-2xl border border-border/50 bg-gradient-to-br from-secondary to-secondary/50 p-8 text-center transition-transform hover:-translate-y-1">
+              <div className="relative flex h-full flex-col rounded-2xl border border-border/50 bg-gradient-to-br from-secondary to-secondary/50 p-8 text-center transition-transform hover:-translate-y-1">
                 <div className="absolute -top-4 left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-[#AB51C5] text-sm font-bold">
                   {index + 1}
                 </div>
