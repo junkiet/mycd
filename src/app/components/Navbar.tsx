@@ -85,7 +85,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex min-w-0 items-center gap-2 transition-opacity hover:opacity-80"
+            className="flex min-w-0 cursor-pointer items-center gap-2 transition-opacity hover:opacity-80"
             aria-label="Back to top"
           >
             <img src="/favicon.png" alt="MyCoinDeck Logo" className="h-8 w-8 shrink-0 rounded-full sm:h-9 sm:w-9" />
