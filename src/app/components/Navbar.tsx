@@ -88,7 +88,7 @@ export function Navbar() {
             className="flex min-w-0 cursor-pointer items-center gap-2 transition-opacity hover:opacity-80"
             aria-label="Back to top"
           >
-            <img src="/favicon.png" alt="MyCoinDeck Logo" className="h-8 w-8 shrink-0 rounded-full sm:h-9 sm:w-9" />
+            <img src="/logo.svg" alt="MyCoinDeck Logo" className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
             <span className="truncate text-lg font-bold uppercase tracking-tight sm:text-xl" style={{ fontFamily: "'Good Timing', sans-serif" }}>MyCoinDeck</span>
           </button>
 
@@ -123,7 +123,7 @@ export function Navbar() {
                       key={loc}
                       onClick={() => switchLocale(loc)}
                       className={`flex w-full items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:bg-white/10 ${
-                        loc === locale ? 'text-[#AB51C5]' : 'text-white/70'
+                        loc === locale ? 'text-[#BA7CFF]' : 'text-white/70'
                       }`}
                     >
                       {localeLabel(loc)}
@@ -136,7 +136,7 @@ export function Navbar() {
 
             <a
               href="https://app.mycoindeck.com"
-              className="rounded-full bg-[#AB51C5] px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/30"
+              className="rounded-full bg-[#BA7CFF] px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#a866f0] shadow-lg shadow-[#BA7CFF]/30"
             >
               {t('getStarted')}
             </a>
@@ -207,7 +207,7 @@ export function Navbar() {
                             key={loc}
                             onClick={() => switchLocale(loc)}
                             className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[15px] transition-colors hover:bg-white/5 ${
-                              isCurrent ? 'text-[#AB51C5]' : 'text-white/80'
+                              isCurrent ? 'text-[#BA7CFF]' : 'text-white/80'
                             }`}
                           >
                             <span className="flex-1 text-left">{localeLabel(loc)}</span>
@@ -223,7 +223,7 @@ export function Navbar() {
                 <div className="border-t border-white/5 px-4 py-4">
                   <Dialog.Close asChild>
                     <a href="https://app.mycoindeck.com" className="block">
-                      <Button className="w-full bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/30">
+                      <Button className="w-full bg-[#BA7CFF] hover:bg-[#a866f0] shadow-lg shadow-[#BA7CFF]/30">
                         {t('getStarted')}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>

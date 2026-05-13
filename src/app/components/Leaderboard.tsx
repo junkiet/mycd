@@ -28,7 +28,7 @@ function Dropdown({ value, options, onChange, align = 'left' }: {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-[#1a1a1a]/80 px-3.5 py-2 text-xs font-medium text-white backdrop-blur-sm transition-all hover:border-[#AB51C5]/40"
+        className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-[#1a1a1a]/80 px-3.5 py-2 text-xs font-medium text-white backdrop-blur-sm transition-all hover:border-[#BA7CFF]/40"
       >
         {selected?.label}
         <ChevronDown className={`h-3.5 w-3.5 text-white/50 transition-transform ${open ? 'rotate-180' : ''}`} />
@@ -47,7 +47,7 @@ function Dropdown({ value, options, onChange, align = 'left' }: {
                 key={opt.value}
                 onClick={() => { onChange(opt.value); setOpen(false); }}
                 className={`flex w-full items-center gap-2 px-3.5 py-2.5 text-xs font-medium transition-colors hover:bg-white/10 ${
-                  opt.value === value ? 'text-[#AB51C5]' : 'text-white/70'
+                  opt.value === value ? 'text-[#BA7CFF]' : 'text-white/70'
                 }`}
               >
                 {opt.label}
@@ -152,7 +152,7 @@ export function Leaderboard() {
           {/* Loading State */}
           {loading && (
             <div className="flex items-center justify-center py-16">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#AB51C5] border-t-transparent" />
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#BA7CFF] border-t-transparent" />
             </div>
           )}
 
@@ -171,8 +171,8 @@ export function Leaderboard() {
                     target="_blank"
                     rel="noopener noreferrer"
                     key={`${trader.portfolioId}`}
-                    className={`block cursor-pointer px-3 py-3.5 transition-colors hover:bg-[#AB51C5]/[0.08] sm:px-6 sm:py-4 ${
-                      isTopThree ? 'bg-gradient-to-r from-[#AB51C5]/10 to-transparent' : ''
+                    className={`block cursor-pointer px-3 py-3.5 transition-colors hover:bg-[#BA7CFF]/[0.08] sm:px-6 sm:py-4 ${
+                      isTopThree ? 'bg-gradient-to-r from-[#BA7CFF]/10 to-transparent' : ''
                     }`}
                   >
                     {/* Desktop row */}
@@ -259,7 +259,7 @@ export function Leaderboard() {
         <div className="mt-8 text-center">
           <a
             href="https://app.mycoindeck.com/en/home/ranking"
-            className="text-[#AB51C5] transition-colors hover:text-[#c76de0] hover:underline"
+            className="text-[#BA7CFF] transition-colors hover:text-[#c76de0] hover:underline"
           >
             {t('viewFull')}
           </a>

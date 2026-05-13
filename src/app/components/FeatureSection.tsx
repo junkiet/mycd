@@ -29,8 +29,8 @@ export function FeatureSection({ title, description, highlights, visual, reverse
             <div className="space-y-3">
               {highlights.map((highlight) => (
                 <div key={highlight} className="flex items-center gap-3">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#AB51C5]/20">
-                    <Check className="h-4 w-4 text-[#AB51C5]" />
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#BA7CFF]/20">
+                    <Check className="h-4 w-4 text-[#BA7CFF]" />
                   </div>
                   <span className="text-foreground">{highlight}</span>
                 </div>
@@ -41,7 +41,7 @@ export function FeatureSection({ title, description, highlights, visual, reverse
           {/* Visual */}
           <ScrollReveal delay={120} className={`-mx-6 sm:mx-0 ${reversed ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
             <div className="relative">
-              <div className="absolute -inset-4 hidden rounded-2xl bg-gradient-to-br from-[#AB51C5]/20 via-[#AB51C5]/10 to-transparent blur-3xl sm:block" />
+              <div className="absolute -inset-4 hidden rounded-2xl bg-gradient-to-br from-[#BA7CFF]/20 via-[#BA7CFF]/10 to-transparent blur-3xl sm:block" />
               <div className="relative overflow-hidden border-border/50 bg-gradient-to-br from-card/80 to-secondary/80 sm:rounded-2xl sm:border sm:shadow-2xl sm:transition-transform sm:hover:-translate-y-1">
                 {visual}
               </div>

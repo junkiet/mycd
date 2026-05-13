@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       'Track PnL, analytics, leaderboards, and social trading across all your exchanges in one place.',
   },
   icons: {
-    icon: '/favicon.png',
+    icon: '/logo.svg',
   },
 };
 

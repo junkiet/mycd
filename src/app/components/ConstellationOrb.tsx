@@ -8,8 +8,8 @@ const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth < 768;
 const POINT_COUNT = IS_MOBILE ? 70 : 100;
 const SPHERE_RADIUS = IS_MOBILE ? 4.5 : 5;
 const LINE_COLOR = 0x7B3F9E;
-const NODE_COLOR = 0xAB51C5;
-const SPECIAL_COLOR = 0xAB51C5;
+const NODE_COLOR = 0xBA7CFF;
+const SPECIAL_COLOR = 0xBA7CFF;
 const CONNECTION_DISTANCE = IS_MOBILE ? 3.0 : 2.8;
 const ORBIT_RADIUS = IS_MOBILE ? 7 : 8;
 const TRADER_LIMIT = IS_MOBILE ? 10 : 50;
@@ -840,7 +840,7 @@ export function ConstellationOrb() {
             href={`https://app.mycoindeck.com/en/explore/${tooltip.data.urlname || tooltip.data.uid}?pid=${tooltip.data.portfolioId}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute z-10 flex w-max items-center gap-2.5 whitespace-nowrap rounded-lg border border-white/10 bg-[#1a1a1a]/95 px-3 py-2 backdrop-blur-sm transition-all hover:border-[#AB51C5]/50 hover:bg-[#1a1a1a]"
+            className="absolute z-10 flex w-max items-center gap-2.5 whitespace-nowrap rounded-lg border border-white/10 bg-[#1a1a1a]/95 px-3 py-2 backdrop-blur-sm transition-all hover:border-[#BA7CFF]/50 hover:bg-[#1a1a1a]"
             style={{
               left: tooltip.x,
               top: tooltip.y - 52,
@@ -859,7 +859,7 @@ export function ConstellationOrb() {
                           ? 'bg-gradient-to-b from-gray-300 to-gray-500 text-black'
                           : tooltip.data.rank === 3
                             ? 'bg-gradient-to-b from-orange-500 to-orange-700 text-white'
-                            : 'bg-[#AB51C5] text-white'
+                            : 'bg-[#BA7CFF] text-white'
                     }`}
                   >
                     {tooltip.data.rank}

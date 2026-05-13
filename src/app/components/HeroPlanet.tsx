@@ -290,7 +290,7 @@ export function HeroPlanet() {
         const angle = spinAngle + frac * Math.PI * 2;
 
         // Conic gradient mapped to segments: bright spots + transparent gaps
-        // Matches: transparent 0%, #AB51C5 10%, #c88fff 20%, transparent 30%, transparent 50%, #9760FF 60%, #AB51C5 70%, transparent 80%
+        // Matches: transparent 0%, #BA7CFF 10%, #c88fff 20%, transparent 30%, transparent 50%, #9760FF 60%, #BA7CFF 70%, transparent 80%
         let alpha = 0;
         const f = frac;
         if (f < 0.1) alpha = f / 0.1;

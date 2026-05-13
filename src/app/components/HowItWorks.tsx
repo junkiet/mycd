@@ -41,16 +41,16 @@ export function HowItWorks() {
             <ScrollReveal key={index} delay={index * 80} className="relative h-full">
               {/* Connector Line */}
               {index < steps.length - 1 && (
-                <div className="absolute left-1/2 top-16 hidden h-0.5 w-full origin-left bg-gradient-to-r from-[#AB51C5]/50 to-transparent md:block" />
+                <div className="absolute left-1/2 top-16 hidden h-0.5 w-full origin-left bg-gradient-to-r from-[#BA7CFF]/50 to-transparent md:block" />
               )}
 
               <div className="relative flex h-full flex-col rounded-2xl border border-border/50 bg-gradient-to-br from-secondary to-secondary/50 p-8 text-center transition-transform hover:-translate-y-1">
-                <div className="absolute -top-4 left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-[#AB51C5] text-sm font-bold">
+                <div className="absolute -top-4 left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-[#BA7CFF] text-sm font-bold">
                   {index + 1}
                 </div>
 
-                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#AB51C5]/20">
-                  <step.icon className="h-8 w-8 text-[#AB51C5]" />
+                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#BA7CFF]/20">
+                  <step.icon className="h-8 w-8 text-[#BA7CFF]" />
                 </div>
 
                 <h3 className="mb-3 text-xl font-bold">{step.title}</h3>

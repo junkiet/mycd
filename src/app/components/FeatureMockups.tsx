@@ -220,7 +220,7 @@ export function PortfolioMockup() {
   if (!trader) {
     return (
       <div className="flex items-center justify-center bg-black p-6 min-h-[400px]">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#AB51C5] border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#BA7CFF] border-t-transparent" />
       </div>
     );
   }
@@ -520,7 +520,7 @@ export function TraderProfileMockup() {
       </div>
 
       {/* Combined totals */}
-      <div className="rounded-xl border border-[#AB51C5]/30 bg-[#AB51C5]/10 p-4">
+      <div className="rounded-xl border border-[#BA7CFF]/30 bg-[#BA7CFF]/10 p-4">
         <div className="mb-2 text-sm font-medium">{t('totalAcrossAll')}</div>
         <div className="flex items-baseline justify-between">
           <span className="text-2xl font-bold">{formatUsd(summary?.totalTradingVolume ?? 0)}</span>
@@ -618,7 +618,7 @@ export function AnalyticsMockup() {
               target="_blank"
               rel="noopener noreferrer"
               key={item.id}
-              className="block rounded-xl border border-border/50 bg-secondary/50 p-4 transition-colors hover:border-[#AB51C5]/50"
+              className="block rounded-xl border border-border/50 bg-secondary/50 p-4 transition-colors hover:border-[#BA7CFF]/50"
             >
               <div className="mb-2 flex items-center gap-2">
                 <img
@@ -732,7 +732,7 @@ export function SocialFeedMockup() {
                 <img
                   src={trader.avatar}
                   alt={trader.nickname}
-                  className="h-10 w-10 shrink-0 rounded-full bg-[#333] object-cover cursor-pointer hover:ring-2 hover:ring-[#AB51C5]/50 transition-all"
+                  className="h-10 w-10 shrink-0 rounded-full bg-[#333] object-cover cursor-pointer hover:ring-2 hover:ring-[#BA7CFF]/50 transition-all"
                 />
               </a>
               <a href={traderUrl(trader, locale)} className="flex-1 min-w-0 hover:opacity-80 transition-opacity">

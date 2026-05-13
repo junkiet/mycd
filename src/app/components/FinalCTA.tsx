@@ -11,8 +11,8 @@ export function FinalCTA() {
   return (
     <section className="relative overflow-hidden py-32">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#AB51C5]/5 to-transparent" />
-      <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#AB51C5]/20 blur-[120px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#BA7CFF]/5 to-transparent" />
+      <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#BA7CFF]/20 blur-[120px]" />
 
       <div className="container relative mx-auto px-6">
         <div className="mx-auto max-w-4xl text-center">
@@ -45,7 +45,7 @@ export function FinalCTA() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <a href="https://app.mycoindeck.com">
-              <Button size="lg" className="bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/50">
+              <Button size="lg" className="bg-[#BA7CFF] hover:bg-[#a866f0] shadow-lg shadow-[#BA7CFF]/50">
                 {t('getStarted')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

@@ -36,12 +36,12 @@ export function ExchangeSupport() {
           {exchanges.map((exchange) => (
             <div
               key={exchange.name}
-              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-secondary to-secondary/50 p-6 transition-all hover:border-[#AB51C5]/50 hover:shadow-xl hover:shadow-[#AB51C5]/10"
+              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-secondary to-secondary/50 p-6 transition-all hover:border-[#BA7CFF]/50 hover:shadow-xl hover:shadow-[#BA7CFF]/10"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#AB51C5]/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#BA7CFF]/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
               <div className="relative">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#AB51C5]/20">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#BA7CFF]/20">
                   <div className="text-2xl font-bold">{exchange.name[0]}</div>
                 </div>
 
@@ -50,7 +50,7 @@ export function ExchangeSupport() {
                 <div className="space-y-2">
                   {exchange.types.map((type) => (
                     <div key={type} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Check className="h-4 w-4 text-[#AB51C5]" />
+                      <Check className="h-4 w-4 text-[#BA7CFF]" />
                       {type}
                     </div>
                   ))}

@@ -33,19 +33,19 @@ export function Hero() {
         />
       </div>
       {/* Background gradient glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#AB51C5]/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#BA7CFF]/10 via-transparent to-transparent" />
       <div className="absolute top-20 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full blur-[150px]" style={{ background: 'radial-gradient(circle, rgba(171, 81, 197, 0.3) 0%, rgba(151, 100, 255, 0.15) 40%, rgba(100, 60, 180, 0.06) 70%, transparent 100%)' }} />
 
       <div className="container relative mx-auto px-6">
         <div className="mx-auto max-w-4xl text-center pt-10 sm:pt-16">
           {/* Headline */}
           <motion.div
-            className="mb-6 inline-flex h-9 items-center gap-2 rounded-full bg-gradient-to-b from-black to-[#1A0026] px-4 py-2 shadow-[0_-4px_12px_0_#361B40_inset,0_1px_0_0_#AB51C5_inset,0_-1px_0_0_#C06BDB_inset] backdrop-blur-[3px]"
+            className="mb-6 inline-flex h-9 items-center gap-2 rounded-full bg-gradient-to-b from-black to-[#1A0026] px-4 py-2 shadow-[0_-4px_12px_0_#361B40_inset,0_1px_0_0_#BA7CFF_inset,0_-1px_0_0_#C06BDB_inset] backdrop-blur-[3px]"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <TrendingUp className="h-4 w-4 text-[#AB51C5]" />
+            <TrendingUp className="h-4 w-4 text-[#BA7CFF]" />
             <span className="text-sm text-white">{t('title1')}</span>
           </motion.div>
 
@@ -76,7 +76,7 @@ export function Hero() {
               </motion.span>
               <br />
               <motion.span
-                className="inline-block bg-gradient-to-r from-white via-[#AB51C5] to-[#9760FF] bg-clip-text text-transparent"
+                className="inline-block bg-gradient-to-r from-white via-[#BA7CFF] to-[#9760FF] bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
@@ -103,7 +103,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.9 }}
           >
             <a href="https://app.mycoindeck.com">
-              <Button size="lg" className="bg-[#AB51C5] hover:bg-[#a45fbd] shadow-lg shadow-[#AB51C5]/50">
+              <Button size="lg" className="bg-[#BA7CFF] hover:bg-[#a866f0] shadow-lg shadow-[#BA7CFF]/50">
                 {t('cta')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
