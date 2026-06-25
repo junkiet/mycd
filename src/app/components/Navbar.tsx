@@ -89,7 +89,7 @@ export function Navbar() {
             aria-label="Back to top"
           >
             <img src="/logo.svg" alt="MyCoinDeck Logo" className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
-            <span className="truncate text-lg font-bold uppercase tracking-tight sm:text-xl" style={{ fontFamily: "'Good Timing', sans-serif" }}>MyCoinDeck</span>
+            <span className="truncate text-lg font-bold uppercase tracking-tight sm:text-xl" style={{ fontFamily: "'GetVoIP Grotesque', sans-serif" }}>MyCoinDeck</span>
           </button>
 
           {/* Desktop Nav Links */}

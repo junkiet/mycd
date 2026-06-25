@@ -5,6 +5,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* GetVoIP Grotesque — regular only. cdnfonts' own stylesheet mislabels the
+   italic cut as font-style:normal, which makes it override the regular face,
+   so we self-declare the regular .woff here instead of linking their CSS. */
+@font-face {
+  font-family: 'GetVoIP Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.cdnfonts.com/s/21763/GetVoIP%20Grotesque.woff') format('woff');
+}
+
 :root {
   --font-size: 16px;
   --background: #000000;

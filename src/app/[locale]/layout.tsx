@@ -74,10 +74,6 @@ export default async function LocaleLayout({
           type="video/mp4"
           fetchPriority="high"
         />
-        <link
-          href="https://fonts.cdnfonts.com/css/good-timing"
-          rel="stylesheet"
-        />
       </head>
       <body>
         <Script
