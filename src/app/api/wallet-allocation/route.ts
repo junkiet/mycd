@@ -21,6 +21,8 @@ export async function GET(request: Request) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        // goapi's ClientGate rejects requests without this header (403).
+        'X-Client-App': 'my-coinDeck-web',
         Authorization: generateToken(),
       },
       body: JSON.stringify({ uid, pid }),

@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
+import '../vant-icons.css';
 
 const GA_MEASUREMENT_ID = 'G-201D19SYZQ';
 

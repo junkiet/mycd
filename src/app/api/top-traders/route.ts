@@ -10,7 +10,11 @@ export async function GET(request: Request) {
   try {
     const res = await fetch(`${GO_API_BASE}/traders`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        // goapi's ClientGate rejects requests without this header (403).
+        'X-Client-App': 'my-coinDeck-web',
+      },
       body: JSON.stringify({ limit, page: 1 }),
       next: { revalidate: 120 },
     });

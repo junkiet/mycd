@@ -9,6 +9,8 @@ export async function GET(request: Request) {
 
   try {
     const res = await fetch(`${GO_API_BASE}/hot-feeds?limit=${limit}`, {
+      // goapi's ClientGate rejects requests without this header (403).
+      headers: { 'X-Client-App': 'my-coinDeck-web' },
       next: { revalidate: 60 },
     });
 

@@ -7,7 +7,11 @@ export async function GET(request: Request) {
   try {
     const res = await fetch('https://app.mycoindeck.com/goapi/coins/top-gainers', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        // goapi's ClientGate rejects requests without this header (403).
+        'X-Client-App': 'my-coinDeck-web',
+      },
       body: JSON.stringify({ limit, sort: 'default', query: '' }),
       next: { revalidate: 300 },
     });

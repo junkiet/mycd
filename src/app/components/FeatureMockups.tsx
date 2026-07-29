@@ -49,8 +49,17 @@ function formatCurrency(n: number, digits = 2): string {
   return n.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits });
 }
 
+// API timestamps are UTC+0. Strings without an explicit timezone marker must
+// be pinned to UTC before Date() — otherwise they'd be read as device-local
+// and double-shift. Rendering (getDate etc.) then uses the device timezone.
+function parseUtc(iso: string): Date {
+  if (!iso) return new Date(NaN);
+  const hasTz = /Z$|[+-]\d{2}:?\d{2}$/.test(iso);
+  return new Date(hasTz ? iso : iso.replace(' ', 'T') + 'Z');
+}
+
 function formatDate(iso: string): string {
-  const d = new Date(iso);
+  const d = parseUtc(iso);
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
@@ -421,10 +430,9 @@ function PositionPnLChart({ data }: { data: PositionPnLDay[] }) {
   const lastRealized = realizedValues[realizedValues.length - 1];
   const lastUnrealized = unrealizedValues[unrealizedValues.length - 1];
 
-  const shortDate = (iso: string) => {
-    const d = new Date(iso);
-    return `${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  };
+  // `day` is a calendar-day label ("2026-07-14") — slice it as text so a
+  // device west of UTC doesn't see every axis label shifted back a day.
+  const shortDate = (iso: string) => iso.slice(5, 10);
 
   const firstDate = shortDate(data[0].day);
   const lastDate = shortDate(data[data.length - 1].day);
@@ -552,6 +560,7 @@ interface HotFeed {
   avatar: string;
   portfolio_id: number;
   reshare_id?: number;
+  no_link_preview?: number;
   original?: {
     nickname: string;
     urlname: string;
@@ -563,7 +572,7 @@ interface HotFeed {
 
 function timeAgo(iso: string): string {
   const now = Date.now();
-  const then = new Date(iso).getTime();
+  const then = parseUtc(iso).getTime();
   const diff = Math.max(0, now - then);
   const mins = Math.floor(diff / 60000);
   if (mins < 1) return 'just now';
@@ -572,6 +581,66 @@ function timeAgo(iso: string): string {
   if (hrs < 24) return `${hrs}h ago`;
   const days = Math.floor(hrs / 24);
   return `${days}d ago`;
+}
+
+const FEED_URL_RE = /https?:\/\/[^\s<]+/;
+
+interface LinkMeta {
+  title?: string;
+  image?: string;
+  description?: string;
+}
+
+// Link preview card for a URL inside a feed post — same goapi OG extractor
+// the app's feed uses. Auto height (image keeps its own ratio, nothing is
+// fixed). Rendered inside the post's <a>, so it's a div, not a nested link.
+function FeedLinkPreview({ url }: { url: string }) {
+  const [meta, setMeta] = useState<LinkMeta | null>(null);
+  useEffect(() => {
+    let alive = true;
+    fetch(`/api/link-preview?url=${encodeURIComponent(url)}`)
+      .then(r => r.json())
+      .then(json => {
+        if (alive && json.code === 200 && json.data) setMeta(json.data);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, [url]);
+
+  let host = '';
+  try {
+    host = new URL(url).hostname.replace(/^www\./, '');
+  } catch {}
+
+  if (!meta || (!meta.title && !meta.image)) {
+    // No metadata (yet) — keep the link visible as plain text so the post
+    // doesn't silently lose it.
+    return <div className="mb-3 truncate text-[10px] text-muted-foreground/70">{url}</div>;
+  }
+
+  return (
+    <div className="mb-3 overflow-hidden rounded-lg border border-border/50 bg-black/40">
+      {meta.image && (
+        <img
+          src={meta.image}
+          alt={meta.title || host}
+          className="h-auto w-full object-cover"
+          loading="lazy"
+        />
+      )}
+      <div className="p-2.5">
+        {meta.title && (
+          <div className="line-clamp-2 text-xs font-medium text-white">{meta.title}</div>
+        )}
+        {meta.description && (
+          <div className="mt-0.5 line-clamp-2 text-[10px] text-muted-foreground">{meta.description}</div>
+        )}
+        {host && <div className="mt-1 text-[10px] text-muted-foreground/70">{host}</div>}
+      </div>
+    </div>
+  );
 }
 
 function useHotFeeds() {
@@ -611,6 +680,12 @@ export function AnalyticsMockup() {
         {feeds.map((item) => {
           const displayContent = item.content || item.original?.content || '';
           const href = `https://app.mycoindeck.com/${locale}/feeds/${item.id}`;
+          // First URL in the post gets a preview card (unless the author
+          // disabled it); the raw URL text is then dropped from the body.
+          const linkUrl = item.no_link_preview ? '' : (displayContent.match(FEED_URL_RE)?.[0] ?? '');
+          const textContent = linkUrl
+            ? displayContent.replace(FEED_URL_RE, '').trim()
+            : displayContent;
 
           return (
             <a
@@ -628,19 +703,27 @@ export function AnalyticsMockup() {
                 />
                 <div className="min-w-0 flex-1">
                   <span className="text-sm font-medium truncate">@{item.nickname}</span>
-                  {item.reshare_id && item.original && (
+                  {/* `id && jsx` renders a literal "0" when id is 0 — compare explicitly */}
+                  {(item.reshare_id ?? 0) > 0 && item.original && (
                     <span className="ml-1 text-xs text-muted-foreground">reshared @{item.original.nickname}</span>
                   )}
                 </div>
                 <span className="shrink-0 text-xs text-muted-foreground">{timeAgo(item.created_at)}</span>
               </div>
-              {displayContent && (
-                <p className="mb-3 line-clamp-2 text-xs text-muted-foreground">{displayContent}</p>
+              {textContent && (
+                <p className="mb-3 line-clamp-2 text-xs text-muted-foreground">{textContent}</p>
               )}
-              <div className="flex gap-4 text-xs text-muted-foreground">
-                <span>❤️ {item.likes_count}</span>
-                <span>💬 {item.comments_count}</span>
-                <span>🔄 {item.reshares_count}</span>
+              {linkUrl && <FeedLinkPreview url={linkUrl} />}
+              <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  <i className="van-icon van-icon-chat-o text-sm" /> {item.comments_count}
+                </span>
+                <span className="flex items-center gap-1">
+                  <i className="van-icon van-icon-share-o text-sm" /> {item.reshares_count}
+                </span>
+                <span className="flex items-center gap-1">
+                  <i className="van-icon van-icon-like-o text-sm" /> {item.likes_count}
+                </span>
               </div>
             </a>
           );
@@ -736,7 +819,7 @@ export function SocialFeedMockup() {
                 />
               </a>
               <a href={traderUrl(trader, locale)} className="flex-1 min-w-0 hover:opacity-80 transition-opacity">
-                <div className="text-sm font-medium truncate">@{trader.nickname}</div>
+                <div className="text-sm font-medium truncate">{trader.nickname}</div>
                 <div className="text-xs text-muted-foreground">{formatFollowers(trader.followers)} {t('followers')}</div>
               </a>
               <a
@@ -808,7 +891,7 @@ function formatCoinPrice(price: number | null) {
 }
 
 function daysAgo(iso: string): string {
-  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+  const days = Math.floor((Date.now() - parseUtc(iso).getTime()) / 86400000);
   if (days < 1) return 'today';
   if (days === 1) return '1d ago';
   return `${days}d ago`;

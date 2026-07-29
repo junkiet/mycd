@@ -27,7 +27,7 @@ export function Hero() {
           muted
           playsInline
           preload="auto"
-          {...{ fetchpriority: 'high' }}
+          {...{ fetchPriority: 'high' }}
           className="absolute inset-0 h-full w-full object-cover object-[center_30%] sm:object-center"
           src="/hero-v2.mp4"
         />

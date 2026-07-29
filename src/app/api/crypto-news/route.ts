@@ -18,12 +18,24 @@ export async function GET(request: Request) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        // goapi's ClientGate rejects requests without this header (403) —
+        // server-side fetches have no Origin, so it's required here.
+        'X-Client-App': 'my-coinDeck-web',
         Authorization: generateToken(),
       },
-      body: JSON.stringify({ lang, limit }),
+      // goapi orders by ingest id, not publish time — over-fetch and re-sort
+      // by published_at so the landing list reads newest-first.
+      body: JSON.stringify({ lang, limit: limit * 2 }),
       next: { revalidate: 300 },
     });
     const data = await res.json();
+    if (Array.isArray(data?.data)) {
+      data.data.sort(
+        (a: { published_at?: string }, b: { published_at?: string }) =>
+          new Date(b.published_at || 0).getTime() - new Date(a.published_at || 0).getTime(),
+      );
+      data.data = data.data.slice(0, limit);
+    }
     return NextResponse.json(data);
   } catch {
     return NextResponse.json({ code: 500, data: [], msg: 'error' }, { status: 500 });
