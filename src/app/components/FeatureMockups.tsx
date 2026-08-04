@@ -518,9 +518,10 @@ export function TraderProfileMockup() {
               </div>
               <div className="text-right">
                 <div className="text-sm font-medium">{formatUsd(tv)}</div>
-                <div className={`text-xs ${pnl >= 0 ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
-                  {pnl >= 0 ? '+' : '-'}{formatUsd(pnl)}
-                </div>
+                {/* Losses stay hidden — only non-negative PnL is surfaced here. */}
+                {pnl >= 0 && (
+                  <div className="text-xs text-[#22c55e]">+{formatUsd(pnl)}</div>
+                )}
               </div>
             </div>
           );
@@ -535,9 +536,14 @@ export function TraderProfileMockup() {
           <span className="text-xs font-medium text-muted-foreground">{t('allTime')}</span>
         </div>
         <div className="mt-1 flex items-baseline justify-between">
-          <span className={`text-sm font-medium ${(summary?.totalPnlToday ?? 0) >= 0 ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
-            {(summary?.totalPnlToday ?? 0) >= 0 ? '+' : '-'}{formatUsd(summary?.totalPnlToday ?? 0)} {t('today')}
-          </span>
+          {/* Empty span keeps the trader count right-aligned when a loss is hidden. */}
+          {(summary?.totalPnlToday ?? 0) >= 0 ? (
+            <span className="text-sm font-medium text-[#22c55e]">
+              +{formatUsd(summary?.totalPnlToday ?? 0)} {t('today')}
+            </span>
+          ) : (
+            <span />
+          )}
           <span className="text-xs text-muted-foreground">{summary?.totalUsers ?? 0} {t('traders')}</span>
         </div>
       </div>
