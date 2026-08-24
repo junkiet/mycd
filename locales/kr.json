@@ -1,0 +1,157 @@
+{
+  "navbar": {
+    "exploreTraders": "트레이더 탐색",
+    "feed": "트레이더 피드",
+    "leaderboard": "리더보드",
+    "getStarted": "시작하기",
+    "language": "언어",
+    "menu": "메뉴"
+  },
+  "hero": {
+    "title1": "추적하고, 분석하고, 성장하세요",
+    "title2": "당신의 모든 트레이딩",
+    "title3": "성과를 한곳에서.",
+    "description": "포트폴리오를 추적하고, 트레이딩 성과를 분석하고, 성공한 트레이더를 팔로우하세요 — 모두 한곳에서.",
+    "cta": "멤버 가입하기"
+  },
+  "home": {
+    "coreHeading": "모든 거래를 하나의 강력한 대시보드에서."
+  },
+  "features": {
+    "analytics": {
+      "title": "성과 분석",
+      "description": "손익, 승률, ROI를 추적하고 모든 거래를 심층 분석해 나의 강점과 약점을 파악하세요.",
+      "highlights": ["손익, 승률, ROI 추적", "거래별 심층 분석", "강점과 약점 파악"]
+    },
+    "exchange": {
+      "title": "통합 거래소 뷰",
+      "description": "거래소 API 키를 연결하면 Binance, Bybit, OKX, Bitget의 거래·포지션·손익이 실시간으로 자동 동기화됩니다.",
+      "highlights": ["총 잔고 및 일일 손익", "30일 ROI 및 승률", "초기 자산 vs 현재 자산", "거래소 통합 뷰"]
+    },
+    "social": {
+      "title": "소통하기",
+      "description": "거래와 시장 인사이트를 공유하세요. 다른 트레이더의 게시물에 좋아요, 리셰어, 댓글을 남기고 크립토 트레이딩 커뮤니티에서 팔로워를 늘려보세요.",
+      "highlights": ["소셜 피드 — 트레이더를 위한 트위터", "포지션과 분석 공유", "신뢰하는 트레이더의 피드 팔로우", "인기 게시물과 인기 트레이더"]
+    },
+    "discover": {
+      "title": "상위 트레이더 발견하고 팔로우하기",
+      "description": "실제 트레이더의 프로필을 둘러보고 전체 거래 내역, 포지션, 손익 분석, 코인 비중을 확인하세요. 마음에 드는 트레이더를 팔로우하고 그들의 전략에서 배우세요.",
+      "highlights": ["승률, 총 손익, 거래량", "미결제 포지션 및 주문 내역", "코인·지갑 비중 차트", "트레이더 팔로우 / 언팔로우"]
+    },
+    "news": {
+      "title": "실시간 글로벌 뉴스",
+      "description": "시장을 움직이는 이슈를 놓치지 마세요.",
+      "highlights": ["엄선된 시장 소식", "트렌드를 앞서가기"]
+    },
+    "market": {
+      "title": "마켓 인텔리전스",
+      "description": "시장을 한발 앞서 읽으세요.",
+      "highlights": ["공포·탐욕 지수", "인기 코인", "크립토 뉴스", "시장 심리"]
+    }
+  },
+  "howItWorks": {
+    "title": "이용 방법",
+    "subtitle": "간단한 3단계로 시작하세요",
+    "step1Title": "계정 만들기",
+    "step1Desc": "몇 초 만에 가입하고 바로 대시보드를 이용하세요.",
+    "step2Title": "거래소 API 연결",
+    "step2Desc": "읽기 전용 API 키로 거래 계정을 안전하게 연결합니다.",
+    "step3Title": "거래를 추적하고 개선하기",
+    "step3Desc": "성과를 모니터링하고, 거래를 분석하고, 상위 트레이더에게서 배우세요."
+  },
+  "leaderboard": {
+    "title": "상위 트레이더 리더보드",
+    "subtitle": "최고의 성과를 낸 트레이더를 팔로우하고 배우세요",
+    "rank": "순위",
+    "trader": "트레이더",
+    "pnl": "손익",
+    "winRate": "승률",
+    "volume": "거래량",
+    "portfolio": "포트폴리오",
+    "topPerformer": "최고 성과",
+    "today": "오늘",
+    "monthly": "월간",
+    "allTime": "전체",
+    "noData": "랭킹 데이터가 없습니다",
+    "viewFull": "전체 리더보드 보기 →"
+  },
+  "finalCTA": {
+    "title": "지금 바로 크립토 포트폴리오를 추적하세요",
+    "description": "이미 MyCoinDeck으로 트레이딩 성과를 높이고 있는 수천 명의 트레이더와 함께하세요.",
+    "getStarted": "무료로 시작하기",
+    "explore": "트레이더 탐색",
+    "noCreditCard": "신용카드 불필요",
+    "freePlan": "평생 무료 플랜",
+    "setupMinutes": "몇 분이면 설정 완료"
+  },
+  "footer": {
+    "description": "완벽한 크립토 트레이딩 대시보드. 거래를 추적하고, 분석하고, 성과를 높이세요.",
+    "product": "제품",
+    "home": "홈",
+    "exploreTraders": "트레이더 탐색",
+    "markets": "마켓",
+    "leaderboard": "리더보드",
+    "resources": "리소스",
+    "documentation": "문서",
+    "apiReference": "API 레퍼런스",
+    "support": "지원",
+    "status": "서비스 상태",
+    "company": "회사",
+    "about": "소개",
+    "blog": "블로그",
+    "careers": "채용",
+    "privacyPolicy": "개인정보 처리방침",
+    "social": "소셜",
+    "copyright": "© 2026 MyCoinDeck. All rights reserved.",
+    "terms": "이용약관",
+    "privacy": "개인정보",
+    "cookies": "쿠키"
+  },
+  "mockups": {
+    "assetAllocation": "자산 비중",
+    "connectedExchanges": "연결된 거래소",
+    "allSynced": "모두 동기화됨",
+    "totalBalance": "총 잔고",
+    "dailyPnl": "일일 손익",
+    "thirtyDayRoi": "30일 ROI",
+    "winRate": "승률",
+    "socialFeed": "소셜 피드",
+    "trending": "인기",
+    "trendingTopics": "인기 토픽",
+    "latestNews": "최신 뉴스",
+    "live": "실시간",
+    "topMovers": "급등·급락",
+    "fearGreed": "공포·탐욕",
+    "greed": "탐욕",
+    "marketPulse": "마켓 동향",
+    "bullish": "상승",
+    "bearish": "하락",
+    "strong": "강세",
+    "topTraders": "상위 트레이더",
+    "thisWeek": "이번 주",
+    "last30Days": "최근 30일",
+    "pnl": "손익",
+    "follow": "팔로우",
+    "followers": "팔로워",
+    "portfolios": "포트폴리오",
+    "traders": "트레이더",
+    "fearGreedIndex": "공포·탐욕 지수",
+    "marketSentiment": "시장 심리",
+    "trendingCoins": "인기 코인",
+    "latestCryptoNews": "최신 크립토 뉴스",
+    "totalAcrossAll": "전체 거래소 누적 거래량",
+    "allTime": "전체 기간",
+    "today": "오늘",
+    "spotFutures": "현물 + 선물",
+    "perpetuals": "무기한 선물",
+    "unified": "통합",
+    "news1": "비트코인 ETF, 사상 최대 순유입",
+    "news2": "이더리움 업그레이드, 2분기 예정",
+    "news3": "주요 DeFi 프로토콜 발표...",
+    "newsDetail1": "비트코인 ETF, 하루 12억 달러 사상 최대 순유입",
+    "newsDetail2": "이더리움 레이어2 TVL 사상 최고치 경신",
+    "newsDetail3": "SEC, 솔라나 ETF 승인 결정 연기",
+    "post1": "BTC/USDT $67,234에 롱 진입 — 목표 $72K. 손익비 괜찮아 보입니다.",
+    "post2": "ETH가 4시간봉에서 200 EMA를 돌파했습니다. $4K까지 이어질 것으로 봅니다."
+  }
+}

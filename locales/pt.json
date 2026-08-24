@@ -1,0 +1,157 @@
+{
+  "navbar": {
+    "exploreTraders": "Explorar Traders",
+    "feed": "Feed de Traders",
+    "leaderboard": "Ranking",
+    "getStarted": "Começar",
+    "language": "Idioma",
+    "menu": "Menu"
+  },
+  "hero": {
+    "title1": "Acompanhe, Analise e Evolua",
+    "title2": "Todo o seu desempenho",
+    "title3": "de trading, unificado.",
+    "description": "Acompanhe seu portfólio, analise seu desempenho de trading e siga traders de sucesso — tudo em um só lugar.",
+    "cta": "Torne-se Membro"
+  },
+  "home": {
+    "coreHeading": "Todas as suas operações em um único painel poderoso."
+  },
+  "features": {
+    "analytics": {
+      "title": "Análise de Desempenho",
+      "description": "Acompanhe PnL, taxa de acerto e ROI — com um detalhamento completo de cada operação para identificar seus pontos fortes e fracos.",
+      "highlights": ["Acompanhe PnL, taxa de acerto e ROI", "Detalhamento completo das operações", "Identifique pontos fortes e fracos"]
+    },
+    "exchange": {
+      "title": "Visão Unificada das Exchanges",
+      "description": "Conecte as chaves de API das suas exchanges e sincronize automaticamente operações, posições e PnL em tempo real na Binance, Bybit, OKX e Bitget.",
+      "highlights": ["Saldo Total e PnL Diário", "ROI de 30 Dias e Taxa de Acerto", "Patrimônio Inicial vs Atual", "Visão unificada entre exchanges"]
+    },
+    "social": {
+      "title": "Conecte-se",
+      "description": "Publique suas operações e análises de mercado. Curta, compartilhe e comente as publicações de outros traders. Construa sua audiência na comunidade de trading cripto.",
+      "highlights": ["Feed social — como o Twitter dos traders", "Compartilhe posições e análises", "Acompanhe traders em quem você confia", "Publicações em alta e traders populares"]
+    },
+    "discover": {
+      "title": "Descubra e Siga os Melhores Traders",
+      "description": "Explore perfis de traders reais, veja o histórico completo de operações, posições, análise de PnL e alocação por moeda. Siga os traders que você admira e aprenda com as estratégias deles.",
+      "highlights": ["Taxa de Acerto, PnL Total, Volume", "Posições Abertas e Histórico de Ordens", "Gráficos de Alocação por Moeda e Carteira", "Seguir / Deixar de seguir traders"]
+    },
+    "news": {
+      "title": "Notícias Globais Instantâneas",
+      "description": "Nunca perca um evento que move o mercado.",
+      "highlights": ["Atualizações de mercado selecionadas", "Fique à frente das tendências"]
+    },
+    "market": {
+      "title": "Inteligência de Mercado",
+      "description": "Fique à frente do mercado.",
+      "highlights": ["Índice de Medo e Ganância", "Moedas em Alta", "Notícias Cripto", "Sentimento do Mercado"]
+    }
+  },
+  "howItWorks": {
+    "title": "Como Funciona",
+    "subtitle": "Comece em 3 passos simples",
+    "step1Title": "Crie sua conta",
+    "step1Desc": "Cadastre-se em segundos e acesse seu painel na hora.",
+    "step2Title": "Conecte a API da exchange",
+    "step2Desc": "Vincule suas contas de trading com segurança usando chaves de API somente leitura.",
+    "step3Title": "Acompanhe e melhore seu trading",
+    "step3Desc": "Monitore o desempenho, analise operações e aprenda com os melhores traders."
+  },
+  "leaderboard": {
+    "title": "Ranking dos Melhores Traders",
+    "subtitle": "Siga e aprenda com quem mais performa",
+    "rank": "Posição",
+    "trader": "Trader",
+    "pnl": "PnL",
+    "winRate": "Taxa de Acerto",
+    "volume": "Volume",
+    "portfolio": "Portfólio",
+    "topPerformer": "Destaque",
+    "today": "Hoje",
+    "monthly": "Mensal",
+    "allTime": "Sempre",
+    "noData": "Nenhum dado de ranking disponível",
+    "viewFull": "Ver Ranking Completo →"
+  },
+  "finalCTA": {
+    "title": "Comece a Acompanhar Seu Portfólio Cripto Hoje",
+    "description": "Junte-se a milhares de traders que já estão melhorando seu desempenho com o MyCoinDeck.",
+    "getStarted": "Começar Grátis",
+    "explore": "Explorar Traders",
+    "noCreditCard": "Sem cartão de crédito",
+    "freePlan": "Plano gratuito para sempre",
+    "setupMinutes": "Configuração em minutos"
+  },
+  "footer": {
+    "description": "Seu painel completo de trading cripto. Acompanhe, analise e melhore seu desempenho.",
+    "product": "Produto",
+    "home": "Início",
+    "exploreTraders": "Explorar Traders",
+    "markets": "Mercados",
+    "leaderboard": "Ranking",
+    "resources": "Recursos",
+    "documentation": "Documentação",
+    "apiReference": "Referência da API",
+    "support": "Suporte",
+    "status": "Status",
+    "company": "Empresa",
+    "about": "Sobre",
+    "blog": "Blog",
+    "careers": "Carreiras",
+    "privacyPolicy": "Política de Privacidade",
+    "social": "Redes Sociais",
+    "copyright": "© 2026 MyCoinDeck. Todos os direitos reservados.",
+    "terms": "Termos",
+    "privacy": "Privacidade",
+    "cookies": "Cookies"
+  },
+  "mockups": {
+    "assetAllocation": "Alocação de Ativos",
+    "connectedExchanges": "Exchanges Conectadas",
+    "allSynced": "Tudo Sincronizado",
+    "totalBalance": "Saldo Total",
+    "dailyPnl": "PnL Diário",
+    "thirtyDayRoi": "ROI de 30 Dias",
+    "winRate": "Taxa de Acerto",
+    "socialFeed": "Feed Social",
+    "trending": "Em Alta",
+    "trendingTopics": "Assuntos em Alta",
+    "latestNews": "Últimas Notícias",
+    "live": "Ao Vivo",
+    "topMovers": "Maiores Variações",
+    "fearGreed": "Medo e Ganância",
+    "greed": "Ganância",
+    "marketPulse": "Pulso do Mercado",
+    "bullish": "Alta",
+    "bearish": "Baixa",
+    "strong": "Forte",
+    "topTraders": "Melhores Traders",
+    "thisWeek": "Esta Semana",
+    "last30Days": "Últimos 30 Dias",
+    "pnl": "PnL",
+    "follow": "Seguir",
+    "followers": "seguidores",
+    "portfolios": "portfólios",
+    "traders": "traders",
+    "fearGreedIndex": "Índice de Medo e Ganância",
+    "marketSentiment": "Sentimento do Mercado",
+    "trendingCoins": "Moedas em Alta",
+    "latestCryptoNews": "Últimas Notícias Cripto",
+    "totalAcrossAll": "Volume Total de Negociação em Todas as Exchanges",
+    "allTime": "desde o início",
+    "today": "hoje",
+    "spotFutures": "Spot + Futuros",
+    "perpetuals": "Perpétuos",
+    "unified": "Unificado",
+    "news1": "ETF de Bitcoin registra entradas recordes",
+    "news2": "Atualização do Ethereum marcada para o 2º trimestre",
+    "news3": "Grande protocolo DeFi anuncia...",
+    "newsDetail1": "ETF de Bitcoin registra entrada diária recorde de US$ 1,2 bi",
+    "newsDetail2": "TVL das Layer 2 do Ethereum atinge novo recorde histórico",
+    "newsDetail3": "SEC adia decisão sobre pedido de ETF de Solana",
+    "post1": "Comprado em BTC/USDT a $67.234 — alvo em $72K. Risco/retorno parece sólido aqui.",
+    "post2": "ETH rompendo a EMA de 200 no gráfico de 4H. Espero continuação até $4K."
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "navbar": {
+    "exploreTraders": "探索交易員",
+    "feed": "交易員動態",
+    "leaderboard": "排行榜",
+    "getStarted": "開始使用",
+    "language": "語言",
+    "menu": "選單"
+  },
+  "hero": {
+    "title1": "追蹤、分析、提升",
+    "title2": "您的全部交易",
+    "title3": "表現一站式管理。",
+    "description": "追蹤您的投資組合，分析交易表現，追蹤成功的交易員 — 一切盡在同一個平台。",
+    "cta": "成為會員"
+  },
+  "home": {
+    "coreHeading": "所有交易，盡在一個強大的儀表板。"
+  },
+  "features": {
+    "analytics": {
+      "title": "績效分析",
+      "description": "追蹤盈虧、勝率、投資報酬率 — 深入拆解每筆交易，找出您的優勢與不足。",
+      "highlights": ["追蹤盈虧、勝率、ROI", "深入拆解每筆交易", "發現優勢與不足"]
+    },
+    "exchange": {
+      "title": "統一交易所檢視",
+      "description": "連接您的交易所 API 金鑰，即時自動同步 Binance、Bybit、OKX 與 Bitget 的交易、持倉與盈虧資料。",
+      "highlights": ["總餘額與每日盈虧", "30 天 ROI 與勝率", "初始資產 vs 目前資產", "跨交易所統一檢視"]
+    },
+    "social": {
+      "title": "社群互聯",
+      "description": "分享您的交易與市場洞察。為其他交易員的貼文按讚、轉發與留言。在加密貨幣交易社群中建立您的粉絲群。",
+      "highlights": ["社群動態 — 交易員的推特", "分享持倉與分析", "追蹤您信任的交易員", "熱門貼文與人氣交易員"]
+    },
+    "discover": {
+      "title": "發現並追蹤頂尖交易員",
+      "description": "瀏覽真實交易員的檔案，查看他們的完整交易紀錄、持倉、盈虧分析與幣種配置。追蹤您欣賞的交易員，從他們的策略中學習。",
+      "highlights": ["勝率、總盈虧、交易量", "未平倉位與訂單紀錄", "幣種與錢包配置圖表", "追蹤 / 取消追蹤交易員"]
+    },
+    "news": {
+      "title": "全球即時新聞",
+      "description": "不錯過任何撼動市場的重大事件。",
+      "highlights": ["精選市場資訊", "走在趨勢前端"]
+    },
+    "market": {
+      "title": "市場情報",
+      "description": "走在市場前端。",
+      "highlights": ["恐懼與貪婪指數", "熱門幣種", "加密新聞", "市場情緒"]
+    }
+  },
+  "howItWorks": {
+    "title": "如何使用",
+    "subtitle": "只需 3 個簡單步驟即可開始",
+    "step1Title": "建立您的帳戶",
+    "step1Desc": "幾秒鐘即可註冊，立即使用您的儀表板。",
+    "step2Title": "連接交易所 API",
+    "step2Desc": "使用唯讀 API 金鑰安全連接您的交易帳戶。",
+    "step3Title": "追蹤並提升您的交易",
+    "step3Desc": "監控表現、分析交易，並向頂尖交易員學習。"
+  },
+  "leaderboard": {
+    "title": "頂尖交易員排行榜",
+    "subtitle": "追蹤並向最佳表現者學習",
+    "rank": "排名",
+    "trader": "交易員",
+    "pnl": "盈虧",
+    "winRate": "勝率",
+    "volume": "交易量",
+    "portfolio": "投資組合",
+    "topPerformer": "最佳表現",
+    "today": "今日",
+    "monthly": "本月",
+    "allTime": "全部",
+    "noData": "暫無排行資料",
+    "viewFull": "查看完整排行榜 →"
+  },
+  "finalCTA": {
+    "title": "立即開始追蹤您的加密投資組合",
+    "description": "加入成千上萬已經在使用 MyCoinDeck 提升交易表現的交易員。",
+    "getStarted": "免費開始",
+    "explore": "探索交易員",
+    "noCreditCard": "無需信用卡",
+    "freePlan": "永久免費方案",
+    "setupMinutes": "幾分鐘即可設定"
+  },
+  "footer": {
+    "description": "您的一站式加密交易儀表板。追蹤、分析並提升您的交易表現。",
+    "product": "產品",
+    "home": "首頁",
+    "exploreTraders": "探索交易員",
+    "markets": "市場",
+    "leaderboard": "排行榜",
+    "resources": "資源",
+    "documentation": "文件",
+    "apiReference": "API 參考",
+    "support": "支援",
+    "status": "狀態",
+    "company": "公司",
+    "about": "關於",
+    "blog": "部落格",
+    "careers": "徵才",
+    "privacyPolicy": "隱私權政策",
+    "social": "社群媒體",
+    "copyright": "© 2026 MyCoinDeck. 保留所有權利。",
+    "terms": "條款",
+    "privacy": "隱私權",
+    "cookies": "Cookies"
+  },
+  "mockups": {
+    "assetAllocation": "資產配置",
+    "connectedExchanges": "已連接交易所",
+    "allSynced": "全部同步",
+    "totalBalance": "總餘額",
+    "dailyPnl": "每日盈虧",
+    "thirtyDayRoi": "30 天 ROI",
+    "winRate": "勝率",
+    "socialFeed": "社群動態",
+    "trending": "熱門",
+    "trendingTopics": "熱門話題",
+    "latestNews": "最新新聞",
+    "live": "即時",
+    "topMovers": "漲跌榜",
+    "fearGreed": "恐懼與貪婪",
+    "greed": "貪婪",
+    "marketPulse": "市場脈動",
+    "bullish": "看漲",
+    "bearish": "看跌",
+    "strong": "強勁",
+    "topTraders": "頂尖交易員",
+    "thisWeek": "本週",
+    "last30Days": "近 30 天",
+    "pnl": "盈虧",
+    "follow": "追蹤",
+    "followers": "粉絲",
+    "portfolios": "個組合",
+    "traders": "位交易員",
+    "fearGreedIndex": "恐懼與貪婪指數",
+    "marketSentiment": "市場情緒",
+    "trendingCoins": "熱門幣種",
+    "latestCryptoNews": "最新加密新聞",
+    "totalAcrossAll": "所有交易所總交易量",
+    "allTime": "全部時間",
+    "today": "今日",
+    "spotFutures": "現貨 + 合約",
+    "perpetuals": "永續合約",
+    "unified": "統一",
+    "news1": "比特幣 ETF 錄得創紀錄流入",
+    "news2": "以太坊升級計畫於第二季進行",
+    "news3": "主要 DeFi 協議宣布...",
+    "newsDetail1": "比特幣 ETF 單日流入創紀錄 12 億美元",
+    "newsDetail2": "以太坊 Layer 2 TVL 創歷史新高",
+    "newsDetail3": "SEC 延後 Solana ETF 申請決定",
+    "post1": "在 $67,234 做多 BTC/USDT — 目標 $72K。風險報酬看起來不錯。",
+    "post2": "ETH 在 4 小時圖上突破 200 EMA。預計將續漲至 $4K。"
+  }
+}

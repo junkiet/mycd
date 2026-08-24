@@ -5,30 +5,15 @@ import { Menu, X, Compass, LineChart, Trophy, ArrowRight, Globe, Check } from 'l
 import * as Dialog from '@radix-ui/react-dialog';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
-import { routing } from '@/i18n/routing';
+import { routing, LOCALE_LABELS, LOCALE_SHORT_LABELS } from '@/i18n/routing';
 import { Button } from './ui/button';
 
-const localeLabels: Record<string, string> = {
-  en: 'English',
-  zh: '中文',
-  ja: '日本語',
-  ko: '한국어',
-  es: 'Español',
-  fr: 'Français',
-  de: 'Deutsch',
-  ru: 'Русский',
-  pt: 'Português',
-  it: 'Italiano',
-  ar: 'العربية',
-  tr: 'Türkçe',
-  vi: 'Tiếng Việt',
-  th: 'ไทย',
-  id: 'Bahasa Indonesia',
-  hi: 'हिन्दी',
-};
-
 function localeLabel(loc: string) {
-  return localeLabels[loc] || loc.toUpperCase();
+  return LOCALE_LABELS[loc] || loc.toUpperCase();
+}
+
+function localeShortLabel(loc: string) {
+  return LOCALE_SHORT_LABELS[loc] || loc.toUpperCase();
 }
 
 export function Navbar() {
@@ -111,7 +96,7 @@ export function Navbar() {
                 className="flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-sm text-white/60 transition-colors hover:border-white/30 hover:text-white"
               >
                 <Globe className="h-4 w-4" />
-                {localeLabel(locale)}
+                {localeShortLabel(locale)}
                 <svg className={`h-3 w-3 transition-transform ${langOpen ? 'rotate-180' : ''}`} viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M3 5l3 3 3-3" />
                 </svg>

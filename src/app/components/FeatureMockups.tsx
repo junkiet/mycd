@@ -387,7 +387,10 @@ export function PortfolioMockup() {
                     style={{ background: WALLET_COLORS[c.name] || '#9ca3af' }}
                   />
                   <span className="text-white">
-                    {locale === 'zh' ? c.label.zh : c.label.en}
+                    {/* goapi only ships en/zh for these category names. zt gets
+                        the Simplified string — readable for a Traditional
+                        audience in a way English isn't; pt/kr fall back to en. */}
+                    {locale === 'zh' || locale === 'zt' ? c.label.zh : c.label.en}
                   </span>
                   <span className="ml-auto text-muted-foreground">{c.percent.toFixed(2)}%</span>
                 </div>
