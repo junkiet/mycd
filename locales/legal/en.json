@@ -1,0 +1,398 @@
+{
+  "meta": {
+    "lastUpdated": "Last updated",
+    "onThisPage": "On this page",
+    "questionsTitle": "Questions about this document?",
+    "questionsBody": "Email us at {email} and we will get back to you within two business days."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "How MyCoinDeck collects, uses, shares and protects your personal information across our website, web app and mobile apps.",
+    "intro": [
+      "This Privacy Policy explains how MyCoinDeck (“MyCoinDeck”, “we”, “us” or “our”) collects, uses, shares and protects personal information when you use the MyCoinDeck website at mycoindeck.com, the web app at app.mycoindeck.com, and the MyCoinDeck mobile apps for iOS and Android (together, the “Service”). You can contact us about this Policy at {email}.",
+      "MyCoinDeck is a read-only portfolio tracking and analytics service for crypto traders. We never hold your funds and never ask for withdrawal or trading permissions.",
+      "Where applicable law requires consent for a particular activity, we will request that consent separately. Reading or accepting this Policy does not replace any consent that must be obtained separately."
+    ],
+    "sections": [
+      {
+        "title": "Information we collect",
+        "paragraphs": [
+          "We collect the following categories of information. You provide most of it directly; some is collected automatically when you use the Service."
+        ],
+        "items": [
+          "Account information: your email address, password, display name, avatar, and any bio you choose to add, together with sign-in and verification records such as one-time email codes.",
+          "Exchange API keys: the API key and secret you connect for supported exchanges (Binance, Bybit, OKX and Bitget). Secrets are encrypted at rest. We ask you to create read-only keys; we do not need, and you should never grant, withdrawal or trading permissions.",
+          "Exchange trading data: balances, positions, orders, trade history and profit-and-loss figures retrieved from your exchange accounts through the API keys you connect.",
+          "Content you create: posts, comments, likes, follows, images you upload, reports you submit, and messages you send in the help chat.",
+          "Device and usage data: IP address, device model, operating system and app version, language and time zone, push-notification token and notification preferences, crash and performance diagnostics, and the screens or pages you view.",
+          "Website cookies and analytics: on mycoindeck.com we use cookies and Google Analytics to understand website traffic. This is separate from the diagnostics collected in the mobile apps.",
+          "Support correspondence: the content of emails and chat messages you send us, and the account details needed to answer them."
+        ]
+      },
+      {
+        "title": "How we use your information",
+        "items": [
+          "To provide the Service: display your portfolio, calculate analytics and keep your trading data in sync.",
+          "To power social features: show your profile, posts and, where you choose to share them, your trading statistics to other users.",
+          "To send notifications: push notifications and emails about your account, followers, market events and security.",
+          "To support you: answer questions and resolve problems you report.",
+          "To keep the Service safe: verify sign-ins with one-time email codes, review reports, and detect abuse, fraud and unauthorised access.",
+          "To improve the Service: understand how features are used, fix crashes and develop new functionality.",
+          "To comply with law: meet our legal obligations and enforce our Terms of Service."
+        ],
+        "note": "We do not sell your personal information."
+      },
+      {
+        "title": "Information visible to other users",
+        "paragraphs": [
+          "Your display name, avatar, bio, posts, comments and follower counts are visible to other users of the Service. Trading performance statistics shown on Explore, the Leaderboard and trader profiles are derived from the exchange accounts you connect, according to the applicable visibility settings and the nature of the feature.",
+          "Please only post information you are comfortable making public. Content already viewed or independently saved by other users may remain in their possession after you change its visibility or delete it."
+        ]
+      },
+      {
+        "title": "How we share information",
+        "paragraphs": [
+          "We share personal information only in the following circumstances:"
+        ],
+        "items": [
+          "Exchanges: we call your exchange’s API with the key you connected in order to retrieve your data. Your use of an exchange is governed by that exchange’s own terms and privacy policy.",
+          "Service providers acting on our instructions: cloud hosting and databases (Alibaba Cloud), image and media storage, push-notification delivery (Apple Push Notification service and Google Firebase Cloud Messaging), crash reporting (Sentry), website analytics (Google Analytics), and email delivery.",
+          "Related services: MyCoinDeck and CoinTech2u are related services and share some technical infrastructure. CoinTech2u’s trade-execution and automation services are separate from MyCoinDeck. MyCoinDeck’s read-only connection does not authorise trading through either service. Contact {email} if you have questions about information shared between them.",
+          "Other users: the public profile information and content described above.",
+          "Legal reasons: to comply with applicable law or a valid legal request, or to protect the rights, safety and property of MyCoinDeck, our users or the public.",
+          "Business transfers: if MyCoinDeck is involved in a merger, acquisition or sale of assets, your information may be transferred as part of that transaction, subject to this Policy."
+        ]
+      },
+      {
+        "title": "Retention, deletion and your choices",
+        "paragraphs": [
+          "We keep personal information for as long as needed to provide the Service and for the limited purposes described in this Policy. Retention depends on the type of information, applicable legal requirements and whether it is still needed for the stated purpose.",
+          "You can request permanent deletion of your account in the app under Settings → Privacy → Delete Account, confirmed with a one-time code sent to your email, or by emailing {email}. We may verify your identity. Deletion removes your profile, connected API keys, portfolios, trading history and content from our active systems. Limited records, such as security logs, support correspondence or information needed to meet legal requirements or resolve specific disputes, may be kept only for those purposes, and residual copies in backups are removed as the backups expire.",
+          "You can disconnect an exchange at any time in your profile; we stop syncing immediately and delete the stored API key. You can also revoke the API key directly with the exchange. Disconnecting stops further access through that connection but does not, by itself, delete your account or historical information already stored by MyCoinDeck. Deleting your MyCoinDeck account does not close your exchange account or delete records held independently by the exchange.",
+          "You can also:"
+        ],
+        "items": [
+          "access and update your profile details at any time in the app;",
+          "turn off push notifications in your device settings, and manage email notifications in the app;",
+          "control cookies through your browser settings (blocking cookies may affect parts of the website)."
+        ],
+        "note": "Depending on applicable law, you may have rights to access, correct, delete or receive a copy of your personal information; object to or restrict certain processing; withdraw consent; and complain to the relevant privacy authority. Contact {email} to make a request. We may verify your identity and will respond within applicable legal time limits. Withdrawing consent does not affect processing lawfully carried out before withdrawal."
+      },
+      {
+        "title": "Security",
+        "paragraphs": [
+          "We apply reasonable technical and organisational safeguards to protect personal information. All traffic to the Service is encrypted in transit with HTTPS/TLS, exchange API secrets are encrypted at rest, sign-ins and sensitive actions such as account deletion are confirmed with one-time email codes, and access to production systems is restricted to authorised staff.",
+          "No method of transmission or storage is completely secure. Please use a strong, unique password, create read-only exchange API keys, and enable IP whitelisting on your exchange where it is supported."
+        ]
+      },
+      {
+        "title": "Communications",
+        "paragraphs": [
+          "We send service messages needed to operate your account, such as sign-in codes, security alerts and important service notices. Where we offer optional promotional messages, we obtain any consent required by applicable law. You can unsubscribe using the link in a promotional email or by contacting {email}. Opting out of marketing does not stop necessary account and security messages."
+        ]
+      },
+      {
+        "title": "Device permissions in the mobile apps",
+        "paragraphs": [
+          "When you use a feature that needs device access, the app requests the relevant permission at that time. You can change device permissions in your operating-system settings. Declining an optional permission may limit the related feature."
+        ],
+        "items": [
+          "Camera: to take a profile photo and to scan QR codes.",
+          "Photo library: to choose a profile photo or attach an image to a post.",
+          "Notifications: to deliver push notifications about your account and the traders you follow."
+        ]
+      },
+      {
+        "title": "International processing",
+        "paragraphs": [
+          "Your information may be processed by us and the providers identified in this Policy in countries other than the one you live in, which may have different data-protection laws. Where applicable law requires safeguards for an international transfer, we put appropriate safeguards in place, and where a specific transfer requires consent, we request it separately. Contact {email} for information about the safeguards applicable to your data."
+        ]
+      },
+      {
+        "title": "Minimum age and younger users",
+        "paragraphs": [
+          "MyCoinDeck is intended for users aged 13 and older, subject to any higher minimum age required by applicable law. It is not directed to children under 13, and we do not knowingly collect personal information from children below the applicable minimum age.",
+          "Users who have not reached legal adulthood must have any parent or guardian permission required by applicable law. Where parental consent is required for processing a younger user’s personal information, it must be obtained before that processing takes place. If the required consent cannot be obtained, the Service must not be used.",
+          "If you believe that a child below the applicable minimum age has provided personal information, or that required parental consent is missing, contact {email}. We will investigate and take appropriate steps, including deleting information or restricting the account where required.",
+          "Community posts and shared portfolio information may be visible to others. Younger users should avoid posting contact details, identification documents, account credentials or other sensitive personal information. Eligibility to use MyCoinDeck does not override an exchange’s own age, account-ownership or regional requirements."
+        ]
+      },
+      {
+        "title": "Third-party links and services",
+        "paragraphs": [
+          "The Service contains links to exchanges, news sources and other third-party websites and services. We are not responsible for their content or privacy practices, and this Policy does not apply to them."
+        ]
+      },
+      {
+        "title": "Changes to this Policy",
+        "paragraphs": [
+          "We may update this Privacy Policy as our Service or requirements change. We will publish the revised Policy with its effective date and notify you of material changes through an appropriate channel. Where a change requires additional consent, we will obtain it before carrying out the relevant processing."
+        ]
+      },
+      {
+        "title": "Contact us",
+        "paragraphs": [
+          "MyCoinDeck is responsible for the processing described in this Policy. If you have questions about this Policy or how we handle your information, or want to make a privacy request, email us at {email} or visit our {support} page."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "description": "The agreement that governs your use of the MyCoinDeck website, web app and mobile apps.",
+    "intro": [
+      "These Terms of Service (“Terms”) are a legal agreement between you and MyCoinDeck (“MyCoinDeck”, “we”, “us” or “our”) that governs your use of the MyCoinDeck website at mycoindeck.com, the web app at app.mycoindeck.com, and the MyCoinDeck mobile apps for iOS and Android (together, the “Service”). You can contact us at {email} regarding these Terms or the Service.",
+      "By creating an account, tapping “Agree”, or otherwise using the Service, you accept these Terms. Our {privacy} explains how we handle personal information. If you do not agree to these Terms, do not use the Service."
+    ],
+    "sections": [
+      {
+        "title": "Eligibility and your account",
+        "paragraphs": [
+          "You must be at least 13 years old to use MyCoinDeck. A higher minimum age applies where required by the laws applicable to you. If you have not reached the age of legal adulthood in your jurisdiction, you may use the Service only with any permission from a parent or legal guardian required by applicable law. Where the law requires parental consent for processing your personal information, that consent must be obtained before the relevant processing takes place.",
+          "MyCoinDeck provides informational and community features. Eligibility to use MyCoinDeck does not establish eligibility to open, operate or connect an exchange account. Any connected exchange account must meet that exchange’s minimum-age, authorisation and regional requirements. Do not connect an account unless you are authorised to do so."
+        ],
+        "items": [
+          "You agree to provide accurate registration information and to keep it up to date.",
+          "You are responsible for keeping your password and email inbox secure, and for all activity that happens under your account. Tell us immediately at {email} if you suspect unauthorised access.",
+          "You may not create an account for someone else, share your account, or use the Service if we have previously suspended or terminated you."
+        ]
+      },
+      {
+        "title": "What MyCoinDeck is (and is not)",
+        "paragraphs": [
+          "MyCoinDeck is a read-only portfolio tracking, analytics and social platform for cryptocurrency traders. We retrieve balances, positions and trade history from third-party exchanges you connect (currently Binance, Bybit, OKX and Bitget) using API keys you provide, and we present that data along with analytics, leaderboards and community features.",
+          "MyCoinDeck is not an exchange, broker, custodian, wallet, investment adviser or financial institution. We do not execute trades on your behalf, and we do not provide investment, legal or tax advice.",
+          "Assets associated with a connected exchange account remain with the relevant exchange. MyCoinDeck does not take custody of those assets and cannot move them or execute, modify or cancel trades. Connecting an exchange does not mean that MyCoinDeck guarantees its licensing status, security or availability in your location."
+        ]
+      },
+      {
+        "title": "Exchange API keys",
+        "items": [
+          "You are solely responsible for the API keys you connect and for complying with your exchange’s terms of service.",
+          "Create read-only keys and enable IP whitelisting where your exchange supports it. Never connect a key with trading or withdrawal permissions; we do not need them and will not use them.",
+          "By connecting a key you authorise us to retrieve your balance, position and trade data through it for display and analytics purposes only.",
+          "You can disconnect a key at any time in your profile. We then stop syncing and delete the stored key.",
+          "We are not responsible for exchange outages, API changes, rate limits or inaccurate data supplied by an exchange."
+        ]
+      },
+      {
+        "title": "Not financial advice; risk disclosure",
+        "paragraphs": [
+          "Trading cryptocurrency involves significant risk, including the possible loss of all of your funds. Prices are volatile and markets are unregulated in many jurisdictions.",
+          "Everything shown on the Service, including portfolio analytics, leaderboards, trader profiles, market data and news, is historical or informational and is provided for educational purposes only. It is not investment advice, a recommendation, a signal or a prediction. Past performance of any trader does not guarantee future results. You alone are responsible for your trading decisions."
+        ]
+      },
+      {
+        "title": "News, sources and content rights",
+        "paragraphs": [
+          "MyCoinDeck publishes editorial summaries of publicly available news and information, with attribution and links to relevant sources. Source publishers retain rights in their original material. A source link does not imply that the source endorses MyCoinDeck.",
+          "News, market data and editorial summaries may contain errors or become outdated. They are provided for information and are not investment recommendations. To request a correction or report a copyright concern, contact {email} with the relevant MyCoinDeck link, details of the concern and, where applicable, information identifying the original work and your authority to raise the issue."
+        ]
+      },
+      {
+        "title": "Your content and community rules",
+        "paragraphs": [
+          "You retain ownership of the posts, comments, images and other content you submit (“User Content”). You grant us a non-exclusive permission to host, process and display that content as needed to operate the Service, subject to your visibility settings and our {privacy}. You must have the necessary rights to upload or share it. This permission ends when the content is deleted, except for limited retention described in the Privacy Policy and copies independently saved by others.",
+          "You agree not to post content that:"
+        ],
+        "items": [
+          "is unlawful, fraudulent, defamatory, harassing, threatening or abusive, including hateful abuse targeting any person or group;",
+          "sexually exploits or endangers children in any way;",
+          "is sexually explicit, gratuitously violent, or otherwise prohibited by these community rules;",
+          "promises guaranteed returns, solicits investment, promotes pump-and-dump schemes or other market manipulation, or is otherwise misleading;",
+          "impersonates any person or entity, or discloses someone else’s personal information without permission;",
+          "infringes the intellectual-property or other rights of any third party;",
+          "contains spam, malware or unsolicited advertising."
+        ],
+        "note": "You can report a post or a trader profile in the app using the ••• menu and choosing “Report”. You may also email {email} with the relevant content link, username and a description of the concern. We review reports and take appropriate action, which may include removing content, restricting features, suspending accounts or terminating access, prioritising serious safety concerns. You can contact {email} to ask us to review a moderation decision."
+      },
+      {
+        "title": "Acceptable use",
+        "paragraphs": [
+          "You agree not to:"
+        ],
+        "items": [
+          "scrape, crawl or use automated means to access the Service, or bypass any rate limit or access control;",
+          "reverse-engineer, decompile or attempt to extract the source code of the Service;",
+          "interfere with the security, integrity or availability of the Service, or probe or test its vulnerabilities without our written permission;",
+          "connect API keys that do not belong to you, or use the Service to access data you are not authorised to access;",
+          "use the Service for any unlawful purpose or in violation of any applicable law."
+        ]
+      },
+      {
+        "title": "Privacy",
+        "paragraphs": [
+          "We handle personal information as described in our {privacy} and apply reasonable safeguards to protect it. Your profile, posts, comments and shared portfolio information may be visible to other people according to the applicable visibility settings and the nature of the feature. Information may also be disclosed to service providers, related services and other recipients as explained in the Privacy Policy."
+        ]
+      },
+      {
+        "title": "Related services: CoinTech2u",
+        "paragraphs": [
+          "MyCoinDeck and CoinTech2u are related services. MyCoinDeck itself provides read-only exchange information and community features. Trade execution and trading automation offered through CoinTech2u are separate services, subject to CoinTech2u’s own terms and eligibility requirements. Using MyCoinDeck does not authorise MyCoinDeck to execute trades or transfer assets. Our {privacy} explains the information that may be shared between these services."
+        ]
+      },
+      {
+        "title": "Third-party services and app stores",
+        "paragraphs": [
+          "The Service depends on third-party services, including exchanges, market-data providers, cloud hosting, and the Apple App Store and Google Play. Your use of those services is governed by their own terms. Apple and Google are not parties to these Terms and are not responsible for the Service or for any support, warranty or claim relating to it."
+        ]
+      },
+      {
+        "title": "Intellectual property",
+        "paragraphs": [
+          "The Service, including its software, design, logos, text and data compilations (but excluding User Content and third-party data), is owned by MyCoinDeck and its licensors and is protected by intellectual-property laws. We grant you a limited, personal, non-transferable, revocable licence to use the app and the Service for your own non-commercial purposes in accordance with these Terms. If you send us feedback or suggestions, we may use them without any obligation to you."
+        ]
+      },
+      {
+        "title": "Fees",
+        "paragraphs": [
+          "The Service is currently free to use. We may introduce paid features in the future; if we do, we will tell you the price before you are charged, and any purchase made through an app store will be subject to that store’s terms."
+        ]
+      },
+      {
+        "title": "Availability and changes to the Service",
+        "paragraphs": [
+          "We work hard to keep the Service available, but we do not guarantee that it will be uninterrupted or error-free. Data shown may be delayed, incomplete or inaccurate, for example because of exchange API limits. We may change, suspend or discontinue any part of the Service at any time. Where reasonably possible we will give you advance notice of material changes."
+        ]
+      },
+      {
+        "title": "Disclaimer of warranties",
+        "paragraphs": [
+          "The Service is provided “as is” and “as available” without warranties of any kind, whether express or implied, including implied warranties of merchantability, fitness for a particular purpose, accuracy and non-infringement. We do not warrant that the Service will meet your requirements or that any data will be accurate or complete."
+        ]
+      },
+      {
+        "title": "Limitation of liability",
+        "paragraphs": [
+          "To the maximum extent permitted by law, MyCoinDeck and its officers, employees and partners will not be liable for any indirect, incidental, special, consequential or punitive damages, or for any loss of profits, trading losses, loss of data or loss of goodwill, arising out of or relating to your use of the Service, even if we have been advised of the possibility of such damages. Our total liability for any claim relating to the Service will not exceed the greater of the amount you paid us in the twelve months before the claim or USD 100.",
+          "These limitations apply only to the extent permitted by applicable law. Nothing in these Terms excludes or limits liability, rights or remedies that cannot lawfully be excluded or limited."
+        ]
+      },
+      {
+        "title": "Indemnification",
+        "paragraphs": [
+          "To the extent permitted by applicable law, you agree to indemnify and hold harmless MyCoinDeck from any claims, damages, losses and expenses (including reasonable legal fees) arising out of your User Content, your use of the Service, the exchange API keys you connect, or your breach of these Terms."
+        ]
+      },
+      {
+        "title": "Termination and account deletion",
+        "paragraphs": [
+          "You may stop using MyCoinDeck at any time. Uninstalling the app or disconnecting an exchange does not, by itself, delete your MyCoinDeck account or all previously stored information. You can also revoke the relevant API key directly with the exchange.",
+          "To permanently delete your MyCoinDeck account, go to Settings → Privacy → Delete Account in the app and confirm with the one-time code sent to your email. If you cannot access your account or need assistance, contact {email}. We may verify your identity before processing a request. Our {privacy} explains which information is deleted, any limited information retained, and how long it is kept. Deleting MyCoinDeck does not close your exchange account.",
+          "We may suspend or terminate your access if you breach these Terms, create risk or legal exposure for us, or if required by law. Sections that by their nature should survive termination (including intellectual property, disclaimers, limitation of liability and indemnification) will survive."
+        ]
+      },
+      {
+        "title": "Governing law and disputes",
+        "paragraphs": [
+          "These Terms are governed by the laws of the jurisdiction in which MyCoinDeck is operated, without regard to conflict-of-law rules. If you have a dispute with us, please contact us first at {email}; most concerns can be resolved quickly and informally. Any dispute that cannot be resolved informally will be brought in the competent courts of that jurisdiction, unless applicable consumer-protection law gives you the right to bring it elsewhere."
+        ]
+      },
+      {
+        "title": "Changes to these Terms",
+        "paragraphs": [
+          "We may update these Terms as the Service or applicable requirements change. We will publish the updated Terms with their effective date and provide notice of material changes through the app, email or another appropriate channel. Where consent or renewed acceptance is required, we will obtain it before applying the relevant change. Changes do not remove rights you already have under applicable law."
+        ]
+      },
+      {
+        "title": "Contact",
+        "paragraphs": [
+          "Questions about these Terms? Email {email} or visit our {support} page."
+        ]
+      }
+    ]
+  },
+  "support": {
+    "title": "Support",
+    "description": "Contact the MyCoinDeck support team, browse frequently asked questions, and manage your account and data.",
+    "heading": "How can we help?",
+    "intro": "Our team is here to help with your MyCoinDeck account, exchange connections and the mobile app. Pick the channel that suits you best.",
+    "channels": {
+      "email": {
+        "title": "Email support",
+        "body": "Write to us with your question and we will reply within two business days.",
+        "cta": "support@mycoindeck.com"
+      },
+      "help": {
+        "title": "In-app Help Center",
+        "body": "Chat with our assistant inside the app for instant answers, or ask for a human agent and our team will take over.",
+        "cta": "Open Help Center"
+      },
+      "security": {
+        "title": "Report a security issue",
+        "body": "Found a vulnerability or suspect your account was compromised? Email us with “Security” in the subject line and we will prioritise it.",
+        "cta": "Report an issue"
+      }
+    },
+    "tips": {
+      "title": "Help us help you faster",
+      "intro": "When you contact us, please include:",
+      "items": [
+        "the email address on your MyCoinDeck account;",
+        "your device, operating system and app version;",
+        "the exchange involved, if your question is about a connection;",
+        "screenshots or a short description of what you expected to happen."
+      ],
+      "note": "Never send us your password or exchange API secret. We will never ask for them."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "What is MyCoinDeck?",
+          "a": "MyCoinDeck is a portfolio tracking and analytics platform for crypto traders. Connect your exchange accounts to see your balances, positions, trade history and performance in one place, follow other traders, and share your own progress."
+        },
+        {
+          "q": "Which exchanges are supported?",
+          "a": "We currently support Binance, Bybit, OKX and Bitget. More exchanges are on the way."
+        },
+        {
+          "q": "How do I connect an exchange?",
+          "a": "Open your profile, tap “Connect API”, and paste the API key and secret from your exchange. Create the key with read-only permissions and, where possible, restrict it to our IP addresses. We never need trading or withdrawal permissions."
+        },
+        {
+          "q": "Is my API key safe?",
+          "a": "Yes. Secrets are encrypted at rest and only used to read your data. Because we ask for read-only keys, nobody can trade or withdraw with them, even in the worst case. You can disconnect a key at any time and we delete it immediately."
+        },
+        {
+          "q": "My data looks wrong or out of date. What should I do?",
+          "a": "Pull down to refresh first. Exchanges apply API rate limits, so a sync can take a few minutes. If the figures are still off after an hour, email us with the exchange, the trading pair and a screenshot and we will investigate."
+        },
+        {
+          "q": "How do I delete my account?",
+          "a": "In the app go to Settings → Privacy → Delete Account, confirm the warning and enter the one-time code we email you. Your account, connected API keys, portfolios and content are deleted permanently. You can also email {email} to request deletion."
+        },
+        {
+          "q": "How do I get a copy of my data?",
+          "a": "Email {email} from the address on your account and ask for a data export. We will send it to you within 30 days."
+        },
+        {
+          "q": "How do I reach a real person?",
+          "a": "Email us any time, or in the in-app Help chat ask to talk to a human and a support agent will take over the conversation."
+        }
+      ]
+    },
+    "account": {
+      "title": "Your account and data",
+      "items": [
+        {
+          "title": "Delete your account",
+          "body": "Settings → Privacy → Delete Account in the app. Confirmed with a code sent to your email, and permanent once completed."
+        },
+        {
+          "title": "Disconnect an exchange",
+          "body": "Open the exchange in your profile and remove the API key. Syncing stops immediately and the key is deleted."
+        },
+        {
+          "title": "Request or correct your data",
+          "body": "Email {email} from your account address to request an export or a correction of your personal information."
+        }
+      ]
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  }
+}

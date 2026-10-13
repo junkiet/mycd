@@ -1,0 +1,398 @@
+{
+  "meta": {
+    "lastUpdated": "Última atualização",
+    "onThisPage": "Nesta página",
+    "questionsTitle": "Dúvidas sobre este documento?",
+    "questionsBody": "Escreva para {email} e responderemos em até dois dias úteis."
+  },
+  "privacy": {
+    "title": "Política de Privacidade",
+    "description": "Como a MyCoinDeck coleta, usa, compartilha e protege suas informações pessoais no site, no app web e nos aplicativos móveis.",
+    "intro": [
+      "Esta Política de Privacidade explica como a MyCoinDeck (“MyCoinDeck”, “nós” ou “nosso”) coleta, usa, compartilha e protege informações pessoais quando você utiliza o site da MyCoinDeck em mycoindeck.com, o app web em app.mycoindeck.com e os aplicativos móveis MyCoinDeck para iOS e Android (em conjunto, o “Serviço”). Você pode entrar em contato conosco sobre esta Política pelo {email}.",
+      "A MyCoinDeck é um serviço somente leitura de acompanhamento e análise de portfólio para traders de criptomoedas. Nunca custodiamos seus fundos e nunca pedimos permissões de saque ou negociação.",
+      "Quando a lei aplicável exigir consentimento para uma determinada atividade, solicitaremos esse consentimento separadamente. Ler ou aceitar esta Política não substitui nenhum consentimento que deva ser obtido separadamente."
+    ],
+    "sections": [
+      {
+        "title": "Informações que coletamos",
+        "paragraphs": [
+          "Coletamos as seguintes categorias de informações. A maior parte é fornecida diretamente por você; parte é coletada automaticamente quando você usa o Serviço."
+        ],
+        "items": [
+          "Informações da conta: seu endereço de e-mail, senha, nome de exibição, avatar e a biografia que você optar por adicionar, juntamente com registros de login e verificação, como códigos de uso único enviados por e-mail.",
+          "Chaves de API de corretoras: a API key e o secret que você conecta para as corretoras suportadas (Binance, Bybit, OKX e Bitget). Os secrets são criptografados em repouso. Pedimos que você crie chaves somente leitura; não precisamos, e você nunca deve conceder, permissões de saque ou negociação.",
+          "Dados de negociação das corretoras: saldos, posições, ordens, histórico de operações e resultados de lucro e prejuízo obtidos das suas contas nas corretoras por meio das chaves de API que você conecta.",
+          "Conteúdo que você cria: publicações, comentários, curtidas, seguidores, imagens enviadas, denúncias que você faz e mensagens que você envia no chat de ajuda.",
+          "Dados de dispositivo e uso: endereço IP, modelo do dispositivo, sistema operacional e versão do app, idioma e fuso horário, token de notificações push e preferências de notificação, diagnósticos de falhas e desempenho, e as telas ou páginas que você visualiza.",
+          "Cookies e análises do site: em mycoindeck.com usamos cookies e o Google Analytics para entender o tráfego do site. Isso é separado dos diagnósticos coletados nos aplicativos móveis.",
+          "Correspondência de suporte: o conteúdo dos e-mails e mensagens de chat que você nos envia e os dados da conta necessários para respondê-los."
+        ]
+      },
+      {
+        "title": "Como usamos suas informações",
+        "items": [
+          "Para fornecer o Serviço: exibir seu portfólio, calcular análises e manter seus dados de negociação sincronizados.",
+          "Para os recursos sociais: mostrar seu perfil, suas publicações e, quando você optar por compartilhá-las, suas estatísticas de negociação a outros usuários.",
+          "Para enviar notificações: notificações push e e-mails sobre sua conta, seguidores, eventos de mercado e segurança.",
+          "Para dar suporte: responder a perguntas e resolver problemas que você relatar.",
+          "Para manter o Serviço seguro: verificar logins com códigos de uso único por e-mail, analisar denúncias e detectar abuso, fraude e acesso não autorizado.",
+          "Para melhorar o Serviço: entender como os recursos são usados, corrigir falhas e desenvolver novas funcionalidades.",
+          "Para cumprir a lei: atender às nossas obrigações legais e fazer cumprir nossos Termos de Serviço."
+        ],
+        "note": "Não vendemos suas informações pessoais."
+      },
+      {
+        "title": "Informações visíveis a outros usuários",
+        "paragraphs": [
+          "Seu nome de exibição, avatar, biografia, publicações, comentários e número de seguidores são visíveis a outros usuários do Serviço. As estatísticas de desempenho de negociação exibidas em Explorar, no Ranking e nos perfis de traders são derivadas das contas de corretora que você conecta, de acordo com as configurações de visibilidade aplicáveis e a natureza do recurso.",
+          "Publique apenas informações que você se sinta confortável em tornar públicas. Conteúdo já visualizado ou salvo de forma independente por outros usuários pode continuar em posse deles depois que você alterar sua visibilidade ou excluí-lo."
+        ]
+      },
+      {
+        "title": "Como compartilhamos informações",
+        "paragraphs": [
+          "Compartilhamos informações pessoais apenas nas seguintes situações:"
+        ],
+        "items": [
+          "Corretoras: chamamos a API da sua corretora com a chave que você conectou para obter seus dados. O uso de uma corretora é regido pelos termos e pela política de privacidade da própria corretora.",
+          "Prestadores de serviço que atuam sob nossas instruções: hospedagem em nuvem e bancos de dados (Alibaba Cloud), armazenamento de imagens e mídia, entrega de notificações push (Apple Push Notification service e Google Firebase Cloud Messaging), relatórios de falhas (Sentry), análise do site (Google Analytics) e envio de e-mails.",
+          "Serviços relacionados: MyCoinDeck e CoinTech2u são serviços relacionados e compartilham parte da infraestrutura técnica. Os serviços de execução de operações e automação da CoinTech2u são separados da MyCoinDeck. A conexão somente leitura da MyCoinDeck não autoriza negociação por meio de nenhum dos dois serviços. Escreva para {email} se tiver dúvidas sobre as informações compartilhadas entre eles.",
+          "Outros usuários: as informações públicas de perfil e o conteúdo descritos acima.",
+          "Motivos legais: para cumprir a lei aplicável ou uma solicitação legal válida, ou para proteger os direitos, a segurança e a propriedade da MyCoinDeck, de nossos usuários ou do público.",
+          "Transferências de negócios: se a MyCoinDeck participar de uma fusão, aquisição ou venda de ativos, suas informações poderão ser transferidas como parte dessa transação, sujeitas a esta Política."
+        ]
+      },
+      {
+        "title": "Retenção, exclusão e suas escolhas",
+        "paragraphs": [
+          "Mantemos informações pessoais pelo tempo necessário para fornecer o Serviço e para as finalidades limitadas descritas nesta Política. A retenção depende do tipo de informação, dos requisitos legais aplicáveis e de a informação ainda ser necessária para a finalidade declarada.",
+          "Você pode solicitar a exclusão permanente da sua conta no app em Configurações → Privacidade → Excluir Conta, confirmando com um código de uso único enviado ao seu e-mail, ou escrevendo para {email}. Podemos verificar sua identidade. A exclusão remove seu perfil, chaves de API conectadas, portfólios, histórico de negociação e conteúdo dos nossos sistemas ativos. Registros limitados, como logs de segurança, correspondência de suporte ou informações necessárias para cumprir requisitos legais ou resolver disputas específicas, podem ser mantidos apenas para essas finalidades, e cópias residuais em backups são removidas à medida que os backups expiram.",
+          "Você pode desconectar uma corretora a qualquer momento no seu perfil; paramos a sincronização imediatamente e excluímos a chave de API armazenada. Você também pode revogar a chave de API diretamente na corretora. A desconexão interrompe o acesso adicional por meio dessa conexão, mas não exclui, por si só, sua conta nem as informações históricas já armazenadas pela MyCoinDeck. Excluir sua conta MyCoinDeck não encerra sua conta na corretora nem exclui registros mantidos de forma independente pela corretora.",
+          "Você também pode:"
+        ],
+        "items": [
+          "acessar e atualizar os dados do seu perfil a qualquer momento no app;",
+          "desativar as notificações push nas configurações do dispositivo e gerenciar as notificações por e-mail no app;",
+          "controlar cookies nas configurações do navegador (bloquear cookies pode afetar partes do site)."
+        ],
+        "note": "Dependendo da lei aplicável, você pode ter o direito de acessar, corrigir, excluir ou receber uma cópia das suas informações pessoais; de se opor a determinados tratamentos ou restringi-los; de retirar o consentimento; e de apresentar reclamação à autoridade de proteção de dados competente. Escreva para {email} para fazer uma solicitação. Podemos verificar sua identidade e responderemos dentro dos prazos legais aplicáveis. A retirada do consentimento não afeta o tratamento realizado licitamente antes da retirada."
+      },
+      {
+        "title": "Segurança",
+        "paragraphs": [
+          "Aplicamos salvaguardas técnicas e organizacionais razoáveis para proteger informações pessoais. Todo o tráfego para o Serviço é criptografado em trânsito com HTTPS/TLS, os secrets de API das corretoras são criptografados em repouso, logins e ações sensíveis, como a exclusão da conta, são confirmados com códigos de uso único por e-mail, e o acesso aos sistemas de produção é restrito a pessoal autorizado.",
+          "Nenhum método de transmissão ou armazenamento é totalmente seguro. Use uma senha forte e exclusiva, crie chaves de API somente leitura e ative a lista de IPs permitidos na sua corretora quando houver suporte."
+        ]
+      },
+      {
+        "title": "Comunicações",
+        "paragraphs": [
+          "Enviamos as mensagens de serviço necessárias para operar sua conta, como códigos de login, alertas de segurança e avisos importantes sobre o serviço. Quando oferecermos mensagens promocionais opcionais, obteremos qualquer consentimento exigido pela lei aplicável. Você pode cancelar a inscrição usando o link em um e-mail promocional ou entrando em contato pelo {email}. Optar por não receber marketing não interrompe as mensagens necessárias de conta e segurança."
+        ]
+      },
+      {
+        "title": "Permissões do dispositivo nos aplicativos móveis",
+        "paragraphs": [
+          "Quando você usa um recurso que precisa de acesso ao dispositivo, o app solicita a permissão correspondente naquele momento. Você pode alterar as permissões do dispositivo nas configurações do sistema operacional. Recusar uma permissão opcional pode limitar o recurso relacionado."
+        ],
+        "items": [
+          "Câmera: para tirar uma foto de perfil e ler códigos QR.",
+          "Biblioteca de fotos: para escolher uma foto de perfil ou anexar uma imagem a uma publicação.",
+          "Notificações: para entregar notificações push sobre sua conta e os traders que você segue."
+        ]
+      },
+      {
+        "title": "Tratamento internacional",
+        "paragraphs": [
+          "Suas informações podem ser tratadas por nós e pelos provedores identificados nesta Política em países diferentes daquele em que você mora, que podem ter leis de proteção de dados diferentes. Quando a lei aplicável exigir salvaguardas para uma transferência internacional, adotaremos salvaguardas adequadas e, quando uma transferência específica exigir consentimento, nós o solicitaremos separadamente. Escreva para {email} para obter informações sobre as salvaguardas aplicáveis aos seus dados."
+        ]
+      },
+      {
+        "title": "Idade mínima e usuários mais jovens",
+        "paragraphs": [
+          "A MyCoinDeck destina-se a usuários com 13 anos ou mais, sujeito a qualquer idade mínima superior exigida pela lei aplicável. Ela não é direcionada a crianças menores de 13 anos, e não coletamos intencionalmente informações pessoais de crianças abaixo da idade mínima aplicável.",
+          "Usuários que ainda não atingiram a maioridade devem ter qualquer permissão dos pais ou responsáveis exigida pela lei aplicável. Quando o consentimento dos pais for exigido para o tratamento das informações pessoais de um usuário mais jovem, ele deverá ser obtido antes que esse tratamento ocorra. Se o consentimento exigido não puder ser obtido, o Serviço não deve ser usado.",
+          "Se você acredita que uma criança abaixo da idade mínima aplicável forneceu informações pessoais, ou que falta o consentimento dos pais exigido, entre em contato pelo {email}. Investigaremos e tomaremos as medidas adequadas, incluindo excluir informações ou restringir a conta quando necessário.",
+          "Publicações na comunidade e informações de portfólio compartilhadas podem ser visíveis a outras pessoas. Usuários mais jovens devem evitar publicar dados de contato, documentos de identificação, credenciais de conta ou outras informações pessoais sensíveis. A elegibilidade para usar a MyCoinDeck não se sobrepõe aos requisitos próprios de uma corretora quanto a idade, titularidade da conta ou região."
+        ]
+      },
+      {
+        "title": "Links e serviços de terceiros",
+        "paragraphs": [
+          "O Serviço contém links para corretoras, fontes de notícias e outros sites e serviços de terceiros. Não somos responsáveis pelo conteúdo ou pelas práticas de privacidade deles, e esta Política não se aplica a eles."
+        ]
+      },
+      {
+        "title": "Alterações nesta Política",
+        "paragraphs": [
+          "Podemos atualizar esta Política de Privacidade à medida que nosso Serviço ou os requisitos mudarem. Publicaremos a Política revisada com sua data de vigência e avisaremos você sobre alterações relevantes por um canal adequado. Quando uma alteração exigir consentimento adicional, nós o obteremos antes de realizar o tratamento correspondente."
+        ]
+      },
+      {
+        "title": "Fale conosco",
+        "paragraphs": [
+          "A MyCoinDeck é responsável pelo tratamento descrito nesta Política. Se tiver dúvidas sobre esta Política ou sobre como tratamos suas informações, ou quiser fazer uma solicitação de privacidade, escreva para {email} ou visite nossa página de {support}."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Termos de Serviço",
+    "description": "O acordo que rege o uso do site, do app web e dos aplicativos móveis da MyCoinDeck.",
+    "intro": [
+      "Estes Termos de Serviço (“Termos”) são um acordo legal entre você e a MyCoinDeck (“MyCoinDeck”, “nós” ou “nosso”) que rege o uso do site da MyCoinDeck em mycoindeck.com, do app web em app.mycoindeck.com e dos aplicativos móveis MyCoinDeck para iOS e Android (em conjunto, o “Serviço”). Você pode entrar em contato conosco pelo {email} sobre estes Termos ou o Serviço.",
+      "Ao criar uma conta, tocar em “Concordo” ou usar o Serviço de qualquer outra forma, você aceita estes Termos. Nossa {privacy} explica como tratamos informações pessoais. Se não concordar com estes Termos, não utilize o Serviço."
+    ],
+    "sections": [
+      {
+        "title": "Elegibilidade e sua conta",
+        "paragraphs": [
+          "Você deve ter pelo menos 13 anos para usar a MyCoinDeck. Aplica-se uma idade mínima superior quando exigida pelas leis aplicáveis a você. Se você ainda não atingiu a maioridade na sua jurisdição, só poderá usar o Serviço com qualquer permissão dos pais ou do responsável legal exigida pela lei aplicável. Quando a lei exigir o consentimento dos pais para o tratamento das suas informações pessoais, esse consentimento deverá ser obtido antes que o tratamento correspondente ocorra.",
+          "A MyCoinDeck oferece recursos informativos e de comunidade. A elegibilidade para usar a MyCoinDeck não estabelece elegibilidade para abrir, operar ou conectar uma conta em corretora. Qualquer conta de corretora conectada deve atender aos requisitos de idade mínima, autorização e região dessa corretora. Não conecte uma conta a menos que você esteja autorizado a fazê-lo."
+        ],
+        "items": [
+          "Você concorda em fornecer informações de cadastro precisas e mantê-las atualizadas.",
+          "Você é responsável por manter sua senha e sua caixa de e-mail seguras e por toda atividade que ocorra na sua conta. Avise-nos imediatamente pelo {email} se suspeitar de acesso não autorizado.",
+          "Você não pode criar uma conta para outra pessoa, compartilhar sua conta nem usar o Serviço se já tivermos suspendido ou encerrado seu acesso."
+        ]
+      },
+      {
+        "title": "O que a MyCoinDeck é (e o que não é)",
+        "paragraphs": [
+          "A MyCoinDeck é uma plataforma somente leitura de acompanhamento de portfólio, análise e comunidade para traders de criptomoedas. Obtemos saldos, posições e histórico de operações das corretoras de terceiros que você conecta (atualmente Binance, Bybit, OKX e Bitget) usando as chaves de API que você fornece, e apresentamos esses dados junto com análises, rankings e recursos de comunidade.",
+          "A MyCoinDeck não é corretora, intermediária, custodiante, carteira, consultora de investimentos nem instituição financeira. Não executamos operações em seu nome e não prestamos consultoria de investimento, jurídica ou tributária.",
+          "Os ativos associados a uma conta de corretora conectada permanecem na respectiva corretora. A MyCoinDeck não assume a custódia desses ativos e não pode movimentá-los nem executar, modificar ou cancelar operações. Conectar uma corretora não significa que a MyCoinDeck garanta a situação de licenciamento, a segurança ou a disponibilidade dessa corretora na sua localidade."
+        ]
+      },
+      {
+        "title": "Chaves de API de corretoras",
+        "items": [
+          "Você é o único responsável pelas chaves de API que conecta e por cumprir os termos de serviço da sua corretora.",
+          "Crie chaves somente leitura e ative a lista de IPs permitidos quando a corretora oferecer suporte. Nunca conecte uma chave com permissões de negociação ou saque; não precisamos delas e não as usaremos.",
+          "Ao conectar uma chave, você nos autoriza a obter por meio dela seus dados de saldo, posições e operações, exclusivamente para fins de exibição e análise.",
+          "Você pode desconectar uma chave a qualquer momento no seu perfil. Em seguida, paramos a sincronização e excluímos a chave armazenada.",
+          "Não somos responsáveis por indisponibilidade das corretoras, mudanças de API, limites de requisição ou dados incorretos fornecidos por uma corretora."
+        ]
+      },
+      {
+        "title": "Não é consultoria financeira; aviso de risco",
+        "paragraphs": [
+          "Negociar criptomoedas envolve risco significativo, incluindo a possível perda de todos os seus fundos. Os preços são voláteis e os mercados não são regulados em muitas jurisdições.",
+          "Tudo o que é exibido no Serviço, incluindo análises de portfólio, rankings, perfis de traders, dados de mercado e notícias, é histórico ou informativo e fornecido apenas para fins educacionais. Não constitui consultoria de investimento, recomendação, sinal ou previsão. O desempenho passado de qualquer trader não garante resultados futuros. Você é o único responsável pelas suas decisões de negociação."
+        ]
+      },
+      {
+        "title": "Notícias, fontes e direitos sobre o conteúdo",
+        "paragraphs": [
+          "A MyCoinDeck publica resumos editoriais de notícias e informações publicamente disponíveis, com atribuição e links para as fontes relevantes. Os editores das fontes mantêm seus direitos sobre o material original. Um link para a fonte não implica que a fonte endosse a MyCoinDeck.",
+          "Notícias, dados de mercado e resumos editoriais podem conter erros ou ficar desatualizados. Eles são fornecidos a título informativo e não são recomendações de investimento. Para solicitar uma correção ou relatar uma questão de direitos autorais, escreva para {email} com o link relevante da MyCoinDeck, os detalhes da questão e, quando aplicável, informações que identifiquem a obra original e sua legitimidade para levantar a questão."
+        ]
+      },
+      {
+        "title": "Seu conteúdo e regras da comunidade",
+        "paragraphs": [
+          "Você mantém a propriedade das publicações, comentários, imagens e outros conteúdos que envia (“Conteúdo do Usuário”). Você nos concede uma permissão não exclusiva para hospedar, processar e exibir esse conteúdo conforme necessário para operar o Serviço, sujeita às suas configurações de visibilidade e à nossa {privacy}. Você deve ter os direitos necessários para enviá-lo ou compartilhá-lo. Essa permissão termina quando o conteúdo é excluído, exceto quanto à retenção limitada descrita na Política de Privacidade e às cópias salvas de forma independente por outras pessoas.",
+          "Você concorda em não publicar conteúdo que:"
+        ],
+        "items": [
+          "seja ilegal, fraudulento, difamatório, assediador, ameaçador ou abusivo, incluindo ataques de ódio dirigidos a qualquer pessoa ou grupo;",
+          "explore sexualmente ou coloque em perigo crianças de qualquer forma;",
+          "seja sexualmente explícito, gratuitamente violento ou de outra forma proibido por estas regras da comunidade;",
+          "prometa retornos garantidos, solicite investimentos, promova esquemas de pump-and-dump ou outra manipulação de mercado, ou seja enganoso de qualquer outra forma;",
+          "se passe por qualquer pessoa ou entidade, ou divulgue informações pessoais de terceiros sem permissão;",
+          "viole direitos de propriedade intelectual ou outros direitos de terceiros;",
+          "contenha spam, malware ou publicidade não solicitada."
+        ],
+        "note": "Você pode denunciar uma publicação ou um perfil de trader no app usando o menu ••• e escolhendo “Denunciar”. Você também pode escrever para {email} com o link do conteúdo relevante, o nome de usuário e uma descrição do problema. Analisamos as denúncias e tomamos as medidas adequadas, que podem incluir remover conteúdo, restringir recursos, suspender contas ou encerrar o acesso, dando prioridade a questões graves de segurança. Você pode escrever para {email} para nos pedir que revisemos uma decisão de moderação."
+      },
+      {
+        "title": "Uso aceitável",
+        "paragraphs": [
+          "Você concorda em não:"
+        ],
+        "items": [
+          "raspar, rastrear ou usar meios automatizados para acessar o Serviço, nem contornar limites de requisição ou controles de acesso;",
+          "fazer engenharia reversa, descompilar ou tentar extrair o código-fonte do Serviço;",
+          "interferir na segurança, integridade ou disponibilidade do Serviço, nem sondar ou testar suas vulnerabilidades sem nossa permissão por escrito;",
+          "conectar chaves de API que não pertencem a você, nem usar o Serviço para acessar dados aos quais não está autorizado;",
+          "usar o Serviço para qualquer finalidade ilegal ou em violação de qualquer lei aplicável."
+        ]
+      },
+      {
+        "title": "Privacidade",
+        "paragraphs": [
+          "Tratamos informações pessoais conforme descrito em nossa {privacy} e aplicamos salvaguardas razoáveis para protegê-las. Seu perfil, publicações, comentários e informações de portfólio compartilhadas podem ser visíveis a outras pessoas de acordo com as configurações de visibilidade aplicáveis e a natureza do recurso. As informações também podem ser divulgadas a prestadores de serviço, serviços relacionados e outros destinatários, conforme explicado na Política de Privacidade."
+        ]
+      },
+      {
+        "title": "Serviços relacionados: CoinTech2u",
+        "paragraphs": [
+          "MyCoinDeck e CoinTech2u são serviços relacionados. A MyCoinDeck em si fornece informações de corretoras em modo somente leitura e recursos de comunidade. A execução de operações e a automação de negociação oferecidas por meio da CoinTech2u são serviços separados, sujeitos aos termos e requisitos de elegibilidade próprios da CoinTech2u. Usar a MyCoinDeck não autoriza a MyCoinDeck a executar operações ou transferir ativos. Nossa {privacy} explica quais informações podem ser compartilhadas entre esses serviços."
+        ]
+      },
+      {
+        "title": "Serviços de terceiros e lojas de aplicativos",
+        "paragraphs": [
+          "O Serviço depende de serviços de terceiros, incluindo corretoras, provedores de dados de mercado, hospedagem em nuvem, a Apple App Store e o Google Play. O uso desses serviços é regido pelos termos deles. A Apple e o Google não são partes destes Termos e não são responsáveis pelo Serviço nem por qualquer suporte, garantia ou reclamação relacionados a ele."
+        ]
+      },
+      {
+        "title": "Propriedade intelectual",
+        "paragraphs": [
+          "O Serviço, incluindo seu software, design, logotipos, textos e compilações de dados (mas excluindo o Conteúdo do Usuário e dados de terceiros), pertence à MyCoinDeck e a seus licenciantes e é protegido pelas leis de propriedade intelectual. Concedemos a você uma licença limitada, pessoal, intransferível e revogável para usar o app e o Serviço para seus próprios fins não comerciais, de acordo com estes Termos. Se você nos enviar feedback ou sugestões, poderemos usá-los sem qualquer obrigação para com você."
+        ]
+      },
+      {
+        "title": "Taxas",
+        "paragraphs": [
+          "Atualmente o Serviço é gratuito. Podemos introduzir recursos pagos no futuro; se isso acontecer, informaremos o preço antes de qualquer cobrança, e qualquer compra feita por meio de uma loja de aplicativos estará sujeita aos termos daquela loja."
+        ]
+      },
+      {
+        "title": "Disponibilidade e alterações no Serviço",
+        "paragraphs": [
+          "Trabalhamos para manter o Serviço disponível, mas não garantimos que ele será ininterrupto ou livre de erros. Os dados exibidos podem estar atrasados, incompletos ou incorretos, por exemplo devido a limites de API das corretoras. Podemos alterar, suspender ou descontinuar qualquer parte do Serviço a qualquer momento. Sempre que razoavelmente possível, avisaremos com antecedência sobre alterações relevantes."
+        ]
+      },
+      {
+        "title": "Isenção de garantias",
+        "paragraphs": [
+          "O Serviço é fornecido “no estado em que se encontra” e “conforme disponível”, sem garantias de qualquer tipo, expressas ou implícitas, incluindo garantias implícitas de comercialização, adequação a uma finalidade específica, precisão e não violação. Não garantimos que o Serviço atenderá às suas necessidades nem que qualquer dado será preciso ou completo."
+        ]
+      },
+      {
+        "title": "Limitação de responsabilidade",
+        "paragraphs": [
+          "Na máxima extensão permitida por lei, a MyCoinDeck e seus diretores, funcionários e parceiros não serão responsáveis por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, nem por lucros cessantes, perdas de negociação, perda de dados ou perda de reputação, decorrentes do seu uso do Serviço ou relacionados a ele, mesmo que tenhamos sido avisados da possibilidade de tais danos. Nossa responsabilidade total por qualquer reclamação relacionada ao Serviço não excederá o maior valor entre o que você nos pagou nos doze meses anteriores à reclamação e USD 100.",
+          "Essas limitações se aplicam somente na medida permitida pela lei aplicável. Nada nestes Termos exclui ou limita responsabilidades, direitos ou recursos que não possam ser legalmente excluídos ou limitados."
+        ]
+      },
+      {
+        "title": "Indenização",
+        "paragraphs": [
+          "Na medida permitida pela lei aplicável, você concorda em indenizar e isentar a MyCoinDeck de quaisquer reclamações, danos, perdas e despesas (incluindo honorários advocatícios razoáveis) decorrentes do seu Conteúdo do Usuário, do seu uso do Serviço, das chaves de API de corretoras que você conecta ou da sua violação destes Termos."
+        ]
+      },
+      {
+        "title": "Encerramento e exclusão da conta",
+        "paragraphs": [
+          "Você pode parar de usar a MyCoinDeck a qualquer momento. Desinstalar o app ou desconectar uma corretora não exclui, por si só, sua conta MyCoinDeck nem todas as informações armazenadas anteriormente. Você também pode revogar a chave de API correspondente diretamente na corretora.",
+          "Para excluir permanentemente sua conta MyCoinDeck, acesse Configurações → Privacidade → Excluir Conta no app e confirme com o código de uso único enviado ao seu e-mail. Se não conseguir acessar sua conta ou precisar de ajuda, escreva para {email}. Podemos verificar sua identidade antes de processar uma solicitação. Nossa {privacy} explica quais informações são excluídas, quaisquer informações limitadas que sejam mantidas e por quanto tempo são mantidas. Excluir a MyCoinDeck não encerra sua conta na corretora.",
+          "Podemos suspender ou encerrar seu acesso se você violar estes Termos, criar risco ou exposição legal para nós, ou se a lei exigir. As seções que, por sua natureza, devam sobreviver ao encerramento (incluindo propriedade intelectual, isenções, limitação de responsabilidade e indenização) continuarão em vigor."
+        ]
+      },
+      {
+        "title": "Lei aplicável e disputas",
+        "paragraphs": [
+          "Estes Termos são regidos pelas leis da jurisdição em que a MyCoinDeck é operada, sem considerar regras de conflito de leis. Se tiver uma disputa conosco, entre em contato primeiro pelo {email}; a maioria das questões pode ser resolvida de forma rápida e informal. Qualquer disputa que não possa ser resolvida informalmente será levada aos tribunais competentes dessa jurisdição, salvo se a lei de proteção ao consumidor aplicável lhe der o direito de propô-la em outro lugar."
+        ]
+      },
+      {
+        "title": "Alterações nestes Termos",
+        "paragraphs": [
+          "Podemos atualizar estes Termos à medida que o Serviço ou os requisitos aplicáveis mudarem. Publicaremos os Termos atualizados com sua data de vigência e avisaremos sobre alterações relevantes pelo app, por e-mail ou por outro canal adequado. Quando for exigido consentimento ou nova aceitação, nós o obteremos antes de aplicar a alteração correspondente. As alterações não retiram direitos que você já tenha nos termos da lei aplicável."
+        ]
+      },
+      {
+        "title": "Contato",
+        "paragraphs": [
+          "Dúvidas sobre estes Termos? Escreva para {email} ou visite nossa página de {support}."
+        ]
+      }
+    ]
+  },
+  "support": {
+    "title": "Suporte",
+    "description": "Fale com a equipe de suporte da MyCoinDeck, consulte as perguntas frequentes e gerencie sua conta e seus dados.",
+    "heading": "Como podemos ajudar?",
+    "intro": "Nossa equipe está pronta para ajudar com sua conta MyCoinDeck, conexões com corretoras e o aplicativo móvel. Escolha o canal que preferir.",
+    "channels": {
+      "email": {
+        "title": "Suporte por e-mail",
+        "body": "Envie sua dúvida e responderemos em até dois dias úteis.",
+        "cta": "support@mycoindeck.com"
+      },
+      "help": {
+        "title": "Central de Ajuda no app",
+        "body": "Converse com nosso assistente dentro do app para respostas imediatas, ou peça um atendente humano e nossa equipe assume a conversa.",
+        "cta": "Abrir Central de Ajuda"
+      },
+      "security": {
+        "title": "Relatar um problema de segurança",
+        "body": "Encontrou uma vulnerabilidade ou suspeita que sua conta foi comprometida? Envie um e-mail com “Security” no assunto e daremos prioridade.",
+        "cta": "Relatar problema"
+      }
+    },
+    "tips": {
+      "title": "Ajude-nos a ajudar você mais rápido",
+      "intro": "Ao entrar em contato, inclua:",
+      "items": [
+        "o e-mail cadastrado na sua conta MyCoinDeck;",
+        "seu dispositivo, sistema operacional e versão do app;",
+        "a corretora envolvida, se a dúvida for sobre uma conexão;",
+        "capturas de tela ou uma breve descrição do que você esperava que acontecesse."
+      ],
+      "note": "Nunca nos envie sua senha ou o secret da sua API. Nunca pediremos essas informações."
+    },
+    "faq": {
+      "title": "Perguntas frequentes",
+      "items": [
+        {
+          "q": "O que é a MyCoinDeck?",
+          "a": "A MyCoinDeck é uma plataforma de acompanhamento e análise de portfólio para traders de cripto. Conecte suas contas de corretora para ver saldos, posições, histórico de operações e desempenho em um só lugar, siga outros traders e compartilhe seu próprio progresso."
+        },
+        {
+          "q": "Quais corretoras são suportadas?",
+          "a": "Atualmente suportamos Binance, Bybit, OKX e Bitget. Mais corretoras estão a caminho."
+        },
+        {
+          "q": "Como conecto uma corretora?",
+          "a": "Abra seu perfil, toque em “Conectar API” e cole a API key e o secret da sua corretora. Crie a chave com permissões somente leitura e, quando possível, restrinja-a aos nossos endereços IP. Nunca precisamos de permissões de negociação ou saque."
+        },
+        {
+          "q": "Minha chave de API está segura?",
+          "a": "Sim. Os secrets são criptografados em repouso e usados apenas para ler seus dados. Como pedimos chaves somente leitura, ninguém consegue negociar ou sacar com elas, mesmo no pior cenário. Você pode desconectar uma chave a qualquer momento e nós a excluímos imediatamente."
+        },
+        {
+          "q": "Meus dados parecem errados ou desatualizados. O que faço?",
+          "a": "Primeiro, puxe para atualizar. As corretoras aplicam limites de requisição à API, então uma sincronização pode levar alguns minutos. Se os números continuarem errados após uma hora, envie um e-mail com a corretora, o par negociado e uma captura de tela, e nós investigaremos."
+        },
+        {
+          "q": "Como excluo minha conta?",
+          "a": "No app, vá em Configurações → Privacidade → Excluir conta, confirme o aviso e digite o código de uso único que enviamos por e-mail. Sua conta, chaves de API conectadas, portfólios e conteúdo são excluídos permanentemente. Você também pode escrever para {email} para solicitar a exclusão."
+        },
+        {
+          "q": "Como obtenho uma cópia dos meus dados?",
+          "a": "Escreva para {email} a partir do e-mail cadastrado na sua conta e peça uma exportação de dados. Enviaremos em até 30 dias."
+        },
+        {
+          "q": "Como falo com uma pessoa de verdade?",
+          "a": "Envie um e-mail a qualquer momento ou, no chat de Ajuda do app, peça para falar com um humano e um atendente assumirá a conversa."
+        }
+      ]
+    },
+    "account": {
+      "title": "Sua conta e seus dados",
+      "items": [
+        {
+          "title": "Excluir sua conta",
+          "body": "Configurações → Privacidade → Excluir conta no app. Confirmada com um código enviado ao seu e-mail e permanente após a conclusão."
+        },
+        {
+          "title": "Desconectar uma corretora",
+          "body": "Abra a corretora no seu perfil e remova a chave de API. A sincronização para imediatamente e a chave é excluída."
+        },
+        {
+          "title": "Solicitar ou corrigir seus dados",
+          "body": "Escreva para {email} a partir do e-mail da sua conta para solicitar uma exportação ou correção das suas informações pessoais."
+        }
+      ]
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço"
+    }
+  }
+}

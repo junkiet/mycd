@@ -5,6 +5,7 @@ import { Menu, X, Compass, LineChart, Trophy, ArrowRight, Globe, Check } from 'l
 import * as Dialog from '@radix-ui/react-dialog';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { routing, LOCALE_LABELS, LOCALE_SHORT_LABELS } from '@/i18n/routing';
 import { Button } from './ui/button';
 
@@ -26,10 +27,14 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
 
+  // Legal pages (/privacy, /terms, /support) reuse this navbar, so the logo and
+  // the leaderboard anchor must work from any route, not just the home page.
+  const isHome = pathname.replace(/\/$/, '') === `/${locale}` || pathname === '/';
+
   const navLinks = [
     { href: 'https://app.mycoindeck.com/en/explore', label: t('exploreTraders'), icon: Compass },
     { href: 'https://app.mycoindeck.com/en/feeds', label: t('feed'), icon: LineChart },
-    { href: '#leaderboard', label: t('leaderboard'), icon: Trophy },
+    { href: `/${locale}#leaderboard`, label: t('leaderboard'), icon: Trophy },
   ];
 
   const switchLocale = (newLocale: string) => {
@@ -67,15 +72,20 @@ export function Navbar() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <button
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          <Link
+            href={`/${locale}`}
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
             className="flex min-w-0 cursor-pointer items-center gap-2 transition-opacity hover:opacity-80"
-            aria-label="Back to top"
+            aria-label={isHome ? 'Back to top' : 'MyCoinDeck home'}
           >
             <img src="/logo.svg" alt="MyCoinDeck Logo" className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
             <span className="truncate text-lg font-bold uppercase tracking-tight sm:text-xl" style={{ fontFamily: "'GetVoIP Grotesque', sans-serif" }}>MyCoinDeck</span>
-          </button>
+          </Link>
 
           {/* Desktop Nav Links */}
           <div className="hidden items-center gap-6 md:flex">
