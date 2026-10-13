@@ -67,7 +67,7 @@
         "title": "Retenção, exclusão e suas escolhas",
         "paragraphs": [
           "Mantemos informações pessoais pelo tempo necessário para fornecer o Serviço e para as finalidades limitadas descritas nesta Política. A retenção depende do tipo de informação, dos requisitos legais aplicáveis e de a informação ainda ser necessária para a finalidade declarada.",
-          "Você pode solicitar a exclusão permanente da sua conta no app em Configurações → Privacidade → Excluir Conta, confirmando com um código de uso único enviado ao seu e-mail, ou escrevendo para {email}. Podemos verificar sua identidade. A exclusão remove seu perfil, chaves de API conectadas, portfólios, histórico de negociação e conteúdo dos nossos sistemas ativos. Registros limitados, como logs de segurança, correspondência de suporte ou informações necessárias para cumprir requisitos legais ou resolver disputas específicas, podem ser mantidos apenas para essas finalidades, e cópias residuais em backups são removidas à medida que os backups expiram.",
+          "Você pode solicitar a exclusão permanente da sua conta no app em Configurações → Privacidade → Excluir Conta, confirmando com um código de uso único enviado ao seu e-mail, ou escrevendo para {email}. Podemos verificar sua identidade. A exclusão remove permanentemente sua conta, perfil, chaves de API conectadas, portfólios, histórico de negociação e conteúdo. Depois de concluída, não pode ser desfeita.",
           "Você pode desconectar uma corretora a qualquer momento no seu perfil; paramos a sincronização imediatamente e excluímos a chave de API armazenada. Você também pode revogar a chave de API diretamente na corretora. A desconexão interrompe o acesso adicional por meio dessa conexão, mas não exclui, por si só, sua conta nem as informações históricas já armazenadas pela MyCoinDeck. Excluir sua conta MyCoinDeck não encerra sua conta na corretora nem exclui registros mantidos de forma independente pela corretora.",
           "Você também pode:"
         ],
@@ -192,7 +192,7 @@
       {
         "title": "Seu conteúdo e regras da comunidade",
         "paragraphs": [
-          "Você mantém a propriedade das publicações, comentários, imagens e outros conteúdos que envia (“Conteúdo do Usuário”). Você nos concede uma permissão não exclusiva para hospedar, processar e exibir esse conteúdo conforme necessário para operar o Serviço, sujeita às suas configurações de visibilidade e à nossa {privacy}. Você deve ter os direitos necessários para enviá-lo ou compartilhá-lo. Essa permissão termina quando o conteúdo é excluído, exceto quanto à retenção limitada descrita na Política de Privacidade e às cópias salvas de forma independente por outras pessoas.",
+          "Você mantém a propriedade das publicações, comentários, imagens e outros conteúdos que envia (“Conteúdo do Usuário”). Você nos concede uma permissão não exclusiva para hospedar, processar e exibir esse conteúdo conforme necessário para operar o Serviço, sujeita às suas configurações de visibilidade e à nossa {privacy}. Você deve ter os direitos necessários para enviá-lo ou compartilhá-lo. Essa permissão termina quando o conteúdo é excluído, exceto quanto às cópias salvas de forma independente por outras pessoas.",
           "Você concorda em não publicar conteúdo que:"
         ],
         "items": [
@@ -278,7 +278,7 @@
         "title": "Encerramento e exclusão da conta",
         "paragraphs": [
           "Você pode parar de usar a MyCoinDeck a qualquer momento. Desinstalar o app ou desconectar uma corretora não exclui, por si só, sua conta MyCoinDeck nem todas as informações armazenadas anteriormente. Você também pode revogar a chave de API correspondente diretamente na corretora.",
-          "Para excluir permanentemente sua conta MyCoinDeck, acesse Configurações → Privacidade → Excluir Conta no app e confirme com o código de uso único enviado ao seu e-mail. Se não conseguir acessar sua conta ou precisar de ajuda, escreva para {email}. Podemos verificar sua identidade antes de processar uma solicitação. Nossa {privacy} explica quais informações são excluídas, quaisquer informações limitadas que sejam mantidas e por quanto tempo são mantidas. Excluir a MyCoinDeck não encerra sua conta na corretora.",
+          "Para excluir permanentemente sua conta MyCoinDeck, acesse Configurações → Privacidade → Excluir Conta no app e confirme com o código de uso único enviado ao seu e-mail. Se não conseguir acessar sua conta ou precisar de ajuda, escreva para {email}. Podemos verificar sua identidade antes de processar uma solicitação. Após a conclusão, sua conta e seus dados são excluídos permanentemente e não podem ser recuperados. Excluir a MyCoinDeck não encerra sua conta na corretora.",
           "Podemos suspender ou encerrar seu acesso se você violar estes Termos, criar risco ou exposição legal para nós, ou se a lei exigir. As seções que, por sua natureza, devam sobreviver ao encerramento (incluindo propriedade intelectual, isenções, limitação de responsabilidade e indenização) continuarão em vigor."
         ]
       },
